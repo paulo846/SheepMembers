@@ -1,0 +1,5 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /www/wwwroot/conect.app
