@@ -23,7 +23,7 @@ class Empresas extends BaseController
     public function index()
     {
         //
-        $data['title'] = 'Empresas';
+        $data['title'] = 'Empresas 001';
 
         //
         $data['empresa'] = $this->mEmpresa->findAll();
