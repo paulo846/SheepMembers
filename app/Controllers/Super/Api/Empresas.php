@@ -11,7 +11,7 @@ use Exception;
 class Empresas extends ResourceController
 {
     private $mEmpresa;
-    private $request ;
+    public  $request ;
 
     public function __construct()
     {
