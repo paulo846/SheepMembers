@@ -110,7 +110,7 @@
         <p class="modal__text"><b>SENHA PADRÃO:</b> mudar123</p>
 
         <div class="modal__btns">
-            <button class="modal__btn modal__btn--apply" type="button">Enviar</button>
+            <button class="modal__btn modal__btn--apply" type="submit">Enviar</button>
             <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>
         </div>
 
