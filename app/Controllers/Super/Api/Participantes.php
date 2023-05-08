@@ -22,7 +22,8 @@ class Participantes extends ResourceController
     private $mEmpresa;
     private $mConfig;
 
-    private $request;
+    public $request;
+    
     public function index()
     {
         //
@@ -113,7 +114,7 @@ class Participantes extends ResourceController
                 <li><b>Seu email:</b> {$input['email']}</li>
                 <li><b>Sua senha:</b> mudar123</li>
             </ul>";
-            
+
             //envia email de boas vindas!
             $email = new Ses() ;
             $email->sendEmail([
