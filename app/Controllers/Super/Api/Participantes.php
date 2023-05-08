@@ -23,7 +23,7 @@ class Participantes extends ResourceController
     private $mConfig;
 
     public $request;
-    
+
     public function index()
     {
         //
@@ -69,7 +69,7 @@ class Participantes extends ResourceController
             $input = $this->request->getPost();
 
             //verifica se email já esta no banco de dados
-            if ($id = $this->mParticipante->where('email', $input['email']->findAll())) {
+            if ($id = $this->mParticipante->where('email', $input['email'])->findAll()) {
                 //dados para atualização
                 $update = [
                     'id'    => $id,
