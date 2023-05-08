@@ -77,23 +77,14 @@
     }
 </style>
 <?= $this->endsection() ?>
-
-
 <?= $this->section('content') ?>
-
-
-
-
-
-
 <!-- main title -->
 <div class="col-12">
     <div class="main__title">
-        <h2>Edit user</h2>
+        <h2>Editar</h2>
     </div>
 </div>
 <!-- end main title -->
-
 <!-- profile -->
 <div class="col-12">
     <div class="profile__content">
