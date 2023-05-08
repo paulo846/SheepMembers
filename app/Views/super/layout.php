@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- CSS -->
+	<?= $this->renderSection('css') ?>
 	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/bootstrap-reboot.min.css">
 	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/magnific-popup.css">
@@ -20,7 +21,7 @@
 	<meta name="keywords" content="IGR Sistemas">
 	<meta name="author" content="IGR Sistemas">
 	<title><?= (isset($title)) ? $title : 'Stream' ?></title>
-	<?= $this->renderSection('css') ?>
+	
 </head>
 
 <body>

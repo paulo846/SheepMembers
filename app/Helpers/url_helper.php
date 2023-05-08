@@ -48,7 +48,7 @@ if (!function_exists('formatar_valor_monetario')) {
 if(!function_exists('url_cloud_front')){
     function url_cloud_front($caminho = false)
     {
-        $url = "https://d32f79cgiemeee.cloudfront.net/";
+        $url = "/" ;//"https://d32f79cgiemeee.cloudfront.net/";
         $key = $caminho;
 
         return $url.$key;
