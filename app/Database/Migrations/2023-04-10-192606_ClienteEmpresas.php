@@ -26,6 +26,10 @@ class ClienteEmpresas extends Migration
                 'constraint' => 11,
                 'unsigned' => true,
             ],
+            'vencimento' => [
+                'type' => 'INT',
+                'contraint' => 2
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

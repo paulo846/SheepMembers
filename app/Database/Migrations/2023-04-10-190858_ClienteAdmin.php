@@ -28,7 +28,7 @@ class ClienteAdmin extends Migration
                 'type' => 'varchar',
                 'constraint' => 255
             ],
-            'password' => [
+            'password' => [ 
                 'type' => 'varchar',
                 'constraint' => 255
             ],

@@ -34,6 +34,9 @@ $routes->group('superadmin', static function ($routes) {
 
         //CONFIG
         $routes->post('config/(:num)/(:any)', 'Super\Api\Config::update/$1/$2');
+
+        //PARTICIPANTES
+        $routes->post('cliente/new', 'Super\Api\Participantes::create');
     });
     
 }); 

@@ -15,7 +15,7 @@ class ClientModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'email', 'password', 'token', 'username'];
+    protected $allowedFields    = ['name', 'email', 'password', 'token', 'username', 'phone', 'image'];
 
     // Dates
     protected $useTimestamps = true;

@@ -11,9 +11,12 @@ use Exception;
 class Empresas extends ResourceController
 {
     private $mEmpresa;
+    private $request ;
 
     public function __construct()
     {
+        $request = service('resquest');
+
         $this->mEmpresa = new EmpresaModel();
 
         helper('url');
@@ -58,6 +61,7 @@ class Empresas extends ResourceController
     {
         //
         try {
+            
             $input = $this->request->getPost();
             $data = [
                 'name' => $input['nome'],
