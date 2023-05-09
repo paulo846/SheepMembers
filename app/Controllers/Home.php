@@ -2,13 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\ConfigModel;
+
 class Home extends BaseController
 {
 
-    public function index()
+    /*public function index()
     {
-        return view('usuarios/panel/pages/idioma');
-    }
+        //return view('usuarios/panel/pages/idioma');
+    }*/
 
     public function lang()
     {
@@ -23,7 +25,8 @@ class Home extends BaseController
         
         echo date('h:i:s');
     }
-    /*public function pt_br0()
+
+    public function index()
     {
         helper('url');
         $mConfig = new ConfigModel();
@@ -50,7 +53,7 @@ class Home extends BaseController
 
         $data['title'] = 'Members | ' . $data['name'];
         return view('usuarios/panel/layout', $data);
-    }*/
+    }
     /*public function teste()
     {
         $mMessage = new MessagesModel();
