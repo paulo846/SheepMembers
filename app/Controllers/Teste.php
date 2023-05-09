@@ -16,16 +16,16 @@ class Teste extends BaseController
     {
 
         // use the factory to create a Faker\Generator instance
-        $faker = \Faker\Factory::create();
+        /*$faker = \Faker\Factory::create();
 
         $data = array();
 
-        for ($i=0; $i < 5000; $i++) { 
+        for ($i=0; $i < 7000; $i++) { 
             $data[] = [
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'phone' => $faker->phoneNumber,
-                'password' => password_hash('mudar123', PASSWORD_BCRYPT),
+                'password' => 'mudar123',//password_hash('mudar123', PASSWORD_BCRYPT),
                 'token' => uniqid() 
             ]; 
         }
@@ -34,7 +34,7 @@ class Teste extends BaseController
 
         $user->insertBatch($data);
         echo "<pre>";
-        print_r($data);
+        print_r($data);*/
 
     }
     public function upload()
