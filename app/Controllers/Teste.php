@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Libraries\S3;
+use App\Models\ClientModel;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 
@@ -14,8 +15,27 @@ class Teste extends BaseController
     public function index()
     {
 
-        echo getenv('AWS_DEFAULT_REGION');
-        //return view('teste.php');
+        // use the factory to create a Faker\Generator instance
+        $faker = \Faker\Factory::create();
+
+        $data = array();
+
+        for ($i=0; $i < 10000; $i++) { 
+            $data[] = [
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'phone' => $faker->phoneNumber,
+                'password' => password_hash('mudar123', PASSWORD_BCRYPT),
+                'token' => uniqid() 
+            ]; 
+        }
+
+        $user = new ClientModel();
+
+        $user->insertBatch($data);
+        echo "<pre>";
+        print_r($data);
+
     }
     public function upload()
     {

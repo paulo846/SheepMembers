@@ -97,15 +97,32 @@ class Participantes extends ResourceController
                 $id = $this->mParticipante->insert($data);
             }
 
-            //dados para relacionamento
-            $relaciona = [
-                'id_cliente' => $id,
-                'id_empresa' => $input['empresa'],
-                'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
-            ];
+            if ($rel = $this->mRelaciona->where(['id_cliente' => $id, 'id_empresa' => $input['empresa']])->findAll()) {
+                //dados para relacionamento
+                $this->mRelaciona->delete($rel[0]['id']);
+                
+                //dados para relacionamento
+                $relaciona = [
+                    'id_cliente' => $id,
+                    'id_empresa' => $input['empresa'],
+                    'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
+                ];
+                //cadastra novo relacionamento
+                $this->mRelaciona->save($relaciona);
+            
+            } else {
+            
+                //dados para relacionamento
+                $relaciona = [
+                    'id_cliente' => $id,
+                    'id_empresa' => $input['empresa'],
+                    'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
+                ];
+                //cadastra novo relacionamento
+                $this->mRelaciona->save($relaciona);
+            
+            }
 
-            //cadastra novo relacionamento
-            $this->mRelaciona->save($relaciona);
 
             //busca dados da empresa
             $plataforma = $this->mConfig->where('id_empresa', $input['empresa'])->findAll();
@@ -131,7 +148,6 @@ class Participantes extends ResourceController
             ]);
 
             return $this->respondCreated(['Ação realizada com sucesso!']);
-        
         } catch (\Exception $e) {
 
             //resposta 400 - Qualquer erro
