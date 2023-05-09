@@ -24,7 +24,7 @@ class Participantes extends ResourceController
 
     public $request;
 
-    public function index()
+    public function __construct()
     {
         //
         $this->request = service('request');
@@ -33,6 +33,10 @@ class Participantes extends ResourceController
         $this->mEmpresa      = new EmpresaModel();
         $this->mParticipante = new ClientModel();
         $this->mRelaciona    = new EmpresaClienteModel();
+    }
+
+    public function index()
+    {
     }
 
     use ResponseTrait;
@@ -69,8 +73,9 @@ class Participantes extends ResourceController
             $input = $this->request->getPost();
 
             //verifica se email já esta no banco de dados
-            if ($id = $this->mParticipante->where('email', $input['email'])->findAll()) {
+            if ($row = $this->mParticipante->where('email', $input['email'])->select('id')->findAll()) {
                 //dados para atualização
+                $id = $row[0]['id'];
                 $update = [
                     'id'    => $id,
                     'name'  => $input['name'],
@@ -96,7 +101,7 @@ class Participantes extends ResourceController
             $relaciona = [
                 'id_cliente' => $id,
                 'id_empresa' => $input['empresa'],
-                'vencimento' => ($input['vencimento']) ? $input['vencimento'] : 12,
+                'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
             ];
 
             //cadastra novo relacionamento
@@ -106,17 +111,18 @@ class Participantes extends ResourceController
             $plataforma = $this->mConfig->where('id_empresa', $input['empresa'])->findAll();
 
             //html
-            $html = "<h3>Email teste</h3>";
+            $html = "<div style='font-size: 18px;'><h3>Dados para acesso {$plataforma[0]['title_pt']}</h3>";
             $html .= "<p>{$input['name']}, nesse email contém os dados de acesso a plataforma para você assistir ao seu evento!</p>";
             $html .= "Dados de acesso:
             <ul>
-                <li><b>Link da plataforma: {$plataforma[0]['slug']}</b></li>
+                <li><b>Link da plataforma:</b> {$plataforma[0]['slug']}</li>
                 <li><b>Seu email:</b> {$input['email']}</li>
                 <li><b>Sua senha:</b> mudar123</li>
-            </ul>";
+            </ul></div>";
 
             //envia email de boas vindas!
-            $email = new Ses() ;
+            $email = new Ses;
+
             $email->sendEmail([
                 'sender' => 'contato@conect.app',
                 'recipient' => $input['email'],
@@ -124,8 +130,8 @@ class Participantes extends ResourceController
                 'body'    => $html
             ]);
 
-            //resposta 201 SUCESSO
             return $this->respondCreated(['Ação realizada com sucesso!']);
+        
         } catch (\Exception $e) {
 
             //resposta 400 - Qualquer erro

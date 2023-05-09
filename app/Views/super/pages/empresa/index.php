@@ -6,7 +6,7 @@
     <div class="main__title">
         <h2>Empresa</h2>
 
-        <div class="main__title-wrap">
+        <div class="main__title-wrap"> 
             <a href="/superadmin/empresas/new" class="main__title-link">Nova empresa</a>
             <!-- search -->
             <form action="#" class="main__title-form">
