@@ -20,7 +20,7 @@ class Teste extends BaseController
 
         $data = array();
 
-        for ($i=0; $i < 10000; $i++) { 
+        for ($i=0; $i < 5000; $i++) { 
             $data[] = [
                 'name' => $faker->name,
                 'email' => $faker->email,
