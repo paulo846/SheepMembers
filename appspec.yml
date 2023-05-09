@@ -4,6 +4,4 @@ files:
   - source: /
     destination: /www/wwwroot/conect.app
 post-update:
-  - cd /www/wwwroot/conect.app
-  - sudo composer update --no-dev
-  - chmod -R 777 /www/wwwroot/conect.app/writable
+  - cd /www/wwwroot/conect.app && sudo composer update --no-dev -y --yes && chmod -R 777 /www/wwwroot/conect.app/writable
