@@ -1,14 +1,19 @@
 function ouvirAvisos() {
 	$.getJSON(site + "client/api/avisos/" + stream, (function (res) {
 		var $listaAvisos = $("#lista-avisos");
+
 		$listaAvisos.empty(), $.each(res, (function (_i, aviso) {
-			var $row = $("<div>").addClass("col-12 mt-3"),
-				$card = $("<div>").addClass("card"),
-				$card_header = $("<div>").addClass("card-header bg-danger text-white text-center"),
-				$card_body = $("<div>").addClass("card-body bg-dark text-white p-3 text-center"),
-				$title = $("<h2>").text(aviso.title),
-				$paragrafo = $("<p>").html(aviso.text);
-			$card_header.append($title), $card_body.append($paragrafo), $card.append($card_header).append($card_body), $row.append($card), $listaAvisos.append($row)
+			if (aviso.text) {
+				var $row = $("<div>").addClass("col-lg-8 mt-3 offset-lg-2"),
+					$card = $("<div>").addClass("card"),
+					$card_header = $("<div>").addClass("card-header bg-danger text-white text-center"),
+					$card_body = $("<div>").addClass("card-body bg-dark text-white p-3 text-center"),
+					$title = $("<h3>").text(aviso.title),
+					$paragrafo = $("<p>").html(aviso.text);
+				$card_header.append($title), $card_body.append($paragrafo), $card.append($card_header).append($card_body), $row.append($card), $listaAvisos.append($row)
+			} else {
+				$listaAvisos.empty();
+			}
 		}))
 	}))
 }

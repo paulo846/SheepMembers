@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Libraries\S3;
 use App\Models\ConfigModel;
 
 class Home extends BaseController
@@ -20,9 +21,10 @@ class Home extends BaseController
         $session->set('lang', $locale);
         return redirect()->back();
     }
-    public function teste(){
-        
-        
+    public function teste()
+    {
+
+
         echo date('h:i:s');
     }
 
@@ -30,18 +32,39 @@ class Home extends BaseController
     {
         helper('url');
         $mConfig = new ConfigModel();
-        $builder = $mConfig->where('slug', get_subdomain(base_url()))->findAll();
+
+        $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
         $data = array();
 
+        $s3 = new S3();
+
         if (count($builder)) {
-            $data['name']        = $builder[0]['title'];
-            $data['description'] = $builder[0]['description'];
-            $data['logo']        = $builder[0]['logo'];
-            $data['fundo']       = $builder[0]['fundo'];
-            $data['link_venda']  = $builder[0]['link_venda'];
-            $data['id']          = $builder[0]['id'];
-            $data['stream_pt']       = $builder[0]['stream_pt'];
+
+            if (session()->lang == 'pt-BR') {
+                
+                $data['name']        = $builder[0]['title_pt'];
+                $data['description'] = $builder[0]['description_pt'];
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
+                $data['link_venda']  = $builder[0]['link_venda'];
+                $data['id']          = $builder[0]['id'];
+                $data['stream_pt']       = $builder[0]['stream_pt'];
+
+            } elseif (session()->lang == 'en') {
+                
+            } elseif (session()->lang == 'es') {
+            } else {
+
+                $data['name']        = $builder[0]['title_pt'];
+                $data['description'] = $builder[0]['description_pt'];
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
+                $data['link_venda']  = $builder[0]['link_venda'];
+                $data['id']          = $builder[0]['id'];
+                $data['stream_pt']       = $builder[0]['stream_pt'];
+            }
         } else {
+
             $data['name']        = 'Sheep Members';
             $data['description'] = false;
             $data['logo']        = false;
@@ -49,11 +72,13 @@ class Home extends BaseController
             $data['link_venda']  = false;
             $data['id']          = null;
             $data['stream_pt']   = false;
+        
         }
 
         $data['title'] = 'Members | ' . $data['name'];
         return view('usuarios/panel/layout', $data);
     }
+
     /*public function teste()
     {
         $mMessage = new MessagesModel();
