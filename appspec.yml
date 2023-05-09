@@ -3,7 +3,9 @@ os: linux
 files:
   - source: /
     destination: /www/wwwroot/conect.app
+hooks:
 post-update:
-  - cd /www/wwwroot/conect.app
-  - sudo composer update --no-dev
-  - sudo chmod -R 777 /writable
+   AfterInstall:
+    - location: scripts/depois.sh
+      timeout: 30
+      runas: root
