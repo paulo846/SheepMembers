@@ -31,7 +31,9 @@ class Participantes extends BaseController
         //vefifica se o id da empresa foi enviado
         if ($list = $this->request->getGet('list')) :
             //busca os relacionamentos da empresa
-            if ($rowList = $this->mEmpresaCliente->where('id_empresa', $list)->select('id_cliente')->findAll()) {
+            $rowList = $this->mEmpresaCliente->where('id_empresa', $list)->select('id_cliente')->findAll();
+            
+            if ($rowList) {
                 //define id do cliente para a busca
                 foreach ($rowList as $rowIdsClientes) {
                     $idCliente[] = $rowIdsClientes['id_cliente'];
