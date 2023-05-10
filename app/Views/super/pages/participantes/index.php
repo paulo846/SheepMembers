@@ -26,7 +26,7 @@
                     if (isset($_GET['list']) == $row['id']) {
                         $dd[$row['id']] = ['name' => $row['name']];
                 ?>
-                <a href="/superadmin/participantes/?list=<?= $row['id'] ?>" class="btn btn-white">
+                <a href="/superadmin/participantes/?list=<?= $row['id'] ?>" class="btn btn-info active">
                         <?= $row['name'] ?> <?= (isset($_GET['list'])) ? count($cliente) : false; ?>
                     </a>
                     <?php
