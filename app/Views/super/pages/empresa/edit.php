@@ -201,7 +201,7 @@
 
                             <div class="col-12">
                                 <input type="hidden" name="id" value="<?= $empresa['id'] ?>">
-                                <button class="sign__btn" id="btn_aviso"  type="submit">Save</button>
+                                <button class="sign__btn" id="btn_aviso" type="submit">Save</button>
                             </div>
                         </div>
                         </form>
@@ -384,6 +384,12 @@
         $(document).ready(function() {
             $('.form_update').ajaxForm({
                 dataType: 'json',
+
+                // Configuração para adicionar barra de progresso
+                beforeSubmit: function() {
+                    toastr.warning('Enviando dados!!!')
+                },
+
                 success: function(response) {
                     // Ação a ser executada em caso de sucesso
                     toastr.success('Cadastrado com sucesso, agora configure as transmissões!!!')

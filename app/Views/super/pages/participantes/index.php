@@ -27,8 +27,8 @@
                         $dd[$row['id']] = ['name' => $row['name']];
                     }
                 ?>
-                    <a href="/superadmin/participantes/?list=<?= $row['id'] ?>" class="btn btn-dark active">
-                        <?= $row['name'] ?>
+                    <a href="/superadmin/participantes/?list=<?= $row['id'] ?>" class="btn btn-info active">
+                        <?= $row['name'] ?> <?= (isset($_GET['list'])) ? count($cliente) : false; ?>
                     </a>
                 <?php endforeach ?>
             </div>
@@ -37,7 +37,7 @@
 </div>
 
 <?php if (isset($_GET['list'])) :
-    ?>
+?>
     <!-- users -->
     <div class="col-12">
         <div class="main__table-wrap">
@@ -84,11 +84,7 @@
                             </td>
                             <td>
                                 <div class="main__table-text">
-                                    <?php 
-                                    
-                                    echo  phpversion();
-                                    
-                                    ?>
+                                    <?= $row['created_at'] ?>
                                 </div>
                             </td>
                             <td>
@@ -115,29 +111,31 @@
                 </tbody>
             </table>
 
-            <?= $pager->links('default', 'pager_movie') ?>
+
 
         </div>
     </div>
+
+    <?= $pager->links('default', 'pager_movie') ?>
 
     <?php if (isset($_GET['list'])) : ?>
         <!-- modal status -->
         <div id="modal-csv<?= $_GET['list'] ?>" class="zoom-anim-dialog mfp-hide modal">
             <h6 class="modal__title">Envio em massa</h6>
             <p class="modal__text">Lista de contatos</p>
-            <?= form_open_multipart('/',  'class="form_cliente"') ?>
+            <?= form_open_multipart('/superadmin/api/cliente/new/list',  'class="form_cliente"') ?>
 
             <div class="col-12">
                 <div class="sign__group">
                     <label class="sign__label" for="list">Lista em CSV</label>
-                    <input id="list" type="file" name="list" class="form-control">
+                    <input id="list" type="file" name="csvfile" class="form-control">
                 </div>
             </div>
 
             <input type="hidden" name="empresa" value="<?= $_GET['list'] ?>">
 
             <div class="modal__btns">
-                <button class="modal__btn modal__btn--apply" type="button">Enviar</button>
+                <button class="modal__btn modal__btn--apply" type="submit">Enviar</button>
                 <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>
             </div>
 
@@ -195,13 +193,21 @@
     $(document).ready(function() {
         $('.form_cliente').ajaxForm({
             dataType: 'json',
+            // Ação a ser executada em caso de sucesso
+
+            // Configuração para adicionar barra de progresso
+            beforeSubmit: function() {
+                toastr.warning('Enviando dados!!!')
+            },
+
             success: function(response) {
                 // Ação a ser executada em caso de sucesso
-                toastr.success('Cadastrado com sucesso, agora configure as transmissões!!!')
+                toastr.success('Enviado com sucesso!!!')
                 setTimeout(function() {
                     location.reload();
                 }, 5000);
             },
+
             error: function(response) {
                 // Ação a ser executada em caso de erro
                 toastr.error('Verique os logs do navegador!')

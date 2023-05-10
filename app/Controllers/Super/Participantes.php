@@ -22,27 +22,27 @@ class Participantes extends BaseController
     }
     public function index()
     {
-        //
+        //titulo da página
         $data['title'] = 'Participantes';
-        
-        //
+
+        //dados da empresa
         $data['mEmpresa'] = $this->mEmpresa;
 
+        //vefifica se o id da empresa foi enviado
         if ($list = $this->request->getGet('list')) :
-            
-            if($rowList = $this->mEmpresaCliente->where('id_empresa', $list)->select('id_cliente')->findAll()){
-                
-                $idCliente = $rowList[0]['id_cliente'];
+            //busca os relacionamentos da empresa
+            if ($rowList = $this->mEmpresaCliente->where('id_empresa', $list)->select('id_cliente')->findAll()) {
+                //define id do cliente para a busca
+                foreach ($rowList as $rowIdsClientes) {
+                    $idCliente[] = $rowIdsClientes['id_cliente'];
+                }
+            } else {
+                //define id do cliente como zero
+                $idCliente = [0];
+            };
 
-            }else{
-                
-                $idCliente = 0;
-            
-            } ;
-
-            $data['cliente'] = $this->mCliente->where('id', $idCliente)
-                                        ->paginate();
-            $data['pager']  = $this->mCliente->pager ;
+            $data['cliente'] = $this->mCliente->whereIn('id', $idCliente)->paginate();
+            $data['pager']  = $this->mCliente->pager;
 
         endif;
 

@@ -117,7 +117,7 @@ class Api extends ResourceController
     {
         $data[] = [
             'title' => 'Avisos!!',
-            'text'  => null,
+            'text'  => '',
         ];
 
         return $this->respond($data, 200);

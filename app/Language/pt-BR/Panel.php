@@ -17,5 +17,15 @@ return [
     'loginSenha' => 'Senha',
     'loginEmail' => 'Email',
     'recuperarBtn' => 'Recuperar conta',
-    'loginVoltar'  => 'Fazer login'
+    'loginVoltar'  => 'Fazer login',
+    'perfil' => 'Perfil',
+    'stream' => 'Link de transmissão não configurado, escolha outro idioma.',
+
+    'termos' => [
+        'uso' => 'Termos de uso',
+        'suporte' => 'Suporte',
+        'privacidade' => 'Privacidade',
+        'direitos' => 'copyright © 2023 todos os direitos reservados'
+    ]
+
 ];

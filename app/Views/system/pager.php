@@ -11,7 +11,7 @@ $pager->setSurroundCount(2);
 <!-- paginator -->
 <div class="col-12">
     <div class="paginator">
-        <span class="paginator__pages">10 from 3 702</span>
+        <span class="paginator__pages"></span>
         <ul class="paginator__paginator">
             <?php if ($pager->hasPrevious()) : ?>
                 <li>

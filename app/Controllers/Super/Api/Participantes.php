@@ -100,7 +100,7 @@ class Participantes extends ResourceController
             if ($rel = $this->mRelaciona->where(['id_cliente' => $id, 'id_empresa' => $input['empresa']])->findAll()) {
                 //dados para relacionamento
                 $this->mRelaciona->delete($rel[0]['id']);
-                
+
                 //dados para relacionamento
                 $relaciona = [
                     'id_cliente' => $id,
@@ -109,9 +109,8 @@ class Participantes extends ResourceController
                 ];
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
-            
             } else {
-            
+
                 //dados para relacionamento
                 $relaciona = [
                     'id_cliente' => $id,
@@ -120,7 +119,6 @@ class Participantes extends ResourceController
                 ];
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
-            
             }
 
 
@@ -160,6 +158,102 @@ class Participantes extends ResourceController
      *
      * @return mixed
      */
+    public function list()
+    {
+        $clientsModel = $this->mParticipante;
+
+        if ($this->request->isAJAX() && $this->request->getFile('csvfile')) {
+
+            try {
+
+                $email = new Ses;
+                $file = $this->request->getFile('csvfile');
+
+                // Verifica se o arquivo enviado é um arquivo CSV válido
+                if ($file->isValid() && $file->getClientMimeType() === 'text/csv') {
+
+                    $csv = new \SplFileObject($file->getTempName());
+                    $csv->setFlags(\SplFileObject::READ_CSV);
+                    $csv->setCsvControl(',');
+                    $data = [];
+                    $lineNumber = 1;
+
+                    // Percorre o arquivo CSV linha por linha
+                    foreach ($csv as $row) {
+                        // Pula a primeira linha (cabeçalho)
+                        if ($lineNumber === 1) {
+                            $lineNumber++;
+                            continue;
+                        }
+
+                        // Verifica se a linha contém as 4 colunas esperadas
+                        if (count($row) === 3 && $row[0] && $row[1] && $row[2]) {
+
+                            $data[] = [
+                                'name' => $row[0],
+                                'email' => $row[1],
+                                'phone' => $row[2],
+                                'password' => password_hash('mudar123', PASSWORD_BCRYPT)
+                            ];
+                        }
+
+                        $lineNumber++;
+                    }
+
+                    if (count($data) > 0) {
+                        // Obtém todos os clientes existentes do banco de dados
+                        $existingClients = $clientsModel->whereIn('email', array_column($data, 'email'))->findAll();
+
+                        // Separa os novos clientes e os clientes existentes que precisam ser atualizados
+                        $newClients = [];
+                        $updatedClients = [];
+
+                        foreach ($data as $row) {
+                            if ($existingClients) {
+                                foreach ($existingClients as $client) {
+                                    if ($client['email'] === $row['email']) {
+                                        $updatedClients[] = $row;
+                                        continue 2;
+                                    }
+                                }
+                            }
+                            $newClients[] = $row;
+                        }
+                    }
+
+                    // Insere os novos clientes no banco de dados
+                    if ($newClients) {
+                        $clientsModel->insertBatch($newClients);
+
+                        foreach ($newClients as $row) {
+                            $this->mRelaciona->relacionaClienteCsv($row, $this->request->getPost('empresa'));
+                            $email->acessoInicial($row, $this->request->getPost('empresa'));
+                        }
+                    }
+
+                    // Atualiza os clientes existentes no banco de dados
+                    if ($updatedClients) {
+                        $clientsModel->updateBatch($updatedClients, 'email');
+                        foreach ($updatedClients as $row) {
+                            $this->mRelaciona->relacionaClienteCsv($row, $this->request->getPost('empresa'));
+                            $email->acessoInicial($row, $this->request->getPost('empresa'));
+                        }
+                    }
+
+
+                }
+
+                return $this->respond(['Cadastrado com sucesso!']);
+
+            } catch (\Exception $e) {
+
+                return $this->fail([$e->getMessage()]);
+            
+            }
+        }
+    }
+
+
     public function edit($id = null)
     {
         //

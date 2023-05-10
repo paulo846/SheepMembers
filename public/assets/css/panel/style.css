@@ -27,8 +27,15 @@ header .navbar--header .logo {
 }
 
 main {
+  margin-bottom: 50px;
+}
+main p {
   margin-top: 100px;
   margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  z-index: 999 !important;
+  color: #f1f1f1;
 }
 main iframe {
   width: 100%;
@@ -38,8 +45,8 @@ main iframe {
   /* altere o valor para o que for apropriado para o seu conteúdo */
 }
 main .card--control {
-  height: 480px;
-  max-height: 530px;
+  height: 250px;
+  max-height: 330px;
 }
 main .card-body {
   overflow-y: auto;

@@ -1,9 +1,11 @@
-<header class="fixed-top">
+<header>
     <nav class="navbar navbar--header navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+            
             <a class="navbar-brand" href="#">
                 <img src="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" alt="logo" height="120px" class="img-fluid logo">
             </a>
+
             <div class="d-flex ms-auto">
                 <div class="btn-group">
                     <div type="button" class="dropdown-toggle text-white" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -22,20 +24,27 @@
                             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
                                     <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-                                </svg> Editar perfil
+                                </svg> <?= lang('Panel.perfil') ?>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                            <a class="dropdown-item" href="/lang/pt-BR"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
                                     <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
                                 </svg> PT-BR
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/lang/en">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
                                     <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
                                 </svg> EN
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/lang/es">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                                    <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                </svg> ES
                             </a>
                         </li>
                         <li>
@@ -67,30 +76,31 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Perfil</h5>
+                <h5 class="modal-title" id="staticBackdropLabel"><?= lang('Panel.perfil') ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <?= form_open() ?>
                 <div class="form-group mb-3">
                     <label for="">Nome</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="<?= session('name') ?>">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="<?= session('name') ?>" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= session('email') ?>">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= session('email') ?>" readonly>
                 </div>
+                <!--
                 <div class="form-group mb-3">
                     <label for="imagemInput" class="form-label">Uma foto para o seu perfil</label>
                     <input type="file" class="form-control form-control-file" name="imagem" id="imagem" placeholder="Escolher foto!" accept="image/*">
                     <div id="upload-demo" class="mt-5"></div>
-                </div>
+                </div> -->
                 </form>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary">Atualizar</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

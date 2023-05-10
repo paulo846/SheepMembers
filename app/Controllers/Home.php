@@ -48,11 +48,27 @@ class Home extends BaseController
                 $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
-                $data['stream_pt']       = $builder[0]['stream_pt'];
-
+                $data['stream_pt']   = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
             } elseif (session()->lang == 'en') {
+
+                $data['name']        = $builder[0]['title_en'];
+                $data['description'] = $builder[0]['description_en'];
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
+                $data['link_venda']  = $builder[0]['link_venda'];
+                $data['id']          = $builder[0]['id'];
+                $data['stream_pt']   = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false ;
                 
             } elseif (session()->lang == 'es') {
+                
+                $data['name']        = $builder[0]['title_es'];
+                $data['description'] = $builder[0]['description_es'];
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
+                $data['link_venda']  = $builder[0]['link_venda'];
+                $data['id']          = $builder[0]['id'];
+                $data['stream_pt']   = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false ;
+
             } else {
 
                 $data['name']        = $builder[0]['title_pt'];
@@ -61,7 +77,7 @@ class Home extends BaseController
                 $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
-                $data['stream_pt']       = $builder[0]['stream_pt'];
+                $data['stream_pt']   = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
             }
         } else {
 

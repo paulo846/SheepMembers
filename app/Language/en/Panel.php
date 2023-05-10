@@ -16,5 +16,14 @@ return [
     'loginSenha' => 'Password',
     'loginEmail' => 'Email',
     'recuperarBtn' => 'Retrieve account',
-    'loginVoltar'  => 'Back to home screen'
+    'loginVoltar'  => 'Back to home screen',
+    'perfil' => 'Profile',
+    'stream' => 'Stream link not configured, choose another language.',
+
+    'termos' => [
+        'uso' => 'Terms of use',
+        'suporte' => 'Support',
+        'privacidade' => 'Privacy',
+        'direitos' => 'Copyright © 2023 all rights reserved'
+    ]
 ];

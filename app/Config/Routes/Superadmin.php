@@ -37,6 +37,7 @@ $routes->group('superadmin', static function ($routes) {
 
         //PARTICIPANTES
         $routes->post('cliente/new', 'Super\Api\Participantes::create');
+        $routes->post('cliente/new/list', 'Super\Api\Participantes::list');
     });
     
 }); 

@@ -1,4 +1,4 @@
-function ouvirAvisos() {
+/*function ouvirAvisos() {
 	$.getJSON(site + "client/api/avisos/" + stream, (function (res) {
 		var $listaAvisos = $("#lista-avisos");
 
@@ -16,8 +16,23 @@ function ouvirAvisos() {
 			}
 		}))
 	}))
+}*/
+
+function ouvirAvisos() {
+	$.getJSON(site + "client/api/avisos/" + stream, (function (res) {
+		var $listaAvisos = $("#lista-avisos");
+
+		$listaAvisos.empty(), $.each(res, (function (_i, aviso) {
+			if (aviso.text) {
+				$listaAvisos.html('<div class="alert alert-danger mt-3">'+aviso.text+'</div>')
+			} else {
+				$listaAvisos.empty();
+			}
+		}))
+	}))
 }
 
+/*
 function ouvirMessage() {
 	var $cardBody = $(".card-body"),
 		scrollAtBottom = !0;
@@ -44,7 +59,7 @@ function ouvirMessage() {
 			clientHeight = $(this).prop("clientHeight");
 		scrollAtBottom = 0 !== scrollTop && scrollTop + clientHeight === scrollHeight
 	}))
-}
+}*/
 
 function logIn() {
 	$.getJSON(site + "client/api/verify", (function (res) {
@@ -55,7 +70,7 @@ function logIn() {
 }
 
 $(document).ready((function () {
-	ouvirMessage(), ouvirAvisos(), logIn(), setInterval(ouvirMessage, 5e3), setInterval(ouvirAvisos, 5e3), setInterval(logIn, 5e3), $("#myForm").ajaxForm((function () {
+	/*ouvirMessage(),*/ ouvirAvisos(), logIn(), setInterval(ouvirAvisos, 5e3), setInterval(logIn, 5e3), $("#myForm").ajaxForm((function () {
 		ouvirMessage(), $("#myForm")[0].reset()
 	}))
 }));

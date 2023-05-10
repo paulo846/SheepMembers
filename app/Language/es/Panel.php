@@ -19,5 +19,14 @@ return [
     'loginEmail' => 'Correo electrónico',
     
     'recuperarBtn' => 'Recuperar cuenta',
-    'loginVoltar'  => 'Volver a la pantalla de inicio'
+    'loginVoltar'  => 'Volver a la pantalla de inicio',
+    'perfil' => 'Perfil',
+    'stream' => 'Enlace de transmisión no configurado, elija otro idioma.',
+
+    'termos' => [
+        'uso' => 'Terminos de uso',
+        'suporte' => 'Soporte',
+        'privacidade' => 'Privacidad',
+        'direitos' => 'derechos de autor © 2023 todos los derechos reservados'
+    ]
 ];

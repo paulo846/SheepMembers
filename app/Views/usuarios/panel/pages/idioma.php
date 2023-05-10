@@ -82,7 +82,7 @@
                 </a>
             </div>
             <div class="col-sm-4 text--center">
-                <a href="/lang/es">
+                <a href="/lang/es"> 
                     <img src="/assets/img/Es.png" alt="Espanhol" class="img-fluid imagem-zoom">
                 </a>
             </div>
