@@ -23,7 +23,8 @@
                 <?php
                 $dd = array();
                 foreach ($mEmpresa->findAll() as $row) :
-                    if (isset($_GET['list']) == $row['id']) {
+
+                    if ($_GET['list'] == $row['id']) {
                         $dd[$row['id']] = ['name' => $row['name']];
                 ?>
                 <a href="/superadmin/participantes/?list=<?= $row['id'] ?>" class="btn btn-info active">
