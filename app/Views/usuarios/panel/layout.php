@@ -58,11 +58,13 @@
             background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%) !important;
         }
 
-        footer .navbar--footer span {
+        footer .navbar--footer a span {
             font-size: 10px;
             font-style: normal;
             font-weight: 300;
             color: #fff !important;
+            text-decoration: none;
+            bottom: 0px;
         }
 
         footer .navbar--footer .logo {
