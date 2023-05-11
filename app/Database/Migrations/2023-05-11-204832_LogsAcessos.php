@@ -41,7 +41,6 @@ class LogsAcessos extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('id_empresa', 'empresa', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_cliente', 'empresa_cliente', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('logs_acessos', true);
     }
