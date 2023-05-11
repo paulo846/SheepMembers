@@ -118,7 +118,7 @@
             <div class="container ">
                 <a class="navbar-brand text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
-                    <span><?= lang('Panel.termos.direitos') ?><a class="nav-link" aria-current="page" href="#"><?= lang('Panel.termos.suporte') ?></a><a class="nav-link" href="#"><?= lang('Panel.termos.uso') ?></a><a class="nav-link" href="#"><?= lang('Panel.termos.privacidade') ?></a></span> 
+                    <span><?= lang('Panel.termos.direitos') ?><a href="#"><?= lang('Panel.termos.suporte') ?></a><a href="#"><?= lang('Panel.termos.uso') ?></a><a href="#"><?= lang('Panel.termos.privacidade') ?></a></span> 
                 </a>
             </div>
         </nav>
