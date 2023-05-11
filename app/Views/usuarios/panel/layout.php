@@ -118,19 +118,8 @@
             <div class="container ">
                 <a class="navbar-brand text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
-                    <span><?= lang('Panel.termos.direitos') ?></span>
+                    <span><?= lang('Panel.termos.direitos') ?></span> <a class="nav-link" aria-current="page" href="#"><?= lang('Panel.termos.suporte') ?></a><a class="nav-link" href="#"><?= lang('Panel.termos.uso') ?></a><a class="nav-link" href="#"><?= lang('Panel.termos.privacidade') ?></a>
                 </a>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#"><?= lang('Panel.termos.suporte') ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><?= lang('Panel.termos.uso') ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><?= lang('Panel.termos.privacidade') ?></a>
-                    </li>
-                </ul>
             </div>
         </nav>
     </footer>
