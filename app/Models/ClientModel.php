@@ -59,7 +59,12 @@ class ClientModel extends Model
                     'email'        => $builder[0]['email'],
                     'loggedClient' => true
                 ];
+                
+                $mLogs = new LogsAcessosModel();
+                $mLogs->createLogUser(['0', intval($builder[0]['id'])]);
+                
                 $session->set($data);
+
             } else {
                 $session->setFlashdata('error', lang('Alertas.senhaErrada'));
                 throw new Exception(lang('Alertas.senhaErrada'));

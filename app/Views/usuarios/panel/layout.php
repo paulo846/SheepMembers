@@ -112,7 +112,7 @@
     </main>
     <footer>
         <nav class="navbar navbar--footer navbar-expand-lg navbar-dark bg-dark ">
-            <div class="container">
+            <div class="container ">
                 <a class="navbar-brand text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
                     <span>
