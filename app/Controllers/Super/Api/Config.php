@@ -16,7 +16,7 @@ class Config extends ResourceController
      */
     private $mConfig;
     private $s3;
-    private $request;
+    public  $request;
 
     public function __construct()
     {
