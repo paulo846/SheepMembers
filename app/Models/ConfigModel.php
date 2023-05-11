@@ -14,7 +14,7 @@ class ConfigModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_empresa', 'slug', 'title_pt', 'description_pt', 'stream_pt', 'logo_pt', 'title_en', 'description_en', 'stream_en', 'logo_en', 'title_es', 'description_es', 'stream_es', 'logo_es', 'fundo', 'link_venda'];
+    protected $allowedFields    = ['id_empresa', 'slug', 'title_pt', 'description_pt', 'stream_pt', 'logo_pt', 'title_en', 'description_en', 'stream_en', 'logo_en', 'title_es', 'description_es', 'stream_es', 'logo_es', 'fundo', 'link_venda', 'analytics', 'alertas'];
 
     // Dates
     protected $useTimestamps = true;

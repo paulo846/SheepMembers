@@ -86,6 +86,20 @@ class Config extends ResourceController
 
                 $input = $this->request->getPost();
 
+                if($tipo == 'analytics'){
+                    $data = [
+                        'id' => $search[0]['id'],
+                        'analytics' => $input['analytics']
+                    ];
+                }
+
+                if($tipo == 'alertas'){
+                    $data = [
+                        'id' => $search[0]['id'],
+                        'alertas' => $input['alertas']
+                    ];
+                }
+
                 if ($tipo == 'dominio') {
                     $data = [
                         'id' => $search[0]['id'],
