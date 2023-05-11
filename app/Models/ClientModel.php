@@ -63,7 +63,6 @@ class ClientModel extends Model
                 $mLogs = new LogsAcessosModel();
                 $mLogs->createLogUser(['0', intval($builder[0]['id'])]);
                 
-                exit;
                 $session->set($data);
 
             } else {

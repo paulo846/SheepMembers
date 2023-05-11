@@ -32,6 +32,6 @@ class LogsAcessosModel extends Model
             'id_cliente' => $data['id_cliente']
         ];
 
-        $this->save($inserir);
+        $this->insert($inserir);
     }
 }
