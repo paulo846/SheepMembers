@@ -61,7 +61,9 @@ class ClientModel extends Model
                 ];
                 
                 $mLogs = new LogsAcessosModel();
-                $mLogs->createLogUser(['id_empresa' => '0', 'id_usuario' => intval($builder[0]['id'])]);
+                $mLogs->save([
+                    'id_cliente' => intval($builder[0]['id'])
+                ]);
                 
                 $session->set($data);
 

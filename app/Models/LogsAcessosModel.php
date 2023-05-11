@@ -24,14 +24,4 @@ class LogsAcessosModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
-
-    public function createLogUser($data)
-    {
-        $inserir = [
-            'id_empresa' => $data['id_empresa'],
-            'id_cliente' => $data['id_cliente']
-        ];
-
-        $this->insert($inserir);
-    }
 }
