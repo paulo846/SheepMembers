@@ -58,8 +58,7 @@
             background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%) !important;
         }
 
-        footer .navbar--footer span,
-        footer .navbar--footer span a {
+        footer .navbar--footer span {
             font-size: 10px;
             font-style: normal;
             font-weight: 300;
@@ -113,16 +112,16 @@
     </main>
     <footer>
         <nav class="navbar navbar--footer navbar-expand-lg navbar-dark bg-dark ">
-            <div class="container ">
+            <div class="container">
                 <a class="navbar-brand text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
                     <span>
                         <?= lang('Panel.termos.direitos') ?>
                     </span>
                 </a>
-                <a href="#"><?= lang('Panel.termos.suporte') ?></a>
-                <a href="#"><?= lang('Panel.termos.uso') ?></a>
-                <a href="#"><?= lang('Panel.termos.privacidade') ?></a>
+                <a class="navbar-brand text-white" href="#"><?= lang('Panel.termos.suporte') ?></a>
+                <a class="navbar-brand text-white" href="#"><?= lang('Panel.termos.uso') ?></a>
+                <a class="navbar-brand text-white" href="#"><?= lang('Panel.termos.privacidade') ?></a>
             </div>
         </nav>
     </footer>
