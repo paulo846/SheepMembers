@@ -96,9 +96,13 @@
                         <iframe src="<?= $stream_pt ?>" title="YouTube video" allowfullscreen></iframe>
                     </div>
                 <?php else : ?>
-                    <p class="fs-1 text-capitalize">
-                        <?= lang('Panel.stream') ?>
-                    </p>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="fs-1 text-capitalize">
+                                <?= lang('Panel.stream') ?>
+                            </p>
+                        </div>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -164,7 +168,7 @@
             }))
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
         });
     </script>
