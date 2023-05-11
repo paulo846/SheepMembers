@@ -92,7 +92,7 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <?php if ($stream_pt) : ?>
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9 shadow-lg p-3 mb-5 bg-body rounded">
                         <iframe src="<?= $stream_pt ?>" title="YouTube video" allowfullscreen></iframe>
                     </div>
                 <?php else : ?>
