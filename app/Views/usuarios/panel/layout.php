@@ -17,7 +17,6 @@
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $name ?>">
     <meta name="author" content="SHEEP MEMBERS">
-
     <style>
         body {
             background-color: #131720;
@@ -64,7 +63,7 @@
             font-size: 10px;
             font-style: normal;
             font-weight: 300;
-            color: #fff;
+            color: #fff !important;
         }
 
         footer .navbar--footer .logo {
@@ -77,8 +76,6 @@
             font-weight: 300;
         }
 
-
-
         <?php if ($fundo) : ?>body {
             background-image: url("<?= $fundo ?>") !important;
         }
@@ -90,7 +87,6 @@
 
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
-
     <main class="container" id="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
@@ -115,7 +111,6 @@
             </div>
         </div>
     </main>
-
     <footer>
         <nav class="navbar navbar--footer navbar-expand-lg navbar-dark bg-dark ">
             <div class="container ">
@@ -123,33 +118,24 @@
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
                     <span>
                         <?= lang('Panel.termos.direitos') ?>
-                        <a href="#"><?= lang('Panel.termos.suporte') ?></a>
-                        <a href="#"><?= lang('Panel.termos.uso') ?></a>
-                        <a href="#"><?= lang('Panel.termos.privacidade') ?></a>
                     </span>
                 </a>
+                <a href="#"><?= lang('Panel.termos.suporte') ?></a>
+                <a href="#"><?= lang('Panel.termos.uso') ?></a>
+                <a href="#"><?= lang('Panel.termos.privacidade') ?></a>
             </div>
         </nav>
     </footer>
-
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-
-
-
     <script src="https://malsup.github.io/jquery.form.js"></script>
-
     <script>
         var site = "<?= site_url() ?>";
         var stream = "<?= $id ?>";
         var client = "<?= $id ?>";
     </script>
-
     <script>
         function ouvirAvisos() {
             $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
@@ -164,7 +150,6 @@
                 }))
             }))
         }
-
         $(document).ready(function() {
             ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
         });
