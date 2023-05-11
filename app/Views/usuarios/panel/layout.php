@@ -80,11 +80,10 @@
         <?php if ($fundo) : ?>body {
             background-image: url("<?= $fundo ?>") !important;
         }
-
         <?php endif; ?>
     </style>
 </head>
-
+<?= $analytics ?>
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
 

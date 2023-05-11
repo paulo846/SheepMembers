@@ -33,9 +33,10 @@
             background-color: rgba(0, 0, 0, 0.6) !important;
         }
     </style>
+    
     <?= $this->renderSection('css') ?>
 </head>
-
+<?= $analytics ?>
 <body>
     <!-- sign in -->
     <div class="sign section--bg" data-bg="<?= ($fundo) ? $fundo : url_cloud_front().'assets/admin/img/bg.jpg' ?>">

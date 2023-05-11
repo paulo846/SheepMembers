@@ -40,6 +40,8 @@ class Home extends BaseController
 
         if (count($builder)) {
 
+            $data['analytics'] = $builder[0]['analytics'];
+
             if (session()->lang == 'pt-BR') {
                 
                 $data['name']        = $builder[0]['title_pt'];
@@ -88,7 +90,7 @@ class Home extends BaseController
             $data['link_venda']  = false;
             $data['id']          = null;
             $data['stream_pt']   = false;
-        
+            $data['analytics']   = false;
         }
 
         $data['title'] = 'Members | ' . $data['name'];

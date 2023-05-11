@@ -34,6 +34,8 @@ class Login extends BaseController
             $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
             $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
             $data['link_venda']  = $builder[0]['link_venda'];
+            $data['analytics'] = $builder[0]['analytics'];
+
         } else {
             //se não acha as configurações retorna dados padrão
             $data['name']        = 'Sheep Members';
@@ -41,6 +43,8 @@ class Login extends BaseController
             $data['logo']        = false;
             $data['fundo']       = false;
             $data['link_venda']  = false;
+            $data['analytics']   = false;
+
         }
         //titulo da página
         $data['title'] = 'Login | ' . $data['name'];
