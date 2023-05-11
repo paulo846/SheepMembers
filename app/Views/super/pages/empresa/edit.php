@@ -206,7 +206,7 @@
                         </div>
                         </form>
 
-                        <?= form_open("/superadmin/api/config/{$empresa['id']}/analytics", 'class="form_update sign__form sign__form--profile sign__form--first mt-3"') ?>
+                        <?= form_open("/superadmin/api/config/{$empresa['id']}/analytics", 'class="form_update sign__form sign__form--profile sign__form--first"') ?>
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="sign__title">Script analytics</h4>
@@ -214,7 +214,7 @@
                             <div class="col-12">
                                 <div class="sign__group">
                                     <label class="sign__label" for="analytics">Script analytics</label>
-                                    <textarea  class="sign__input" style="padding: 10px; height: 100px;" name="analytics" id="analytics" cols="30" rows="25" placeholder="Código <script></script>"></textarea>
+                                    <textarea  class="sign__input" style="padding: 10px; height: 100px; wi" name="analytics" id="analytics" cols="30" rows="25" placeholder="Código <script></script>"></textarea>
                                 </div>
                             </div>
 
