@@ -3,7 +3,7 @@
         <div class="container">
             
             <a class="navbar-brand" href="#">
-                <img src="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" alt="logo" height="120px" class="img-fluid logo">
+                <img src="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" alt="logo" height="100px" class="img-fluid logo">
             </a>
 
             <div class="d-flex ms-auto">

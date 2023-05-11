@@ -10,16 +10,24 @@ use App\Models\ConfigModel;
 
 class Login extends BaseController
 {
+    private $urlClient ;
+    public function __construct()
+    {
+        $this->urlClient = $_SERVER['HTTP_HOST'];
+        helper('url');
+
+    }
     public function index()
     {
-        
+        //dados de configuração no banco de dados
         $mConfig = new ConfigModel();
+        //imagens no s3
         $s3 = new S3;
-
-
-        $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
-
+        //busca configurações através do dominio
+        $builder = $mConfig->where('slug', $this->urlClient)->findAll();
+        //define dados de retorno como array
         $data = array();
+        //se tem configuração retorna em PT BR
         if (count($builder)) {
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
@@ -27,38 +35,25 @@ class Login extends BaseController
             $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
             $data['link_venda']  = $builder[0]['link_venda'];
         } else {
+            //se não acha as configurações retorna dados padrão
             $data['name']        = 'Sheep Members';
             $data['description'] = false;
             $data['logo']        = false;
             $data['fundo']       = false;
             $data['link_venda']  = false;
         }
-
+        //titulo da página
         $data['title'] = 'Login | ' . $data['name'];
-
-
-        /*$bi = new Ses;
-
-        $e['sender']    = 'contato@conect.app';
-        $e['recipient'] = 'igrsysten@gmail.com';
-        $e['subject']   = 'Nova conta!';
-        $e['body']      = view('usuarios/emails/bem-vindo');
-
-        $bi->sendEmail($e);*/
-
-
+        //retorna view
         return view('usuarios/login/pages/login', $data);
     }
 
     public function recover()
     {
-        helper('url');
+        
         $mConfig = new ConfigModel();
         $s3 = new S3;
-
-
-        $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
-
+        $builder = $mConfig->where('slug', $this->urlClient)->findAll();
         $data = array();
         if (count($builder)) {
             $data['name']        = $builder[0]['title_pt'];
@@ -73,12 +68,7 @@ class Login extends BaseController
             $data['fundo']       = false;
             $data['link_venda']  = false;
         }
-
         $data['title'] = 'Login | ' . $data['name'];
-
-        // Imprime o subdominio
-        //echo get_subdomain(base_url()); // imprime "radicais"
-
         return view('usuarios/login/pages/recupera', $data);
     }
 
@@ -92,7 +82,6 @@ class Login extends BaseController
             return redirect()->back();
         }
     }
-
     public function logout()
     {
         session_destroy();

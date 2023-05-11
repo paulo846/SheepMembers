@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="<?= url_cloud_front() ?>favicon.ico">
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $name ?>">
-    <meta name="author" content="IGR Sistemas">
+    <meta name="author" content="SHEEP MEMBERS">
     <title><?= $title ?></title>
     <style>
         .section--bg::before {

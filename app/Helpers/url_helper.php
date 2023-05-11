@@ -45,12 +45,36 @@ if (!function_exists('formatar_valor_monetario')) {
     }
 }
 
-if(!function_exists('url_cloud_front')){
+if (!function_exists('url_cloud_front')) {
     function url_cloud_front($caminho = false)
     {
         $url = "https://d32f79cgiemeee.cloudfront.net/";
         $key = $caminho;
 
-        return $url.$key;
+        return $url . $key;
+    }
+}
+
+
+if (!function_exists('convertToEmbedUrl')) {
+    function convertToEmbedUrl($url)
+    {
+        // Verificar se a URL contém o domínio "youtube.com" ou "youtu.be"
+        if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+            // Extrair o ID do vídeo
+            $videoId = '';
+            if (preg_match('/youtube\.com\/watch\?v=([^\&\?\/]+)/', $url, $match)) {
+                $videoId = $match[1];
+            } elseif (preg_match('/youtu\.be\/([^\&\?\/]+)/', $url, $match)) {
+                $videoId = $match[1];
+            }
+            // Verificar se o ID do vídeo foi encontrado
+            if (!empty($videoId)) {
+                // Retornar a URL do formato de embed
+                return 'https://www.youtube.com/embed/' . $videoId;
+            }
+        }
+        // Se a URL não é do YouTube ou se houver um erro, retornar a URL original
+        return $url;
     }
 }

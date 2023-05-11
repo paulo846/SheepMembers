@@ -16,9 +16,11 @@ class Config extends ResourceController
      */
     private $mConfig;
     private $s3;
+    private $request;
 
     public function __construct()
     {
+        $this->request = service('request');
         $this->s3      = new S3();
         $this->mConfig = new ConfigModel();
 
@@ -96,7 +98,7 @@ class Config extends ResourceController
                         'id' => $search[0]['id'],
                         'title_pt'       => $input['title_pt'],
                         'description_pt' => $input['desc_pt'],
-                        'stream_pt'      => $input['url_pt'],
+                        'stream_pt'      => convertToEmbedUrl($input['url_pt']),
                     ];
                 }
 
@@ -105,7 +107,7 @@ class Config extends ResourceController
                         'id' => $search[0]['id'],
                         'title_en' => $input['title_en'],
                         'description_en' => $input['desc_en'],
-                        'stream_en' => $input['url_en'],
+                        'stream_en' => convertToEmbedUrl($input['url_en']),
                     ];
                 }
 
@@ -114,7 +116,7 @@ class Config extends ResourceController
                         'id' => $search[0]['id'],
                         'title_es' => $input['title_es'],
                         'description_es' => $input['desc_es'],
-                        'stream_es' => $input['url_es'],
+                        'stream_es' => convertToEmbedUrl($input['url_es']),
                     ];
                 }
 

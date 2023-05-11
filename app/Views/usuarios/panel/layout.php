@@ -11,10 +11,17 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" sizes="32x32">
+    <link rel="apple-touch-icon" href="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>">
+    <meta name="description" content="<?= $description ?>">
+    <meta name="keywords" content="<?= $name ?>">
+    <meta name="author" content="SHEEP MEMBERS">
+
     <style>
         body {
             background-color: #131720;
-            background-image: url("https://on.ser23.com/assets/admin/img/bg.jpg");
+            background-image: url("/assets/admin/img/bg.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -142,43 +149,26 @@
         var client = "<?= $id ?>";
     </script>
 
-    <script src="/assets/js/script.js?v=<?= time() ?>"></script>
-
     <script>
-        /* $uploadCrop = $('#upload-demo').croppie({
-            enableExif: true,
-            viewport: {
-                width: 200,
-                height: 200,
-                type: 'square'
-            },
-            boundary: {
-                width: 200,
-                height: 200
-            }
-        });
+        function ouvirAvisos() {
+            $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
+                var $listaAvisos = $("#lista-avisos");
 
-        $uploadCrop.croppie('bind', {
-            url: '/assets/img/200.png',
-        });
+                $listaAvisos.empty(), $.each(res, (function(_i, aviso) {
+                    if (aviso.text) {
+                        $listaAvisos.html('<div class="alert alert-danger mt-3">' + aviso.text + '</div>')
+                    } else {
+                        $listaAvisos.empty();
+                    }
+                }))
+            }))
+        }
 
-    Carregue a imagem no Croppie quando selecionada pelo usuário
-        $('#imagem').on('change', function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#upload-demo').croppie('bind', {
-                    url: e.target.result
-                });
-            }
-            reader.readAsDataURL(this.files[0]);
-        });*/
+        $(document).ready(function () {
+            ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
+        });
     </script>
-
-
-
-
-
-    <!--Start of Tawk.to Script
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
             Tawk_LoadStart = new Date();
@@ -191,7 +181,7 @@
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
-    </script>-->
+    </script>
     <!--End of Tawk.to Script-->
 </body>
 
