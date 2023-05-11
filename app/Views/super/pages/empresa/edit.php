@@ -205,17 +205,12 @@
                             </div>
                         </div>
                         </form>
-                    </div>
 
-
-
-                    <div class="col-12 col-lg-6">
-                        <?= form_open("/superadmin/api/config/{$empresa['id']}/analitycs", 'class="form_update sign__form sign__form--profile sign__form--first"') ?>
+                        <?= form_open("/superadmin/api/config/{$empresa['id']}/analitycs", 'class="form_update sign__form sign__form--profile sign__form--first mt-3"') ?>
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="sign__title">Informe um domínio ou subdomínio</h4>
+                                <h4 class="sign__title">Script analytics</h4>
                             </div>
-
                             <div class="col-12">
                                 <div class="sign__group">
                                     <label class="sign__label" for="analytics">Script analytics</label>
@@ -229,14 +224,13 @@
                             </div>
                         </div>
                         </form>
+
                     </div>
-
-
-                    
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
         <div class="col-12">
