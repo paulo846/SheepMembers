@@ -9,69 +9,13 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="/assets/css/panel/style.css?time=<?= time() ?>">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        body {
-            background-color: #131720;
-            background-image: url("https://on.ser23.com/assets/admin/img/bg.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        header .navbar--header {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, #000000 100%) !important;
-            background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
-        }
-
-        header .navbar--header .logo {
-            width: 100px;
-        }
-
-        #container {
-            height: 60vh;
-            margin-top: 5%;
-            margin-bottom: 5%;
-        }
-
-        #container iframe {
-            border-radius: 10px;
-        }
-
-        footer .navbar--footer {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%) !important;
-        }
-
-        footer .navbar--footer span,
-
-        footer .navbar--footer ul {
-            font-size: 10px;
-            font-style: normal;
-            font-weight: 300;
-        }
-
-        footer .navbar--footer .logo {
-            width: 90px;
-        }
-
-        footer .navbar--footer .footer--text {
-            font-size: small;
-            color: #fff;
-            font-weight: 300;
-        }
-
         <?php if ($fundo) : ?>body {
-            background-image: url("<?= $fundo ?>") !important;
+            background-image: url("<?= $fundo ?>");
         }
 
         <?php endif; ?>
@@ -81,7 +25,7 @@
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
 
-    <main class="container" id="container">
+    <main class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <?php if ($stream_pt) : ?>
@@ -98,6 +42,9 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div id="lista-avisos"></div>
+            </div>
+            <div class="col-lg-12">
+                <?= $this->include('usuarios/panel/pages/chat') ?>
             </div>
         </div>
     </main>
