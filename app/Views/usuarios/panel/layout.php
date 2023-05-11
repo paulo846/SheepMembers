@@ -119,9 +119,9 @@
                         <?= lang('Panel.termos.direitos') ?>
                     </span>
                 </a>
-                <a class="navbar-brand text-white" href="#"><?= lang('Panel.termos.suporte') ?></a>
-                <a class="navbar-brand text-white" href="#"><?= lang('Panel.termos.uso') ?></a>
-                <a class="navbar-brand text-white" href="#"><?= lang('Panel.termos.privacidade') ?></a>
+                <a class="navbar-brand text-white" href="#"><span><?= lang('Panel.termos.suporte') ?></span></a>
+                <a class="navbar-brand text-white" href="#"><span><?= lang('Panel.termos.uso') ?></span></a>
+                <a class="navbar-brand text-white" href="#"><span><?= lang('Panel.termos.privacidade') ?></span></a>
             </div>
         </nav>
     </footer>
