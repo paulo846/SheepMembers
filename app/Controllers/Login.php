@@ -81,9 +81,9 @@ class Login extends BaseController
         $mClient = new ClientModel();
         try {
             $mClient->authclient($this->request->getPost());
-            return redirect()->to(site_url());
+            //return redirect()->to(site_url());
         } catch (\Exception $e) {
-            return redirect()->back();
+            //return redirect()->back();
         }
     }
     public function logout()
