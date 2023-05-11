@@ -206,7 +206,7 @@
                         </div>
                         </form>
 
-                        <?= form_open("/superadmin/api/config/{$empresa['id']}/analitycs", 'class="form_update sign__form sign__form--profile sign__form--first mt-3"') ?>
+                        <?= form_open("/superadmin/api/config/{$empresa['id']}/analytics", 'class="form_update sign__form sign__form--profile sign__form--first mt-3"') ?>
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="sign__title">Script analytics</h4>
