@@ -9,7 +9,7 @@
             <div class="d-flex ms-auto">
                 <div class="btn-group">
                     <div type="button" class="dropdown-toggle text-white" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                        <img class="rounded-circle" src="/assets/img/user.png" alt="foto">
+                        <img class="rounded-circle" src="/assets/img/user.png" alt="foto" width="60px">
                     </div>
                     <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                         <li>
