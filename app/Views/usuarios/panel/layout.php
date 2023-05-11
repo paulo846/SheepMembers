@@ -60,16 +60,10 @@
         }
 
         footer .navbar--footer span,
-
-        footer .navbar--footer ul {
+        footer .navbar--footer span a {
             font-size: 10px;
             font-style: normal;
             font-weight: 300;
-        }
-
-        footer .navbar--footer span a {
-            font-size: 10px;
-            color: #fff;
         }
 
         footer .navbar--footer .logo {
@@ -82,15 +76,17 @@
             font-weight: 300;
         }
 
-        
+
 
         <?php if ($fundo) : ?>body {
             background-image: url("<?= $fundo ?>") !important;
         }
+
         <?php endif; ?>
     </style>
 </head>
 <?= $analytics ?>
+
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
 
@@ -124,7 +120,12 @@
             <div class="container ">
                 <a class="navbar-brand text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
-                    <span><?= lang('Panel.termos.direitos') ?><a href="#"><?= lang('Panel.termos.suporte') ?></a><a href="#"><?= lang('Panel.termos.uso') ?></a><a href="#"><?= lang('Panel.termos.privacidade') ?></a></span> 
+                    <span>
+                        <?= lang('Panel.termos.direitos') ?>
+                        <a href="#"><?= lang('Panel.termos.suporte') ?></a>
+                        <a href="#"><?= lang('Panel.termos.uso') ?></a>
+                        <a href="#"><?= lang('Panel.termos.privacidade') ?></a>
+                    </span>
                 </a>
             </div>
         </nav>
