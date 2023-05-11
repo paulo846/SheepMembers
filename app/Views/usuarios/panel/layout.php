@@ -64,6 +64,7 @@
             font-size: 10px;
             font-style: normal;
             font-weight: 300;
+            color: #fff;
         }
 
         footer .navbar--footer .logo {
