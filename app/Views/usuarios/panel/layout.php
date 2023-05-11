@@ -113,15 +113,15 @@
     <footer>
         <nav class="navbar navbar--footer navbar-expand-lg navbar-dark bg-dark ">
             <div class="container ">
-                <a class="navbar-brand text-white" href="#">
+                <a class="text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
                     <span>
                         <?= lang('Panel.termos.direitos') ?>
                     </span>
                 </a>
-                <a class="navbar-brand text-white" href="#"><span><?= lang('Panel.termos.suporte') ?></span></a>
-                <a class="navbar-brand text-white" href="#"><span><?= lang('Panel.termos.uso') ?></span></a>
-                <a class="navbar-brand text-white" href="#"><span><?= lang('Panel.termos.privacidade') ?></span></a>
+                <a class="text-white" href="#"><span><?= lang('Panel.termos.suporte') ?></span></a>
+                <a class="text-white" href="#"><span><?= lang('Panel.termos.uso') ?></span></a>
+                <a class="text-white" href="#"><span><?= lang('Panel.termos.privacidade') ?></span></a>
             </div>
         </nav>
     </footer>
