@@ -60,8 +60,8 @@ class ClientModel extends Model
                     'loggedClient' => true
                 ];
                 
-                $mLogs = new LogsAcessosModel();
-                $mLogs->createLogUser(['0', intval($builder[0]['id'])]);
+                //$mLogs = new LogsAcessosModel();
+                //$mLogs->createLogUser(['0', intval($builder[0]['id'])]);
                 
                 $session->set($data);
 
