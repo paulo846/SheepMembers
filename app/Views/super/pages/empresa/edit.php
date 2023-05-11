@@ -154,7 +154,7 @@
                             <div class="col-12">
                                 <div class="sign__group">
                                     <label class="sign__label" for="contrato">Descrição do contrato</label>
-                                    <textarea class="sign__input" style="padding: 10px;" name="contrato" id="contrato" cols="30" rows="25" placeholder="Descrição do contrato"><?= $empresa['contrato'] ?></textarea>
+                                    <textarea class="sign__input" style="padding: 10px; height: 100px;" name="contrato" id="contrato" cols="30" rows="25" placeholder="Descrição do contrato"><?= $empresa['contrato'] ?></textarea>
                                 </div>
                             </div>
 
