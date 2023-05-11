@@ -67,6 +67,11 @@
             font-weight: 300;
         }
 
+        footer .navbar--footer span a {
+            font-size: 10px;
+            color: #fff;
+        }
+
         footer .navbar--footer .logo {
             width: 90px;
         }
@@ -76,6 +81,8 @@
             color: #fff;
             font-weight: 300;
         }
+
+        
 
         <?php if ($fundo) : ?>body {
             background-image: url("<?= $fundo ?>") !important;
