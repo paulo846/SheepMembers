@@ -126,4 +126,3 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 # ASSETS
-public/assets/*
