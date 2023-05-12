@@ -132,12 +132,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="https://malsup.github.io/jquery.form.js"></script>
-    <script>
+    <script type="text/javascript">
         var site = "<?= site_url() ?>";
         var stream = "<?= $id ?>";
         var client = "<?= $id ?>";
-    </script>
-    <script>
+        
         function ouvirAvisos() {
             $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
                 var $listaAvisos = $("#lista-avisos");
@@ -155,7 +154,6 @@
             ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
         });
     </script>
-    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
             Tawk_LoadStart = new Date();
@@ -169,7 +167,6 @@
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
-    <!--End of Tawk.to Script-->
 </body>
 
 </html>
