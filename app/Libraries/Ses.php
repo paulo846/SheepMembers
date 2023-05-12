@@ -71,4 +71,29 @@ class Ses
         ]);
 
     }
+
+    public function acessoInicialGeral(array $dados)
+    {
+        $mConfig = new ConfigModel();
+       
+
+        //html
+        $html = "<div style='font-size: 14px;'><h3>Você pediu uma recuperação de conta em https://{$_SERVER['HTTP_HOST']}</h3>";
+        $html .= "<p>Nesse email contém os dadaos de recuperação de conta!</p>";
+        $html .= "Dados de acesso:
+        <ul>
+            <li><b>Link da plataforma:</b> https://{$_SERVER['HTTP_HOST']}</li>
+            <li><b>Seu email:</b> {$dados['email']}</li>
+            <li><b>Senha padrão:</b> mudar123</li>
+        </ul></div>";
+
+        //envia email de boas vindas!
+        $this->sendEmail([
+            'sender'    => 'contato@conect.app',
+            'recipient' => $dados['email'],
+            'subject'   => 'Recuperação de conta!',
+            'body'      => $html
+        ]);
+
+    }
 }

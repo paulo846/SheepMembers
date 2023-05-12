@@ -27,5 +27,6 @@ return [
         'direitos' => 'Copyright © 2023 all rights reserved'
     ],
 
-    'comprarAcesso' => 'Buy access'
+    'comprarAcesso' => 'Buy access',
+    'recuperado' => "We've sent more instructions to your email!"
 ];

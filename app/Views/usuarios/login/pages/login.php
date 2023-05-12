@@ -22,6 +22,7 @@
     <img src="<?= ($logo) ? $logo : url_cloud_front().'assets/admin/img/logo-1.png' ?>" alt="logo">
 </a>
 <?= (isset($_SESSION['error']))  ? '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>' : "" ?>
+<?= (isset($_SESSION['success']))  ? '<div class="alert alert-success">' . $_SESSION['success'] . '</div>' : "" ?>
 <div class="sign__group">
     <input type="email" class="sign__input" placeholder="<?= lang('Panel.loginEmail') ?>" required name="email">
 </div>
@@ -36,6 +37,6 @@
 <?php if($linkVenda) :?>
 <button class="sign__btn" type="button"><?= lang('Panel.comprarAcesso') ?></button>
 <?php endif; ?>
-<!-- <span class="sign__text"><a href="/recover"><?= lang('Panel.loginEsqueceuAsenha') ?></a></span>-->
+<span class="sign__text"><a href="/recover"><?= lang('Panel.loginEsqueceuAsenha') ?></a></span>
 </form>
 <?= $this->endSection() ?>

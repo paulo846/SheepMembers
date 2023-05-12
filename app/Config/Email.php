@@ -28,17 +28,17 @@ class Email extends BaseConfig
     /**
      * SMTP Server Address
      */
-    public string $SMTPHost = 'email-smtp.us-east-1.amazonaws.com';
+    public string $SMTPHost;
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'AKIAWJRYP4RLS2RLRMCS';
+    public string $SMTPUser;
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '6zoaqcIEEE6y6p9mxKBinzp+q+jjEnVlLzHiawLz';
+    public string $SMTPPass;
 
     /**
      * SMTP Port

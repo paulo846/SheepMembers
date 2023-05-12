@@ -9,10 +9,13 @@ $routes->get('/mostrar', 'Teste::mostrar');
 
 
 
-$routes->match(['post', 'get'], '/upload', 'Teste::upload');
+//$routes->match(['post', 'get'], '/upload', 'Teste::upload');
 
 $routes->get('login', 'Login::index');
+
 $routes->get('recover', 'Login::recover');
+$routes->post('recover', 'Login::reloadpass');
+
 $routes->get('sair', 'Login::logout');
 
 $routes->post('login/auth', 'Login::auth');

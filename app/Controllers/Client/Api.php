@@ -15,6 +15,7 @@ class Api extends ResourceController
      * @return mixed
      */
     protected $request;
+    protected $db;
 
     public function __construct()
     {
@@ -131,6 +132,7 @@ class Api extends ResourceController
 
     public function verify()
     {
+
         if (session('loggedClient')) {
             echo '0';
         } else {
@@ -141,26 +143,25 @@ class Api extends ResourceController
         }
     }
 
-    public function perfil(){
+    public function perfil()
+    {
         $input = $this->request->getPost();
-        
-        try{
-        $updatedClients[] = [
-            'email' => $input['email'],
-            'password' => password_hash($input['pass'], PASSWORD_BCRYPT)
-        ];
-        
-        $clientsModel = new ClientModel();
 
-        $clientsModel->updateBatch($updatedClients, 'email');
+        try {
+            $updatedClients[] = [
+                'email' => $input['email'],
+                'password' => password_hash($input['pass'], PASSWORD_BCRYPT)
+            ];
 
-        session_destroy();
-        
-        return $this->respond(['message' => 'Alteração realizada com sucesso!']);
+            $clientsModel = new ClientModel();
 
-    }catch(\Exception $e){
-        $this->fail($e->getMessage());
-    }
+            $clientsModel->updateBatch($updatedClients, 'email');
+
+            session_destroy();
+            return $this->respond(['message' => 'Alteração realizada com sucesso!']);
+        } catch (\Exception $e) {
+            $this->fail($e->getMessage());
+        }
         print_r($input);
     }
 }
