@@ -98,6 +98,10 @@ class Home extends ResourceController
         //
     }
 
+    public function teste(){
+        return $this->respondCreated(['Usuário criado!']);
+    }
+
     public function cliente($idEmpresa = null)
     {
         if(!$idEmpresa){

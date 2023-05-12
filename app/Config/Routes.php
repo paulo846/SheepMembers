@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->post('api/new/create/cliente/(:num)', 'Api\Home::cliente/$1');
+$routes->post('open/api/cliente', 'Api\Home::teste');
 
 include "Routes/Clients.php";
 include "Routes/Admin.php";
