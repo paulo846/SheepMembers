@@ -184,4 +184,5 @@ class Home extends ResourceController
             return $this->fail($e->getMessage());
         }
     }
+    
 }

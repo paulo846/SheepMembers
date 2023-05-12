@@ -33,6 +33,9 @@
     <label for="remember"><?= lang('Panel.loginLembrar') ?></label>
 </div>
 <button class="sign__btn" type="submit"><?= lang('Panel.loginEntrar') ?></button>
-<span class="sign__text"><a href="/recover"><?= lang('Panel.loginEsqueceuAsenha') ?></a></span>
+<?php if($linkVenda) :?>
+<button class="sign__btn" type="button"><?= lang('Panel.comprarAcesso') ?></button>
+<?php endif; ?>
+<!-- <span class="sign__text"><a href="/recover"><?= lang('Panel.loginEsqueceuAsenha') ?></a></span>-->
 </form>
 <?= $this->endSection() ?>

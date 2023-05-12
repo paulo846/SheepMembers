@@ -33,7 +33,7 @@ class Login extends BaseController
             $data['description'] = $builder[0]['description_pt'];
             $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
             $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
-            $data['link_venda']  = $builder[0]['link_venda'];
+            $data['linkVenda']  = $builder[0]['link_venda'];
             $data['analytics'] = $builder[0]['analytics'];
 
         } else {
@@ -42,7 +42,7 @@ class Login extends BaseController
             $data['description'] = false;
             $data['logo']        = false;
             $data['fundo']       = false;
-            $data['link_venda']  = false;
+            $data['linkVenda']   = false;
             $data['analytics']   = false;
 
         }

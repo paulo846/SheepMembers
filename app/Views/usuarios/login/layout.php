@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/select2.min.css">
     <link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/admin.css">
     <!-- Favicons -->
+    
     <link rel="icon" type="image/png" href="<?= url_cloud_front() ?>favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="<?= url_cloud_front() ?>favicon.ico">
     <meta name="description" content="<?= $description ?>">

@@ -28,5 +28,7 @@ return [
         'suporte' => 'Soporte',
         'privacidade' => 'Privacidad',
         'direitos' => 'derechos de autor © 2023 todos los derechos reservados'
-    ]
+    ],
+
+    'comprarAcesso' => 'Comprar acceso'
 ];

@@ -25,5 +25,7 @@ return [
         'suporte' => 'Support',
         'privacidade' => 'Privacy',
         'direitos' => 'Copyright © 2023 all rights reserved'
-    ]
+    ],
+
+    'comprarAcesso' => 'Buy access'
 ];
