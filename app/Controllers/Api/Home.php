@@ -12,7 +12,7 @@ use CodeIgniter\RESTful\ResourceController;
 
 class Home extends ResourceController
 {
-    private $request;
+    protected $request;
     private $mConfig;
     private $mParticipante;
     private $mRelaciona;
