@@ -79,15 +79,22 @@
                 <h5 class="modal-title" id="staticBackdropLabel"><?= lang('Panel.perfil') ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <?= form_open('client/api/perfil', 'class="form_update"') ?>
             <div class="modal-body">
-                <?= form_open() ?>
+                
                 <div class="form-group mb-3">
                     <label for="">Nome</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="<?= session('name') ?>" readonly>
                 </div>
+
                 <div class="form-group mb-3">
                     <label for="">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= session('email') ?>" readonly>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="">Alterar senha</label>
+                    <input type="text" class="form-control" id="pass" name="pass" maxlength="12" minlength="6" value="" placeholder="Nova senha!">
                 </div>
                 <!--
                 <div class="form-group mb-3">
@@ -95,12 +102,13 @@
                     <input type="file" class="form-control form-control-file" name="imagem" id="imagem" placeholder="Escolher foto!" accept="image/*">
                     <div id="upload-demo" class="mt-5"></div>
                 </div> -->
-                </form>
+                
             </div>
-            <!-- <div class="modal-footer">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Atualizar</button>
-            </div> -->
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+            </div>
+        </form>
         </div>
     </div>
 </div>

@@ -30,6 +30,7 @@ $routes->group('client', static function ($routes) {
         
         //posts
         $routes->post('messages/(:num)', 'Client\Api::send/$1', ['filter' => 'loggedclient']);
+        $routes->post('perfil', 'Client\Api::perfil', ['filter' => 'loggedclient']);
 
 
     });

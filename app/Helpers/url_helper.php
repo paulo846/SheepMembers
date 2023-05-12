@@ -78,3 +78,33 @@ if (!function_exists('convertToEmbedUrl')) {
         return $url;
     }
 }
+
+if (!function_exists('formatPhoneNumber')) {
+    function formatPhoneNumber($phoneNumber)
+    {
+        // Remove caracteres especiais e espaços em branco do número
+        $phoneNumber = preg_replace('/[\s\-\.()]/', '', $phoneNumber);
+
+        // Se o número começa com o símbolo de "+" já é um número internacional válido
+        if (substr($phoneNumber, 0, 1) == '+') {
+            return $phoneNumber;
+        }
+
+        // Se o número não começa com o símbolo de "+", trata-se de um número nacional
+        // Verifica se o número tem exatamente 10 ou 11 dígitos (com ou sem o DDD)
+        if (preg_match('/^([1-9]{2})?([0-9]{8,9})$/', $phoneNumber, $matches)) {
+            // Se tiver 9 dígitos, adiciona o DDD 11 (São Paulo)
+            if (strlen($matches[2]) == 9) {
+                $phoneNumber = '11' . $matches[2];
+            } else {
+                $phoneNumber = $matches[1] . $matches[2];
+            }
+            // Adiciona o código de país (55) para envio nacional no Brasil
+            return '+55' . $phoneNumber;
+        }
+
+        // Caso o número não tenha 10 ou 11 dígitos, considera-se que é um número internacional
+        // Adiciona o símbolo de "+" para indicar que é um número internacional
+        return '+' . $phoneNumber;
+    }
+}

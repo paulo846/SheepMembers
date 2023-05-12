@@ -63,8 +63,12 @@
             font-style: normal;
             font-weight: 300;
             color: #fff !important;
-            text-decoration: none;
+
             bottom: 0px;
+        }
+
+        a {
+            text-decoration: none !important;
         }
 
         footer .navbar--footer .logo {
@@ -83,6 +87,9 @@
 
         <?php endif; ?>
     </style>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 <?= $analytics ?>
 
@@ -118,12 +125,12 @@
                 <a class="text-white" href="#">
                     <img src="<?= '/assets/admin/img/logo-1.png' ?>" alt="logo" class="img-fluid logo"><br>
                     <span>
-                        <?= lang('Panel.termos.direitos') ?>
+                        <?= lang('Panel.termos.direitos') ?> <br>
+                        Meu IP: <?php $request = service('request');
+                                echo $request->getIPAddress(); ?>
+
                     </span>
                 </a>
-                <a class="text-white" href="#"><span><?= lang('Panel.termos.suporte') ?></span></a>
-                <a class="text-white" href="#"><span><?= lang('Panel.termos.uso') ?></span></a>
-                <a class="text-white" href="#"><span><?= lang('Panel.termos.privacidade') ?></span></a>
             </div>
         </nav>
     </footer>
@@ -132,11 +139,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="https://malsup.github.io/jquery.form.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script type="text/javascript">
         var site = "<?= site_url() ?>";
         var stream = "<?= $id ?>";
         var client = "<?= $id ?>";
-        
+
+
+        $('.form_update').ajaxForm({
+            dataType: 'json',
+
+            // Configuração para adicionar barra de progresso
+            beforeSubmit: function() {
+                toastr.warning('Enviando dados!!!')
+            },
+
+            success: function(response) {
+                // Ação a ser executada em caso de sucesso
+                toastr.success('Perfil atualizado com sucesso!!!')
+            },
+            error: function(response) {
+                // Ação a ser executada em caso de erro
+                toastr.error('Houve um erro ao atualiza, entre em contato com o suporte!')
+                console.log(response)
+            }
+        });
+
+
+        function logIn() {
+            $.getJSON(site + "client/api/verify", (function(res) {
+                if (res) {
+                    window.location.reload();
+                }
+            }))
+        }
+
         function ouvirAvisos() {
             $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
                 var $listaAvisos = $("#lista-avisos");
@@ -150,11 +188,12 @@
                 }))
             }))
         }
+
         $(document).ready(function() {
-            ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
+            ouvirAvisos(), logIn(), setInterval(logIn, 5e3), setInterval(ouvirAvisos, 5e3);
         });
     </script>
-    <script type="text/javascript">
+    <!--  <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
             Tawk_LoadStart = new Date();
         (function() {
@@ -166,7 +205,7 @@
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
-    </script>
+    </script>-->
 </body>
 
 </html>

@@ -14,6 +14,12 @@ class Api extends ResourceController
      *
      * @return mixed
      */
+    protected $request;
+
+    public function __construct()
+    {
+        $this->request = service('request');
+    }
     use ResponseTrait;
     public function index()
     {
@@ -133,5 +139,28 @@ class Api extends ResourceController
             //$session->setFlashdata('error', 'Email não encontrado!');
             echo '1';
         }
+    }
+
+    public function perfil(){
+        $input = $this->request->getPost();
+        
+        try{
+        $updatedClients[] = [
+            'email' => $input['email'],
+            'password' => password_hash($input['pass'], PASSWORD_BCRYPT)
+        ];
+        
+        $clientsModel = new ClientModel();
+
+        $clientsModel->updateBatch($updatedClients, 'email');
+
+        session_destroy();
+        
+        return $this->respond(['message' => 'Alteração realizada com sucesso!']);
+
+    }catch(\Exception $e){
+        $this->fail($e->getMessage());
+    }
+        print_r($input);
     }
 }
