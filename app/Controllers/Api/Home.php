@@ -114,7 +114,6 @@ class Home extends ResourceController
             exit;
         }
 
-
         //
         try {
             //recupera dados do formulário
@@ -122,6 +121,7 @@ class Home extends ResourceController
 
             //verifica se email já esta no banco de dados
             if ($row = $this->mParticipante->where('email', $input['email'])->select('id')->findAll()) {
+        
                 //dados para atualização
                 $id = $row[0]['id'];
                 $update = [
@@ -131,9 +131,12 @@ class Home extends ResourceController
                     'phone' => $input['phone'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
+        
                 //atualiza
                 $this->mParticipante->save($update);
+        
             } else {
+        
                 //dados para inserção
                 $data = [
                     'name'  => $input['name'],
@@ -141,11 +144,13 @@ class Home extends ResourceController
                     'phone' => $input['phone'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
+        
                 //cadastra
                 $id = $this->mParticipante->insert($data);
             }
 
             if ($rel = $this->mRelaciona->where(['id_cliente' => $id, 'id_empresa' => $idEmpresa])->findAll()) {
+                
                 //dados para relacionamento
                 $this->mRelaciona->delete($rel[0]['id']);
 
@@ -155,6 +160,7 @@ class Home extends ResourceController
                     'id_empresa' => $idEmpresa,
                     'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
                 ];
+                
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
             } else {
@@ -165,33 +171,10 @@ class Home extends ResourceController
                     'id_empresa' => $idEmpresa,
                     'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
                 ];
+        
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
             }
-
-
-            //busca dados da empresa
-            $plataforma = $this->mConfig->where('id_empresa', $idEmpresa)->findAll();
-
-            //html
-            $html = "<div style='font-size: 18px;'><h3>Dados para acesso {$plataforma[0]['title_pt']}</h3>";
-            $html .= "<p>{$input['name']}, nesse email contém os dados de acesso a plataforma para você assistir ao seu evento!</p>";
-            $html .= "Dados de acesso:
-        <ul>
-            <li><b>Link da plataforma:</b> {$plataforma[0]['slug']}</li>
-            <li><b>Seu email:</b> {$input['email']}</li>
-            <li><b>Sua senha:</b> mudar123</li>
-        </ul></div>";
-
-            //envia email de boas vindas!
-            $email = new Ses;
-
-            $email->sendEmail([
-                'sender' => 'contato@conect.app',
-                'recipient' => $input['email'],
-                'subject' => 'Bem vindo!',
-                'body'    => $html
-            ]);
 
             return $this->respondCreated(['Ação realizada com sucesso!']);
 
