@@ -124,7 +124,7 @@ class Api extends ResourceController
     {
         $data[] = [
             'title' => 'Avisos!!',
-            'text'  => '​Intervalo para o almoço',
+            'text'  => '​<h1>Intervalo para o almoço</h1>',
         ];
 
         return $this->respond($data, 200);
