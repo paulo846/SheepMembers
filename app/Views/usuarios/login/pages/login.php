@@ -14,6 +14,11 @@
         background-color: red;
         color: #ffffff;
     }
+
+    .alert-success{
+        background-color: green;
+        color: #ffffff;
+    }
 </style>
 <?= $this->endSection() ?>
 <?= $this->section('form') ?>
