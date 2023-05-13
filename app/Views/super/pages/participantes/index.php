@@ -11,6 +11,7 @@
             <div class="main__title-wrap">
                 <a href="#modal-csv<?= $_GET['list'] ?>" class="main__title-link open-modal me-2">Envio em massa</a>
                 <a href="#modal-unic<?= $_GET['list'] ?>" class="main__title-link open-modal">Envio único</a>
+                <a href="#modal-anun<?= $_GET['list'] ?>" class="main__title-link open-modal">Anuncio ao vivo</a>
             </div>
         <?php endif ?>
     </div>
@@ -183,6 +184,28 @@
             <input type="hidden" name="empresa" value="<?= $_GET['list'] ?>">
 
             <p class="modal__text"><b>SENHA PADRÃO:</b> mudar123</p>
+
+            <div class="modal__btns">
+                <button class="modal__btn modal__btn--apply" type="submit">Enviar</button>
+                <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>
+            </div>
+
+            </form>
+        </div>
+        <!-- end modal status -->
+
+
+        <!-- modal status -->
+        <div id="modal-anun<?= $_GET['list'] ?>" class="zoom-anim-dialog mfp-hide modal">
+            <h6 class="modal__title">Envio anuncio</h6>
+            <?= form_open_multipart('/superadmin/api/cliente/new',  'class="form_cliente" ') ?>
+            <div class="col-12">
+                <div class="sign__group">
+                    <label class="sign__label" for="name">Nome completo</label>
+                    <input id="name" type="text" name="name" class="form-control">
+                </div>
+            </div>
+            <input type="hidden" name="empresa" value="<?= $_GET['list'] ?>">
 
             <div class="modal__btns">
                 <button class="modal__btn modal__btn--apply" type="submit">Enviar</button>
