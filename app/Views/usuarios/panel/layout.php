@@ -103,7 +103,7 @@
     <?= $this->include('usuarios/panel/header'); ?>
     <main class="container" id="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="col-md-3 offset-md-3 text-center">
                 <?php if ($stream_pt) : ?>
                     <div class="ratio ratio-21x9 plyr__video-embed" id="player">
                         <iframe src="<?= $stream_pt ?>" allowfullscreen allowtransparency>
