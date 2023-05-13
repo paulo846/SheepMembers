@@ -105,7 +105,7 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1 text-center">
                 <?php if ($stream_pt) : ?>
-                    <div class="ratio ratio-16x9 plyr__video-embed" id="player">
+                    <div class="ratio ratio-1x1 plyr__video-embed" id="player">
                         <iframe src="<?= $stream_pt ?>" allowfullscreen allowtransparency>
                         </iframe>
                     </div>
