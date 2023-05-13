@@ -117,7 +117,7 @@ class Login extends BaseController
                 $ses->acessoInicialGeral($data[0]);
 
                 
-                session()->setFlashdata('success', lang('Alertas.recuperado'));
+                session()->setFlashdata('success', lang('Alerta.recuperado'));
                 return redirect()->to('/login');
 
             }else{
