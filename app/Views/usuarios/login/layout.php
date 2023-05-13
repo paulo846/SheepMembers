@@ -11,9 +11,16 @@
     <link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/select2.min.css">
     <link rel="stylesheet" href="<?= url_cloud_front() ?>assets/admin/css/admin.css">
     <!-- Favicons -->
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="<?= ($logo) ? $logo : url_cloud_front().'favicon.ico' ?>" sizes="32x32">
+    <link rel="apple-touch-icon" href="<?= ($logo) ? $logo : url_cloud_front().'favicon.ico' ?>">
+    <meta name="description" content="<?= $description ?>">
+    <meta name="keywords" content="<?= $name ?>">
+    <meta name="author" content="SHEEP MEMBERS">
     
-    <link rel="icon" type="image/png" href="<?= url_cloud_front() ?>favicon.ico" sizes="32x32">
-    <link rel="apple-touch-icon" href="<?= url_cloud_front() ?>favicon.ico">
+    <link rel="icon" type="image/png" href="" sizes="32x32">
+    <link rel="apple-touch-icon" href="">
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $name ?>">
     <meta name="author" content="SHEEP MEMBERS">
