@@ -22,7 +22,7 @@
 </style>
 <?= $this->endSection() ?>
 <?= $this->section('form') ?>
-<?= form_open('/login/auth', 'class="sign__form"') ?>
+<?= form_open('/login/auth', 'class="sign__form"') ?> 
 <a href="/" class="sign__logo">
     <img src="<?= ($logo) ? $logo : url_cloud_front().'assets/admin/img/logo-1.png' ?>" alt="logo">
 </a>
