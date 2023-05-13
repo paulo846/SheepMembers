@@ -48,8 +48,8 @@
 
         #container {
             height: 60vh;
-            margin-top: 5%;
-            margin-bottom: 15%;
+            margin-top: 1%;
+            margin-bottom: 20%;
         }
 
         #container iframe {
@@ -83,9 +83,13 @@
             font-weight: 300;
         }
 
+
+
         <?php if ($fundo) : ?>body {
             background-image: url("<?= $fundo ?>") !important;
         }
+
+
 
         <?php endif; ?>
     </style>
