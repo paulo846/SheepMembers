@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="col-lg-6 offset-lg-3 text-center">
                 <div id="lista-avisos"></div>
             </div>
         </div>
@@ -194,7 +194,7 @@
 
                 $listaAvisos.empty(), $.each(res, (function(_i, aviso) {
                     if (aviso.text) {
-                        $listaAvisos.html('<div class="alert alert-danger mt-3">' + aviso.text + '</div>')
+                        $listaAvisos.html('<div class="alert alert-danger bg-danger text-white mt-3 p-1">' + aviso.text + '</div>')
                     } else {
                         $listaAvisos.empty();
                     }
