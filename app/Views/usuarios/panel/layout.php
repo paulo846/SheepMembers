@@ -175,7 +175,7 @@
             }))
         }
 
-        function ouvirAvisos() {
+       /* function ouvirAvisos() {
             $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
                 var $listaAvisos = $("#lista-avisos");
 
@@ -188,10 +188,14 @@
                 }))
             }))
         }
+        ouvirAvisos()
+        setInterval(ouvirAvisos, 5e3)
+        */
 
         $(document).ready(function() {
-            ouvirAvisos(), logIn(), setInterval(logIn, 5e3), setInterval(ouvirAvisos, 5e3);
+            logIn(), setInterval(logIn, 5e3);
         });
+        
     </script>
     <!--  <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
