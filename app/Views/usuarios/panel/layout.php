@@ -101,7 +101,7 @@
 
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
-    <main class="container" id="container">
+    <main class="container mt-3" id="container">
         <!-- <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <?php if ($stream_pt) : ?>
@@ -132,17 +132,17 @@
                     <iframe src="" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>-->
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
                     <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
                     <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
                     <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
                 </div>
