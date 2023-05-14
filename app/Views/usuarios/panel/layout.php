@@ -125,6 +125,29 @@
                 <div id="lista-avisos"></div>
             </div>
         </div>
+
+        <div class="row">
+            <!-- <div class="col-lg-4">
+                <div class="ratio ratio-21x9 plyr__video-embed" id="player">
+                    <iframe src="" allowfullscreen allowtransparency></iframe>
+                </div>
+            </div>-->
+            <div class="col-lg-4">
+                <div class="ratio ratio-21x9 plyr__video-embed players">
+                    <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ratio ratio-21x9 plyr__video-embed players">
+                    <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ratio ratio-21x9 plyr__video-embed playes">
+                    <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <nav class="navbar navbar--footer navbar-expand-lg navbar-dark bg-dark ">
@@ -145,6 +168,7 @@
     <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
     <script>
         const player = new Plyr('#player');
+        const players = new Plyr('.players');
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
