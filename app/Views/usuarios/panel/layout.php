@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" /> 
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -133,20 +133,20 @@
                 </div>
             </div>-->
             <div class="col-lg-4">
-                Sábado - 1ª parte
+                <h2 class="text-white">Sábado - 1ª parte</h2>
                 <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
                     <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
             <div class="col-lg-4">
-                Sábado - 2ª parte
+                <h2 class="text-white">Sábado - 2ª parte</h2>
                 <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
                     <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                Sábado - 3ª parte
+                <h2 class="text-white">Sábado - 3ª parte</h2>
                 <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
                     <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
                 </div>
