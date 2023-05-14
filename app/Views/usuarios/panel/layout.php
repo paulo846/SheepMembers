@@ -133,17 +133,20 @@
                 </div>
             </div>-->
             <div class="col-lg-4">
+                Sábado - 1ª parte
                 <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
                     <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
             <div class="col-lg-4">
+                Sábado - 2ª parte
                 <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
                     <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
 
             <div class="col-lg-4">
+                Sábado - 3ª parte
                 <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
                     <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
                 </div>
