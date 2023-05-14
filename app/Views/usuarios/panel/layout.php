@@ -102,7 +102,7 @@
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
     <main class="container" id="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <?php if ($stream_pt) : ?>
                     <div class="ratio ratio-21x9 plyr__video-embed" id="player">
@@ -119,7 +119,7 @@
                     </div>
                 <?php endif; ?>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-lg-6 offset-lg-3 text-center">
                 <div id="lista-avisos"></div>
@@ -133,17 +133,17 @@
                 </div>
             </div>-->
             <div class="col-lg-4">
-                <div class="ratio ratio-21x9 plyr__video-embed players">
+                <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
                     <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="ratio ratio-21x9 plyr__video-embed players">
+                <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
                     <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="ratio ratio-21x9 plyr__video-embed playes">
+                <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
                     <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
@@ -168,7 +168,9 @@
     <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
     <script>
         const player = new Plyr('#player');
-        const players = new Plyr('.players');
+        const player1 = new Plyr('#player1');
+        const player2 = new Plyr('#player2');
+        const player3 = new Plyr('#player3');
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
