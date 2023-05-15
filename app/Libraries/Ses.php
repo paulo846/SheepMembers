@@ -79,7 +79,7 @@ class Ses
 
         //html
         $html = "<div style='font-size: 14px;'><h3>Você pediu uma recuperação de conta em https://{$_SERVER['HTTP_HOST']}</h3>";
-        $html .= "<p>Nesse email contém os dadaos de recuperação de conta!</p>";
+        $html .= "<p>Nesse email contém os dados de recuperação de sua conta!</p>";
         $html .= "Dados de acesso:
         <ul>
             <li><b>Link da plataforma:</b> https://{$_SERVER['HTTP_HOST']}</li>
