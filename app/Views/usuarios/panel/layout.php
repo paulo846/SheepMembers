@@ -140,12 +140,8 @@
                     </div>
                     <div class="card-body p-0">
                        <!-- <div class="plyr__video-embed" id="player">
-                            <iframe 
-                                src="https://www.youtube.com/embed/gFiJs8okVRA?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
-                                allowfullscreen
-                                allowtransparency
-                                ></iframe>
-                        </div>-->
+                            <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
+                            </div>-->
                         <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="gFiJs8okVRA"></div>
 
                     </div>
@@ -157,11 +153,11 @@
                     <div class="card-header">
                         <h2 class="text-white">Sábado - 1ª parte</h2>
                     </div>
-
                     <div class="card-body p-0">
-                        <div class="plyr__video-embed" id="player1">
+                        <!--<div class="plyr__video-embed" id="player1">
                             <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
-                        </div>
+                        </div> -->
+                        <div id="player1" data-plyr-provider="youtube" data-plyr-embed-id="l-G-KphxiOI"></div>
                     </div>
                 </div>
             </div>
@@ -174,9 +170,10 @@
                         <h2 class="text-white">Sábado - 2ª parte</h2>
                     </div>
                     <div class="card-body p-0">
-                        <div class="plyr__video-embed player2" id="player2">
+                        <!-- <div class="plyr__video-embed player2" id="player2">
                             <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
-                        </div>
+                        </div>-->
+                        <div id="player2" data-plyr-provider="youtube" data-plyr-embed-id="ku7NzsHMc7o"></div>
                     </div>
                 </div>
             </div>
@@ -186,9 +183,10 @@
                         <h2 class="text-white">Sábado - 3ª parte</h2>
                     </div>
                     <div class="card-body p-0">
-                        <div class="plyr__video-embed player3" id="player3">
+                        <!-- <div class="plyr__video-embed player3" id="player3">
                             <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
-                        </div>
+                        </div>-->
+                        <div id="player3" data-plyr-provider="youtube" data-plyr-embed-id="NGvkD76VGS8"></div>
                     </div>
                 </div>
             </div>
