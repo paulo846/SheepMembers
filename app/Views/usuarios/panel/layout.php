@@ -139,13 +139,15 @@
                         <h2 class="text-white">Sexta - 1ª parte</h2>
                     </div>
                     <div class="card-body p-0">
-                        <div class="plyr__video-embed" id="player">
+                       <!-- <div class="plyr__video-embed" id="player">
                             <iframe 
                                 src="https://www.youtube.com/embed/gFiJs8okVRA?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                                 allowfullscreen
                                 allowtransparency
                                 ></iframe>
-                        </div>
+                        </div>-->
+                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="gFiJs8okVRA"></div>
+
                     </div>
                 </div>
 
