@@ -136,7 +136,7 @@
             <div class="col-lg-6">
                 <div class="card bg-dark">
                     <div class="card-header">
-                        <h2 class="text-white">Sexta - 1ª parte</h2>
+                        <h2 class="text-white">Sexta-feira | 12.05.23</h2>
                     </div>
                     <div class="card-body p-0">
                        <!-- <div class="plyr__video-embed" id="player">
