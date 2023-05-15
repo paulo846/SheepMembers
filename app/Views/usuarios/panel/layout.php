@@ -127,25 +127,26 @@
         </div>
 
         <div class="row">
-            <!-- <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="ratio ratio-21x9 plyr__video-embed" id="player">
-                    <iframe src="" allowfullscreen allowtransparency></iframe>
+                    <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
                 </div>
-            </div>-->
-            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-6">
                 <h2 class="text-white" style="color: #fff !important;">Sábado - 1ª parte</h2>
                 <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
                     <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
-            <div class="col-lg-4">
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
                 <h2 class="text-white" style="color: #fff !important;">Sábado - 2ª parte</h2>
                 <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
                     <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
                 </div>
             </div>
-
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <h2 class="text-white" style="color: #fff !important;">Sábado - 3ª parte</h2>
                 <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
                     <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
