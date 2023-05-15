@@ -128,15 +128,28 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <h2 class="text-white" style="color: #fff !important;">Sexta - 1ª parte</h2>
-                <div class="ratio ratio-21x9 plyr__video-embed" id="player">
-                    <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-white" style="color: #fff !important;">Sexta - 1ª parte</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="ratio ratio-21x9 plyr__video-embed" id="player">
+                            <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <div class="col-lg-6">
-                <h2 class="text-white" style="color: #fff !important;">Sábado - 1ª parte</h2>
-                <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
-                    <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-white" style="color: #fff !important;">Sábado - 1ª parte</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
+                            <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,7 +191,7 @@
 
     <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
     <script>
-        const player  = new Plyr('#player');
+        const player = new Plyr('#player');
         const player1 = new Plyr('#player1');
         const player2 = new Plyr('#player2');
         const player3 = new Plyr('#player3');
