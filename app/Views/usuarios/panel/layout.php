@@ -156,21 +156,30 @@
 
         <div class="row mt-3">
             <div class="col-lg-6">
-                <h2 class="text-white" style="color: #fff !important;">Sábado - 2ª parte</h2>
-                <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
-                    <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
+                <div class="card bg-dark">
+                    <div class="card-header">
+                        <h2 class="text-white">Sábado - 2ª parte</h2>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
+                            <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <h2 class="text-white" style="color: #fff !important;">Sábado - 3ª parte</h2>
-                <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
-                    <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <h2 class="text-white">Sábado - 3ª parte</h2>
+                </div>
+                <div class="card-body p-0">
+                    <div class="col-lg-6">
+                        <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
+                            <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-
     </main>
 
     <!-- <footer>
