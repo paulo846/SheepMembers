@@ -133,7 +133,7 @@
                         <h2 class="text-white">Sexta - 1ª parte</h2>
                     </div>
                     <div class="card-body p-0">
-                        <div class="ratio ratio-21x9 plyr__video-embed" id="player">
+                        <div class="plyr__video-embed" id="player">
                             <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
                         </div>
                     </div>
@@ -145,8 +145,9 @@
                     <div class="card-header">
                         <h2 class="text-white">Sábado - 1ª parte</h2>
                     </div>
+
                     <div class="card-body p-0">
-                        <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
+                        <div class="plyr__video-embed" id="player1">
                             <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                         </div>
                     </div>
@@ -161,7 +162,7 @@
                         <h2 class="text-white">Sábado - 2ª parte</h2>
                     </div>
                     <div class="card-body p-0">
-                        <div class="ratio ratio-21x9 plyr__video-embed player2" id="player2">
+                        <div class="plyr__video-embed player2" id="player2">
                             <iframe src="https://www.youtube.com/embed/ku7NzsHMc7o" allowfullscreen allowtransparency></iframe>
                         </div>
                     </div>
@@ -173,7 +174,7 @@
                         <h2 class="text-white">Sábado - 3ª parte</h2>
                     </div>
                     <div class="card-body p-0">
-                        <div class="ratio ratio-21x9 plyr__video-embed player3" id="player3">
+                        <div class="plyr__video-embed player3" id="player3">
                             <iframe src="https://www.youtube.com/embed/NGvkD76VGS8" allowfullscreen allowtransparency></iframe>
                         </div>
                     </div>
