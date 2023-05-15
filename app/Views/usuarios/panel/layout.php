@@ -20,6 +20,7 @@
     <meta name="keywords" content="<?= $name ?>">
     <meta name="author" content="SHEEP MEMBERS">
     <style>
+        
         body {
             background-color: #131720;
             background-image: url("/assets/admin/img/bg.jpg");
@@ -27,71 +28,11 @@
             background-repeat: no-repeat;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        header .navbar--header {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, #000000 100%) !important;
-            background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
-        }
-
-        header .navbar--header .logo {
-            width: 100px;
-        }
-
-        #container {
-            height: 60vh;
-            margin-top: 1%;
-            margin-bottom: 20%;
-        }
-
-        #container iframe {
-            border-radius: 10px;
-        }
-
-        footer .navbar--footer {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%) !important;
-        }
-
-        footer .navbar--footer a span {
-            font-size: 10px;
-            font-style: normal;
-            font-weight: 300;
-            color: #fff !important;
-
-            bottom: 0px;
-        }
-
-        a {
-            text-decoration: none !important;
-        }
-
-        footer .navbar--footer .logo {
-            width: 90px;
-        }
-
-        footer .navbar--footer .footer--text {
-            font-size: small;
-            color: #fff;
-            font-weight: 300;
-        }
-
-
-
         <?php if ($fundo) : ?>body {
             background-image: url("<?= $fundo ?>") !important;
         }
-
-
-
         <?php endif; ?>
+
     </style>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
