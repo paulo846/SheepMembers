@@ -128,11 +128,11 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <div class="card">
+                <div class="card bg-dark">
                     <div class="card-header">
-                        <h2 class="text-white" style="color: #fff !important;">Sexta - 1ª parte</h2>
+                        <h2 class="text-white">Sexta - 1ª parte</h2>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <div class="ratio ratio-21x9 plyr__video-embed" id="player">
                             <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
                         </div>
@@ -141,11 +141,11 @@
 
             </div>
             <div class="col-lg-6">
-                <div class="card">
+                <div class="card bg-dark">
                     <div class="card-header">
-                        <h2 class="text-white" style="color: #fff !important;">Sábado - 1ª parte</h2>
+                        <h2 class="text-white">Sábado - 1ª parte</h2>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <div class="ratio ratio-21x9 plyr__video-embed" id="player1">
                             <iframe src="https://www.youtube.com/embed/l-G-KphxiOI" allowfullscreen allowtransparency></iframe>
                         </div>
