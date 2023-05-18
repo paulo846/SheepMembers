@@ -136,7 +136,7 @@
             <div class="col-lg-6">
                 <div class="card bg-dark">
                     <div class="card-header">
-                        <h3 class="text-white">Sexta-feira | 12.05.23</h3>
+                        <h4 class="text-white">Sexta-feira | 12.05.23</h4>
                     </div>
                     <div class="card-body p-0">
                         <!-- <div class="plyr__video-embed" id="player">
@@ -151,7 +151,7 @@
             <div class="col-lg-6">
                 <div class="card bg-dark">
                     <div class="card-header">
-                        <h3 class="text-white">Sábado - 1ª parte</h3>
+                        <h4 class="text-white">Sábado - 1ª parte</h4>
                     </div>
                     <div class="card-body p-0">
                         <!--<div class="plyr__video-embed" id="player1">
@@ -167,7 +167,7 @@
             <div class="col-lg-6">
                 <div class="card bg-dark">
                     <div class="card-header">
-                        <h3 class="text-white">Sábado - 2ª parte</h3>
+                        <h4 class="text-white">Sábado - 2ª parte</h4>
                     </div>
                     <div class="card-body p-0">
                         <!-- <div class="plyr__video-embed player2" id="player2">
@@ -180,7 +180,7 @@
             <div class="col-lg-6">
                 <div class="card bg-dark">
                     <div class="card-header">
-                        <h3 class="text-white">Sábado - 3ª parte</h3>
+                        <h4 class="text-white">Sábado - 3ª parte</h4>
                     </div>
                     <div class="card-body p-0">
                         <!-- <div class="plyr__video-embed player3" id="player3">
