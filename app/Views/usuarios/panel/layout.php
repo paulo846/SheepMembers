@@ -127,7 +127,7 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-lg-6 offset-lg-3 text-center">
+            <div class="col-lg-12 text-center">
                 <div id="lista-avisos"></div>
             </div>
         </div>
