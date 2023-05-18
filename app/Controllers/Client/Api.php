@@ -137,7 +137,7 @@ class Api extends ResourceController
             echo 0 ;
         } else {
             $session = session();
-            $session->setTempdata('error', 'Tempo de sessão expirado!!', 3);
+            $session->setTempdata('error', 'Não passe seu login para terceiros, evite bloqueios!', 10);
             //$session->setFlashdata('error', 'Email não encontrado!');
             echo 1 ;
         }
