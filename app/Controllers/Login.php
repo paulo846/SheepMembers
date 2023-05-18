@@ -30,7 +30,7 @@ class Login extends BaseController
         $data = array();
         //se tem configuração retorna em PT BR
         if (count($builder)) {
-            $data['id_empresa'] = $builder[0]['id_empresa'];
+            $data['id_empresa']  = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
             $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
@@ -87,11 +87,12 @@ class Login extends BaseController
 
     public function auth()
     {
-        $mClient = new ClientModel();
         try {
+            $mClient = new ClientModel();
             $mClient->authclient($this->request->getPost());
             return redirect()->to(site_url());
         } catch (\Exception $e) {
+            print_r($e->getMessage());
             return redirect()->back();
         }
     }

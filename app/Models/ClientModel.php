@@ -23,35 +23,23 @@ class ClientModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
-
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
-
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    
 
     public function authclient($input)
     {
 
-        $session = session();
-        session()->regenerate();
-
+        //verifica se email do usuarios existe
         $builder = $this->where('email', $input['email'])->findAll();
 
-        if (count($builder)) {
+        //pelo menos 1 resultado
+        if (count($builder) == 1) {
+            //vefica se a senha é compativel com a senha digitada
             if (password_verify($input['password'], $builder[0]['password'])) {
+
+                //variavel de sessão
                 $session = session();
+
+                //dados para gravar na sessão
                 $data = [
                     'idUser'       => intval($builder[0]['id']),
                     'name'         => $builder[0]['name'],
@@ -59,19 +47,25 @@ class ClientModel extends Model
                     'email'        => $builder[0]['email'],
                     'loggedClient' => true
                 ];
-                
+
+                //grava o acesso
                 $mLogs = new LogsAcessosModel();
                 $mLogs->save([
                     'id_cliente' => intval($builder[0]['id'])
                 ]);
-                
+            
+                //salva dos dados na sessão
                 $session->set($data);
-
+                
             } else {
+                //erro de senha
+                $session = session();
                 $session->setFlashdata('error', lang('Alertas.senhaErrada'));
                 throw new Exception(lang('Alertas.senhaErrada'));
             }
         } else {
+            //erro de email
+            $session = session();
             $session->setFlashdata('error', lang('Alertas.emailErrado'));
             throw new Exception(lang('Alertas.emailErrado'));
         }
