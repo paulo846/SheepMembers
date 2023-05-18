@@ -134,12 +134,11 @@ class Api extends ResourceController
     public function verify()
     {
         if (session('loggedClient')) {
-            echo 0 ;
+            return $this->respond(['status' => 'logado'], 200);
         } else {
             $session = session();
             $session->setTempdata('error', 'Não passe seu login para terceiros, evite bloqueios!', 10);
-            //$session->setFlashdata('error', 'Email não encontrado!');
-            echo 1 ;
+            return $this->fail(['status' => 'Erro de login']);
         }
     }
 

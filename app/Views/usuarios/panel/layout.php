@@ -46,18 +46,18 @@
             width: 100px;
         }
 
-       /* #container {
+        /* #container {
             height: 60vh;
             margin-top: 1%;
             margin-bottom: 20%;
         }*/
-/*
+        /*
         #container iframe {
             border-radius: 10px;
         }
         */
 
-        footer{
+        footer {
             margin-top: 100px;
             padding-top: 50px;
         }
@@ -139,7 +139,7 @@
                         <h2 class="text-white">Sexta-feira | 12.05.23</h2>
                     </div>
                     <div class="card-body p-0">
-                       <!-- <div class="plyr__video-embed" id="player">
+                        <!-- <div class="plyr__video-embed" id="player">
                             <iframe src="https://www.youtube.com/embed/gFiJs8okVRA" allowfullscreen allowtransparency></iframe>
                             </div>-->
                         <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="gFiJs8okVRA"></div>
@@ -251,12 +251,20 @@
 
 
         function logIn() {
-            $.getJSON(site + "client/api/verify", (function(res) {
-                if (res) {
+            $.ajax({
+                type: "get",
+                url: site + "client/api/verify",
+                dataType: "json",
+                success: function(res) {
+                    console.log(res);
+                },
+                error: function(xhr, status, error) {
+                    console.log("Ocorreu um erro na requisição: " + status + " - " + error);
                     window.location.reload();
                 }
-            }))
+            });
         }
+
 
         function ouvirAvisos() {
             $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
