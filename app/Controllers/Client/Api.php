@@ -133,7 +133,7 @@ class Api extends ResourceController
 
     public function verify()
     {
-        if (session('data')['loggedClient']) {
+        if (session('loggedClient')) {
             return false ;
         } else {
             $session = session();
