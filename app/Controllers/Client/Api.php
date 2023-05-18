@@ -125,7 +125,7 @@ class Api extends ResourceController
 
         $data[] = [
             'title' => 'Avisos!!',
-            'text'  => 'Estamos atualizando nossa plataforma para melhor atendê-lo(a). Durante esse processo, alguns vídeos podem não estar disponíveis temporariamente. Pedimos desculpas pelo inconveniente e estamos trabalhando diligentemente para concluir a atualização o mais rápido possível. Agradecemos sua compreensão e paciência. Por favor, volte em breve para desfrutar de todo o conteúdo atualizado que estamos preparando para você..',
+            'text'  => 'Se os videos ainda não aparecem para você, atualize essa página.',
         ];
 
         return $this->respond($data, 200);
