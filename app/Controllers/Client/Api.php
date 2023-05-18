@@ -134,12 +134,12 @@ class Api extends ResourceController
     public function verify()
     {
         if (session('loggedClient')) {
-            return 0 ;
+            echo 0 ;
         } else {
             $session = session();
             $session->setTempdata('error', 'Tempo de sessão expirado!!', 3);
             //$session->setFlashdata('error', 'Email não encontrado!');
-            return 1 ;
+            echo 1 ;
         }
     }
 
