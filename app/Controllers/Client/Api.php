@@ -125,7 +125,7 @@ class Api extends ResourceController
 
         $data[] = [
             'title' => 'Avisos!!',
-            'text'  => 'Se os videos ainda não aparecem para você, atualize essa página.',
+            'text'  => '',
         ];
 
         return $this->respond($data, 200);
