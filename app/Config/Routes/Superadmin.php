@@ -3,6 +3,7 @@
 $routes->group('superadmin', static function ($routes) {
     //GETS PROTEGIDOS
     $routes->get('', 'Super\Home::index', ['filter' => 'loggedsuper']);
+    $routes->get('alunos', 'Super\Home::alunos', ['filter' => 'loggedsuper']);
 
     $routes->get('empresas', 'Super\Empresas::index', ['filter' => 'loggedsuper']);
     $routes->get('empresas/new', 'Super\Empresas::new', ['filter' => 'loggedsuper']);

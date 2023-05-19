@@ -12,7 +12,16 @@ class Home extends BaseController
 
         $data['title'] = 'Dashboard';
         //
-        return view('newSuper/template/template', $data);
+        return view('newSuper/pages/dashboard/home', $data);
+
+
+    }
+    public function alunos()
+    {
+
+        $data['title'] = 'Alunos';
+        //
+        return view('newSuper/pages/alunos/home', $data);
 
 
     }
