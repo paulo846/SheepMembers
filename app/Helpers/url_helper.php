@@ -115,3 +115,12 @@ if (!function_exists('converterParaTimestamp')) {
         return $timestamp;
     }
 }
+
+
+if (!function_exists('format_date')) {
+    function format_date($data)
+    {
+        $formatted_date = date('d/m/Y \á\s H:i:s', strtotime($data));
+        return $formatted_date;
+    }
+}

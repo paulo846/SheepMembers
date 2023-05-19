@@ -13,6 +13,9 @@
 
 
 <?= $this->section('content') ?>
+<?php
+
+use CodeIgniter\I18n\Time; ?>
 <?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 
 <?php if (count($cliente)) : ?>
@@ -21,11 +24,11 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Title</th>
+                <th scope="col">Nome</th>
                 <th scope="col">Status</th>
                 <th scope="col">Eventos</th>
-                <th scope="col">Assignee</th>
-                <th scope="col">Price</th>
+                <th scope="col">Acessos</th>
+                <th scope="col">Criado em</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -39,8 +42,15 @@
                     </td>
                     <td><span class="badge badge-soft-success">Ativo</span></td>
                     <td></td>
-                    <td>Lanora Sandoval</td>
-                    <td>$4,521</td>
+                    <td></td>
+                    <td>
+                        <?php
+                            $current = Time::parse(date('Y-m-d H:i:s'));
+                            $test    = Time::parse($row['created_at']);
+                            $diff = $current->difference($test);
+                            echo $diff->humanize();
+                        ?>
+                    </td>
                     <td>
                         <div class="dropdown">
                             <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
