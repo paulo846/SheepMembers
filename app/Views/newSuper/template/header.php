@@ -11,6 +11,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= url_cloud_front() ?>favicon.ico">
 
+    <?= $this->renderSection('linkcss') ; ?>
+
     <!-- Layout config Js -->
     <script src="<?= url_cloud_front() ?>assets/js/layout.js"></script>
     <!-- Bootstrap Css -->

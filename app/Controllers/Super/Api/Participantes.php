@@ -48,6 +48,34 @@ class Participantes extends ResourceController
     public function show($id = null)
     {
         //
+        $builder = $this->mParticipante->findAll();
+
+        $data = array();
+        $relacionamentos = null;
+
+
+        foreach($builder as $row){
+            $buscaRelacionamento = $this->mRelaciona->where('id_cliente', $row['id'])->findAll();
+            if(count($buscaRelacionamento)){
+                
+                foreach($buscaRelacionamento as $rowRelacionamento){
+                    $relacionamentos = $this->mEmpresa->find($rowRelacionamento['id_empresa'])['name'];
+                }
+            }else{
+                $relacionamentos = '';
+            }
+
+            $data[] = [
+                $row['id'],
+                $row['name'],
+                $row['email'],
+                $row['image'],
+                $relacionamentos
+            ]; 
+        }
+
+        return $this->response->setJSON(['data' => $data]);
+        
     }
 
     /**

@@ -792,11 +792,13 @@
 <script src="<?= url_cloud_front() ?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
 <script src="<?= url_cloud_front() ?>assets/js/plugins.js"></script>
 
+<?= $this->renderSection('js') ; ?>
+
 <!-- App js -->
 <script src="<?= url_cloud_front() ?>assets/js/app.js"></script>
 
 
-<?= $this->renderSection('js') ; ?>
+
 </body>
 
 </html>
