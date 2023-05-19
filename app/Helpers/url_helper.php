@@ -108,3 +108,10 @@ if (!function_exists('formatPhoneNumber')) {
         return '+' . $phoneNumber;
     }
 }
+if (!function_exists('converterParaTimestamp')) {
+    function converterParaTimestamp($data)
+    {
+        $timestamp = strtotime($data);
+        return $timestamp;
+    }
+}
