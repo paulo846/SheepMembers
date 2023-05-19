@@ -1,6 +1,6 @@
 <?php 
-$this->include('newSuper/template/header');
-$this->include('newSuper/template/nav');
-$this->include('newSuper/template/menu');
+echo $this->include('newSuper/template/header');
+echo $this->include('newSuper/template/nav');
+echo $this->include('newSuper/template/menu');
 
-$this->include('newSuper/template/footer');
+echo $this->include('newSuper/template/footer');
