@@ -26,4 +26,4 @@
 
 <body>
     <!-- Begin page -->
-    <div id="layout-wrapper"></div>
+    <div id="layout-wrapper">
