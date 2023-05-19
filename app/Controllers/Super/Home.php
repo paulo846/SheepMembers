@@ -12,7 +12,9 @@ class Home extends BaseController
 
         $data['title'] = 'Dashboard';
         //
-        return view('super/pages/home', $data);
+        return view('newSuper/template/template', $data);
+
+
     }
     public function clientes(){
         $mClients = new ClientModel();

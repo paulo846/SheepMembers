@@ -1,7 +1,6 @@
 <?php
 
 $routes->group('superadmin', static function ($routes) {
-    
     //GETS PROTEGIDOS
     $routes->get('', 'Super\Home::index', ['filter' => 'loggedsuper']);
 
