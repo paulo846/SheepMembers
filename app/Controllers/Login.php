@@ -33,8 +33,8 @@ class Login extends BaseController
             $data['id_empresa']  = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
-            $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
+            $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . $builder[0]['updated_at']  : false;
+            $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . $builder[0]['updated_at']  : false;
             $data['linkVenda']   = $builder[0]['link_venda'];
             $data['analytics']   = $builder[0]['analytics'];
 
@@ -67,8 +67,8 @@ class Login extends BaseController
             $data['id_empresa'] = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . time() : false;
-            $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) : false;
+            $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . $builder[0]['updated_at']  : false;
+            $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . $builder[0]['updated_at']  : false;
             $data['link_venda']  = $builder[0]['link_venda'];
             $data['analytics'] = $builder[0]['analytics'];
 

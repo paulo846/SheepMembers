@@ -18,12 +18,6 @@
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $name ?>">
     <meta name="author" content="SHEEP MEMBERS">
-    
-    <link rel="icon" type="image/png" href="" sizes="32x32">
-    <link rel="apple-touch-icon" href="">
-    <meta name="description" content="<?= $description ?>">
-    <meta name="keywords" content="<?= $name ?>">
-    <meta name="author" content="SHEEP MEMBERS">
     <title><?= $title ?></title>
     <style>
         .section--bg::before {
