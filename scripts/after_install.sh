@@ -8,6 +8,6 @@ sudo chmod +x after_install.sh
 cd /www/wwwroot/conect.app
 
 # Outras ações pós-instalação
-composer install --no-dev
+sudo composer update --no-dev
 
 sudo chmod -R 777 /www/wwwroot/conect.app/writable
