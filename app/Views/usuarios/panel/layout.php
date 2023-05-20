@@ -107,7 +107,7 @@
 
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
-    <main class="container mt-3" id="container">
+    <main class="container mt-3" id="container"> 
         <!-- <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <?php if ($stream_pt) : ?>

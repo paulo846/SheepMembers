@@ -7,5 +7,5 @@ hooks:
 post-update:
    AfterInstall:
     - location: scripts/depois.sh
-      timeout: 30
-      runas: root
+      timeout: 60
+      runas: www
