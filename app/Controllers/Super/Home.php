@@ -35,13 +35,18 @@ class Home extends BaseController
         //$data['mEmpresa'] = $this->mEmpresa;
         $data['totalAlunos'] = $this->mCliente->countAllResults();
 
+        if ($this->request->getGet('b') !== null) {
+            $this->mCliente->where('bloqueio', $this->request->getGet('b'));
+        }
         //define busca por nome, email e id também lista do mais antigo para o mais atual
         if ($search = $this->request->getGet('s')) {
-            $this->mCliente->like('name', esc($search))
-                ->orderBy('id', 'ASC')
+            $this->mCliente->groupStart()
+                ->like('name', esc($search))
                 ->orLike('email', esc($search))
                 ->orLike('phone', esc($search))
-                ->orLike('id', esc($search));
+                ->orLike('id', esc($search))
+                ->groupEnd()
+                ->orderBy('id', 'ASC');
         } else {
             //lista do mais atual para o mais antingo
             $this->mCliente->orderBy('id', 'DESC');
@@ -58,9 +63,7 @@ class Home extends BaseController
             $numBusca = intval(10);
         }
 
-        if ($this->request->getGet('b')) {
-            $this->mCliente->where('bloqueio', $this->request->getGet('b'));
-        }
+        
 
         //por data
 
