@@ -124,6 +124,9 @@ use CodeIgniter\I18n\Time; ?>
         $.getJSON(baseUrl + "/superadmin/api/aluno/bloquear/" + id +'/'+ tipo,
             function(data, _textStatus) {
                 toastr.success('Usuário bloqueado!!!')
+                setTimeout(function() {
+                    location.reload();
+                }, 5000);
             }
         ).fail(function(jqxhr, textStatus, error) {
             toastr.error('Verique os logs do navegador!')
