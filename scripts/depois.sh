@@ -7,6 +7,6 @@ PROJECT_DIR="/www/wwwroot/conect.app"
 cd "$PROJECT_DIR"
 
 # Executa o composer no modo de produção do CodeIgniter 4 com permissões de root
-sudo composer update --no-dev --optimize-autoloader --no-interaction
+sudo composer install --no-dev --optimize-autoloader --no-interaction
 
 sudo chmod -R 777 /www/wwwroot/conect.app/writable
