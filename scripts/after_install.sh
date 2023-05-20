@@ -1,6 +1,4 @@
 #!/bin/bash
-sudo apt update
-
 cd /www/wwwroot/conect.app/scripts
 
 sudo chmod +x after_install.sh
