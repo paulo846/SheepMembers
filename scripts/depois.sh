@@ -44,7 +44,8 @@ set_permissions_recursive "$PROJECT_DIR" "$DEFAULT_PERMISSIONS"
 set_permissions_recursive "$PROJECT_DIR" "$DEFAULT_DIRECTORY_PERMISSIONS"
 
 # Executa o composer no modo de produção do CodeIgniter 4
-composer install --no-dev --optimize-autoloader --no-interaction --working-dir="$PROJECT_DIR"
+cd "$PROJECT_DIR"
+composer install --no-dev --optimize-autoloader --no-interaction
 
 # Limpa o cache do CodeIgniter 4 (opcional)
-php "$PROJECT_DIR" spark cache:clear
+php spark cache:clear
