@@ -48,34 +48,12 @@ class Participantes extends ResourceController
     public function show($id = null)
     {
         //
-        $builder = $this->mParticipante->findAll();
-
-        $data = array();
-        $relacionamentos = null;
-
-
-        foreach($builder as $row){
-            $buscaRelacionamento = $this->mRelaciona->where('id_cliente', $row['id'])->findAll();
-            if(count($buscaRelacionamento)){
-                
-                foreach($buscaRelacionamento as $rowRelacionamento){
-                    $relacionamentos = $this->mEmpresa->find($rowRelacionamento['id_empresa'])['name'];
-                }
-            }else{
-                $relacionamentos = '';
-            }
-
-            $data[] = [
-                $row['id'],
-                $row['name'],
-                $row['email'],
-                $row['image'],
-                $relacionamentos
-            ]; 
+        try {
+            $builder = $this->mParticipante->find($id);
+            return $this->respond($builder);
+        } catch (\Exception $e) {
+            return $this->fail(['error' => $e->getMessage()]);
         }
-
-        return $this->response->setJSON(['data' => $data]);
-        
     }
 
     /**
@@ -267,16 +245,12 @@ class Participantes extends ResourceController
                             $email->acessoInicial($row, $this->request->getPost('empresa'));
                         }
                     }
-
-
                 }
 
                 return $this->respond(['Cadastrado com sucesso!']);
-
             } catch (\Exception $e) {
 
                 return $this->fail([$e->getMessage()]);
-            
             }
         }
     }
@@ -305,5 +279,71 @@ class Participantes extends ResourceController
     public function delete($id = null)
     {
         //
+    }
+    public function reenviar()
+    {
+
+        $input = $this->request->getPost();
+
+        $idEmpresa = $input['r_evento'];
+        $idParticipante = $input['r_id'];
+        
+
+        try {
+            $this->mParticipante->save([
+                'id' => $idParticipante,
+                'password' => password_hash('mudar123', PASSWORD_BCRYPT)
+            ]);
+            
+            if ($rel = $this->mRelaciona->where(['id_cliente' => $idParticipante, 'id_empresa' => $idEmpresa])->findAll()) {
+                //dados para relacionamento
+                $this->mRelaciona->delete($rel[0]['id']);
+
+                //dados para relacionamento
+                $relaciona = [
+                    'id_cliente' => $idParticipante,
+                    'id_empresa' => $idEmpresa,
+                    'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 30,
+                ];
+                //cadastra novo relacionamento
+                $this->mRelaciona->save($relaciona);
+            } else {
+                //dados para relacionamento
+                $relaciona = [
+                    'id_cliente' => $idParticipante,
+                    'id_empresa' => $idEmpresa,
+                    'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 30,
+                ];
+
+                //cadastra novo relacionamento
+                $this->mRelaciona->save($relaciona);
+            }
+
+            //busca dados da empresa
+            $plataforma = $this->mConfig->where('id_empresa', $idEmpresa)->findAll();
+
+            //html
+            $html = "<div style='font-size: 18px;'><h3>Dados para acesso {$plataforma[0]['title_pt']}</h3>";
+            $html .= "<p>{$input['r_name']}, nesse email contém os dados de acesso a plataforma para você assistir ao seu evento!</p>";
+            $html .= "Dados de acesso:
+        <ul>
+            <li><b>Link da plataforma:</b> {$plataforma[0]['slug']}</li>
+            <li><b>Seu email:</b> {$input['r_email']}</li>
+            <li><b>Sua senha:</b> mudar123</li>
+        </ul></div>";
+
+            //envia email de boas vindas!
+            $email = new Ses;
+
+            $email->sendEmail([
+                'sender' => 'contato@conect.app',
+                'recipient' => $input['r_email'],
+                'subject' => 'Bem vindo!',
+                'body'    => $html
+            ]);
+            return $this->respond(['msg' => 'Atualizado com sucesso!']);
+        } catch (\Exception $e) {
+            return $this->fail(['error' => $e->getMessage()]);
+        }
     }
 }

@@ -39,6 +39,10 @@ $routes->group('superadmin', static function ($routes) {
         $routes->get('cliente/(:num)', 'Super\Api\Participantes::show/$1');
         $routes->post('cliente/new', 'Super\Api\Participantes::create');
         $routes->post('cliente/new/list', 'Super\Api\Participantes::list');
+
+        //ALUNO
+        $routes->get('aluno/(:num)', 'Super\Api\Participantes::show/$1');
+        $routes->post('aluno/reenvio', 'Super\Api\Participantes::reenviar');
     });
     
 }); 

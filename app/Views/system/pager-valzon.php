@@ -12,7 +12,7 @@ $pager->setSurroundCount(2);
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content">
         <?php if ($pager->hasPrevious()) : ?>
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" href="<?= $pager->getFirst() ?>" tabindex="-1">Previous</a>
             </li>
         <?PHP endif; ?>

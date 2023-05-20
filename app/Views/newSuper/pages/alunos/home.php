@@ -1,16 +1,13 @@
 <?= $this->extend('newSuper/template/template') ?>
+
 <?= $this->section('linkcss') ?>
 
-<!--datatable css-->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
-<!--datatable responsive css-->
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
+<?= $this->endSection() ?>
+<?= $this->section('css') ?>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
-
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 <?= $this->endSection() ?>
-
 
 <?= $this->section('content') ?>
 <?php
@@ -28,27 +25,38 @@ use CodeIgniter\I18n\Time; ?>
                 <th scope="col">Status</th>
                 <th scope="col">Eventos</th>
                 <th scope="col">Acessos</th>
-                <th scope="col">Criado em</th>
+                <th scope="col">Criado</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($cliente as $row) : ?>
                 <tr>
-                    <th scope="row"><?= $row['id'] ?></th>
+                    <th scope="row" class="position-relative">
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <?= $row['id'] ?>
+                        </div>
+                    </th>
                     <td>
                         <?= $row['name'] ?><br>
-                        <small><?= $row['email'] ?></small>
+                        <small><?= $row['email'] ?></small><br>
+                        <small class="text-success"><b><?= $row['phone'] ?></b></small>
                     </td>
                     <td><span class="badge badge-soft-success">Ativo</span></td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <?= view_cell('App\Libraries\Viewhtml::relacionamento', ['idAluno' => $row['id'], 'eventos' => $eventos]) ?>
+                    </td>
+                    <td>
+                        <?php 
+                        echo $acessos->where('id_cliente', $row['id'])->countAllResults();
+                        ?>
+                    </td>
                     <td>
                         <?php
-                            $current = Time::parse(date('Y-m-d H:i:s'));
-                            $test    = Time::parse($row['created_at']);
-                            $diff = $current->difference($test);
-                            echo $diff->humanize();
+                        $current = Time::parse(date('Y-m-d H:i:s'));
+                        $test    = Time::parse($row['created_at']);
+                        $diff = $current->difference($test);
+                        echo $diff->humanize();
                         ?>
                     </td>
                     <td>
@@ -56,10 +64,11 @@ use CodeIgniter\I18n\Time; ?>
                             <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="ri-more-2-fill"></i>
                             </a>
-
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">View</a></li>
                                 <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#varyingcontentModal" onclick="search_item('<?= $row['id'] ?>')">Reenviar</a></li>
+                                <li><a class="dropdown-item" href="#">Bloquear</a></li>
                                 <li><a class="dropdown-item" href="#">Delete</a></li>
                             </ul>
                         </div>
@@ -78,27 +87,53 @@ use CodeIgniter\I18n\Time; ?>
     </div>
 <?php endif; ?>
 
+<?= $this->include('newSuper/pages/alunos/modals/reenvio') ?>
+
 <?= $pager->links('default', 'pager_movie') ?>
-
-
-
-
 
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!--datatable js-->
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://malsup.github.io/jquery.form.js"></script>
+<script>
+    function search_item(id) {
+        $("#r_name, #r_email, #r_id").val('...');
+        $.getJSON(baseUrl + "/superadmin/api/aluno/" + id,
+            function(data, _textStatus) {
+                $("#r_name").val(data.name);
+                $("#r_email").val(data.email);
+                $("#r_id").val(id);
+            }
+        );
+    }
 
-<script src="/assets/js/pages/datatables.init.js"></script>
+    $(document).ready(function() {
+        $('.form').ajaxForm({
+            dataType: 'json',
+            // Ação a ser executada em caso de sucesso
+
+            // Configuração para adicionar barra de progresso
+            beforeSubmit: function() {
+                toastr.warning('Enviando dados!!!')
+            },
+
+            success: function(response) {
+                // Ação a ser executada em caso de sucesso
+                toastr.success('Enviado com sucesso!!!')
+                /*setTimeout(function() {
+                    location.reload();
+                }, 5000);*/
+            },
+
+            error: function(response) {
+                // Ação a ser executada em caso de erro
+                toastr.error('Verique os logs do navegador!')
+                console.log(response)
+            }
+        });
+    });
+</script>
 
 <?= $this->endSection() ?>

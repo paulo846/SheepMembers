@@ -34,7 +34,7 @@
                 <!-- App Search-->
                 <?= form_open('/superadmin/alunos', 'method="get" class="app-search d-none d-md-block"') ?>
                     <div class="position-relative">
-                        <input type="text" name="s" class="form-control" placeholder="Search..." autocomplete="off" id="search-options" value="">
+                        <input type="text" name="s" class="form-control" placeholder="Search..." autocomplete="off" id="search-options" value="<?= (isset($_GET['s'])) ? $_GET['s'] : '' ?>">
                         <span class="mdi mdi-magnify search-widget-icon"></span>
                         <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none" id="search-close-options"></span>
                     </div>
