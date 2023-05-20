@@ -266,7 +266,7 @@
 
 
         function ouvirAvisos() {
-            $.getJSON(site + "client/api/avisos/" + stream, (function(res) {
+            $.getJSON(site + "client/api/avisos/", (function(res) {
                 var $listaAvisos = $("#lista-avisos");
 
                 $listaAvisos.empty(), $.each(res, (function(_i, aviso) {
