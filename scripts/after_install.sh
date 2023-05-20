@@ -1,9 +1,9 @@
 #!/bin/bash
-cd /www/wwwroot/conect.app/scripts
+sudo cd /www/wwwroot/conect.app/scripts
 
-chmod +x after_install.sh
+sudo chmod +x after_install.sh
 
-cd /www/wwwroot/conect.app
+sudo cd /www/wwwroot/conect.app
 
 # Outras ações pós-instalação
 composer install --no-interaction --optimize-autoloader
