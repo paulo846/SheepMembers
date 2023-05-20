@@ -3,9 +3,3 @@ os: linux
 files:
   - source: /
     destination: /www/wwwroot/conect.app
-hooks:
-post-update:
-   AfterInstall:
-    - location: scripts/depois.sh
-      timeout: 60
-      runas: www
