@@ -20,13 +20,13 @@ set_permissions_recursive() {
   local permissions=$2
 
   # Define as permissões para o diretório atual
-  chmod "$permissions" "$path"
+  sudo chmod "$permissions" "$path"
 
   # Define as permissões para todos os arquivos dentro do diretório atual
-  find "$path" -type f -exec chmod "$permissions" {} \;
+  sudo find "$path" -type f -exec chmod "$permissions" {} \;
 
   # Define as permissões para todos os subdiretórios dentro do diretório atual
-  find "$path" -type d -exec chmod "${permissions%?}" {} \;
+  sudo find "$path" -type d -exec chmod "${permissions%?}" {} \;
 }
 
 # Define as permissões para cada pasta específica do projeto
@@ -44,8 +44,7 @@ set_permissions_recursive "$PROJECT_DIR" "$DEFAULT_PERMISSIONS"
 set_permissions_recursive "$PROJECT_DIR" "$DEFAULT_DIRECTORY_PERMISSIONS"
 
 # Executa o composer no modo de produção do CodeIgniter 4
-cd "$PROJECT_DIR"
-composer install --no-dev --optimize-autoloader --no-interaction
+sudo composer install --no-dev --optimize-autoloader --no-interaction --working-dir="$PROJECT_DIR"
 
 # Limpa o cache do CodeIgniter 4 (opcional)
-php spark cache:clear
+sudo php "$PROJECT_DIR" spark cache:clear
