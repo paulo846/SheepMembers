@@ -8,6 +8,6 @@ sudo chmod +x after_install.sh
 cd /www/wwwroot/conect.app
 
 # Outras ações pós-instalação
-/www/server/php/82/bin/php composer install --no-dev
+composer install --no-dev
 
 sudo chmod -R 777 /www/wwwroot/conect.app/writable
