@@ -332,7 +332,7 @@ class Participantes extends ResourceController
             <li><b>Sua senha:</b> mudar123</li>
         </ul></div>";
 
-        $view = view('usuarios\emails\bem-vindo', [
+        $view = view('usuarios/emails/bem-vindo', [
             'plataforma' => $plataforma[0]['title_pt'],
             'logo'       => url_cloud_front().'assets/admin/img/logo-1.png',
             'nome'       => $input['r_name'],
