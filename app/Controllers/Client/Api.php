@@ -131,8 +131,20 @@ class Api extends ResourceController
         return $this->respond($data, 200);
     }
 
-    public function verify()
-    {
+    public function verify(int $id)
+    {        
+        $mClient = new ClientModel();
+        $builder = $mClient->find($id);
+        if($builder){
+            if($builder['bloqueio']){
+                session();
+                session_destroy();
+            }
+        }else{
+            session();
+            session_destroy();
+        }
+
         if (session('loggedClient')) {
             return $this->respond(['status' => 'logado'], 200);
         } else {

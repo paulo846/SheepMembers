@@ -226,7 +226,7 @@
     <script type="text/javascript">
         var site = "<?= site_url() ?>";
         var stream = "<?= $id ?>";
-        var client = "<?= $id ?>";
+        var client = "<?= session('idUser') ?>";
 
 
         $('.form_update').ajaxForm({
@@ -252,7 +252,7 @@
         function logIn() {
             $.ajax({
                 type: "get",
-                url: site + "client/api/verify",
+                url: site + "client/api/verify/" + client,
                 dataType: "json",
                 success: function(res) {
                     console.log(res);
