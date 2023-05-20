@@ -42,12 +42,18 @@ use CodeIgniter\I18n\Time; ?>
                         <small><?= $row['email'] ?></small><br>
                         <small class="text-success"><b><?= $row['phone'] ?></b></small>
                     </td>
-                    <td><span class="badge badge-soft-success">Ativo</span></td>
+                    <td>
+                        <?php if (!$row['bloqueio']) : ?>
+                            <span class="badge badge-soft-success">Ativo</span>
+                        <?php else : ?>
+                            <span class="badge badge-soft-danger">Bloqueado</span>
+                        <?php endif; ?>
+                    </td>
                     <td>
                         <?= view_cell('App\Libraries\Viewhtml::relacionamento', ['idAluno' => $row['id'], 'eventos' => $eventos]) ?>
                     </td>
                     <td>
-                        <?php 
+                        <?php
                         echo $acessos->where('id_cliente', $row['id'])->countAllResults();
                         ?>
                     </td>
@@ -65,11 +71,15 @@ use CodeIgniter\I18n\Time; ?>
                                 <i class="ri-more-2-fill"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">View</a></li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">View</a></li>
+                                <li><a class="dropdown-item" href="#">Edit</a></li>-->
                                 <li><a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#varyingcontentModal" onclick="search_item('<?= $row['id'] ?>')">Reenviar</a></li>
-                                <li><a class="dropdown-item" href="#">Bloquear</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                                <?php if (!$row['bloqueio']) : ?>
+                                    <li><a class="dropdown-item" href="#" onclick="bloquear('<?= $row['id'] ?>', 1)">Bloquear</a></li>
+                                <?php else : ?>
+                                    <li><a class="dropdown-item" href="#" onclick="bloquear('<?= $row['id'] ?>', 0)">Desbloquear</a></li>
+                                <?php endif; ?>
+                                <!-- <li><a class="dropdown-item" href="#">Delete</a></li>-->
                             </ul>
                         </div>
                     </td>
@@ -107,6 +117,19 @@ use CodeIgniter\I18n\Time; ?>
                 $("#r_id").val(id);
             }
         );
+    }
+
+    function bloquear(id, tipo) {
+        toastr.warning('Bloqueando usuário!!!')
+        $.getJSON(baseUrl + "/superadmin/api/aluno/bloquear/" + id +'/'+ tipo,
+            function(data, _textStatus) {
+                toastr.success('Usuário bloqueado!!!')
+            }
+        ).fail(function(jqxhr, textStatus, error) {
+            toastr.error('Verique os logs do navegador!')
+            var err = textStatus + ", " + error;
+            toastr.error('Erro ao bloquear o usuário: ' + err);
+        });
     }
 
     $(document).ready(function() {

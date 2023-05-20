@@ -42,6 +42,7 @@ $routes->group('superadmin', static function ($routes) {
 
         //ALUNO
         $routes->get('aluno/(:num)', 'Super\Api\Participantes::show/$1');
+        $routes->get('aluno/bloquear/(:num)/(:num)', 'Super\Api\Participantes::bloquear/$1/$2');
         $routes->post('aluno/reenvio', 'Super\Api\Participantes::reenviar');
     });
     

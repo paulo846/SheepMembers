@@ -346,4 +346,13 @@ class Participantes extends ResourceController
             return $this->fail(['error' => $e->getMessage()]);
         }
     }
+
+    public function bloquear (int $id, int $tipo){
+        
+        $this->mParticipante->save([
+            'id' => $id,
+            'bloqueio' => $tipo
+        ]);
+        return $this->respond(['msg' => 'Bloqueado com sucesso!']);
+    }
 }

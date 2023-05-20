@@ -15,7 +15,7 @@ class ClientModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'email', 'password', 'token', 'username', 'phone', 'image'];
+    protected $allowedFields    = ['name', 'bloqueio', 'email', 'password', 'token', 'username', 'phone', 'image'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,7 +23,7 @@ class ClientModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
-    
+
 
     public function authclient($input)
     {
@@ -35,6 +35,13 @@ class ClientModel extends Model
         if (count($builder) == 1) {
             //vefica se a senha é compativel com a senha digitada
             if (password_verify($input['password'], $builder[0]['password'])) {
+
+                if ($builder[0]['bloqueio']) {
+
+                    $session = session();
+                    $session->setFlashdata('error', lang('Alertas.bloqueado'));
+                    throw new Exception(lang('Alertas.bloqueado'));
+                }
 
                 //variavel de sessão
                 $session = session();
@@ -53,10 +60,9 @@ class ClientModel extends Model
                 $mLogs->save([
                     'id_cliente' => intval($builder[0]['id'])
                 ]);
-            
+
                 //salva dos dados na sessão
                 $session->set($data);
-                
             } else {
                 //erro de senha
                 $session = session();
