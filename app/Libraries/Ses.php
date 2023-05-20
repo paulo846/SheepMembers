@@ -20,6 +20,7 @@ class Ses
         ]);
 
         $sender    = $data['sender'];
+        $senderName = $data['sender_name']; // Novo campo para o nome do remetente
         $recipient = $data['recipient'];
         $subject   = $data['subject'];
         $body      = $data['body'];
@@ -36,7 +37,7 @@ class Ses
         ];
 
         $result = $client->sendEmail([
-            'Source' => $sender,
+            'Source' => "$senderName <$sender>", // Incluindo o nome do remetente
             'Destination' => [
                 'ToAddresses' => [$recipient],
             ],
@@ -45,6 +46,7 @@ class Ses
 
         return $result;
     }
+
 
     public function acessoInicial(array $dados, int $empresa)
     {
@@ -69,13 +71,12 @@ class Ses
             'subject'   => 'Bem vindo!',
             'body'      => $html
         ]);
-
     }
 
     public function acessoInicialGeral(array $dados)
     {
         $mConfig = new ConfigModel();
-       
+
 
         //html
         $html = "<div style='font-size: 14px;'><h3>Você pediu uma recuperação de conta em https://{$_SERVER['HTTP_HOST']}</h3>";
@@ -94,6 +95,5 @@ class Ses
             'subject'   => 'Recuperação de conta!',
             'body'      => $html
         ]);
-
     }
 }

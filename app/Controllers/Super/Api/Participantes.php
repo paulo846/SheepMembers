@@ -332,14 +332,23 @@ class Participantes extends ResourceController
             <li><b>Sua senha:</b> mudar123</li>
         </ul></div>";
 
+        $view = view('usuarios\emails\bem-vindo', [
+            'plataforma' => $plataforma[0]['title_pt'],
+            'logo'       => url_cloud_front().'assets/admin/img/logo-1.png',
+            'nome'       => $input['r_name'],
+            'link'       => $plataforma[0]['slug'],
+            'email'      => $input['r_email']
+        ]);
+
             //envia email de boas vindas!
             $email = new Ses;
 
             $email->sendEmail([
-                'sender' => 'contato@conect.app',
+                'sender' => 'contato@sheepmembers.com',
+                'sender_name' => 'SHEEP MEMBERS',
                 'recipient' => $input['r_email'],
-                'subject' => 'Bem vindo!',
-                'body'    => $html
+                'subject' => 'Seu acesso chegou - '.ucfirst($plataforma[0]['title_pt']),
+                'body'    => $view
             ]);
             return $this->respond(['msg' => 'Atualizado com sucesso!']);
         } catch (\Exception $e) {
