@@ -40,6 +40,7 @@ class Home extends BaseController
             $this->mCliente->like('name', esc($search))
                 ->orderBy('id', 'ASC')
                 ->orLike('email', esc($search))
+                ->orLike('phone', esc($search))
                 ->orLike('id', esc($search));
         } else {
             //lista do mais atual para o mais antingo
