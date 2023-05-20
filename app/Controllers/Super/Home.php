@@ -58,6 +58,10 @@ class Home extends BaseController
             $numBusca = intval(10);
         }
 
+        if ($this->request->getGet('b')) {
+            $this->mCliente->where('bloqueio', $this->request->getGet('b'));
+        }
+
         //por data
 
         $dataInicial = $this->request->getGet('datein');
