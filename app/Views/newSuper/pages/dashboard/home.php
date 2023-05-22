@@ -91,7 +91,12 @@
                         </div>
 
                        
-                        
+                        <div class="ms-1 header-item d-none d-sm-flex">
+                            <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
+                                <i class='bx bx-fullscreen fs-22'></i>
+                            </button>
+                        </div>
+
                         <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
                                 <i class='bx bx-moon fs-22'></i>
@@ -386,8 +391,6 @@
                                 <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>
