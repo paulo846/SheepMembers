@@ -29,6 +29,12 @@ class Home extends BaseController
         //
         return view('newSuper/pages/dashboard/home', $data);
     }
+
+
+
+
+
+    
     public function alunos()
     {
         //dados da empresa
