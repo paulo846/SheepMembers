@@ -10,9 +10,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<?php
-
-use CodeIgniter\I18n\Time; ?>
+<?php use CodeIgniter\I18n\Time; ?>
 <?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 
 <div class="row">

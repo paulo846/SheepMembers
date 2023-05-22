@@ -21,9 +21,9 @@ class Empresas extends BaseController
         helper('number');
     }
     public function index(){
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Clientes';
         //
-        return view('newSuper/pages/dashboard/home', $data);
+        return view('newSuper/pages/clientes/home', $data);
     }
     public function antigo(){
         //
