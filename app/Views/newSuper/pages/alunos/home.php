@@ -17,6 +17,10 @@ use CodeIgniter\I18n\Time; ?>
 
 <div class="row">
     <div class="col-xl-12">
+        <pre>
+Numero de cadastros: <?= $totalAlunos ?>
+Listados: <?= count($cliente) ?>
+        </pre>
         <?php if (count($cliente)) : ?>
             <div class="table-responsive">
                 <table class="table table-bordered table-nowrap">
