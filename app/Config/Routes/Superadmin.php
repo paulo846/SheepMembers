@@ -6,6 +6,7 @@ $routes->group('superadmin', static function ($routes) {
     $routes->get('alunos', 'Super\Home::alunos', ['filter' => 'loggedsuper']);
 
     $routes->get('empresas', 'Super\Empresas::index', ['filter' => 'loggedsuper']);
+    $routes->get('empresas/antigo', 'Super\Empresas::antigo', ['filter' => 'loggedsuper']);
     $routes->get('empresas/new', 'Super\Empresas::new', ['filter' => 'loggedsuper']);
     $routes->get('empresas/(:num)', 'Super\Empresas::edit/$1', ['filter' => 'loggedsuper']);
     $routes->get('edit/(:num)', 'Super\Empresas::edit/$1', ['filter' => 'loggedsuper']);

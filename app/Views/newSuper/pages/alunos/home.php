@@ -18,7 +18,7 @@ use CodeIgniter\I18n\Time; ?>
 <div class="row">
     <div class="col-xl-12">
 <pre>
-Numero de cadastros: <?= $totalAlunos ?>
+Número de cadastros: <?= $totalAlunos ?>
 
 Listados: <?= count($cliente) ?>
 </pre>

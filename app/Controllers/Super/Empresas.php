@@ -20,8 +20,12 @@ class Empresas extends BaseController
         $this->s3 = new S3();
         helper('number');
     }
-    public function index()
-    {
+    public function index(){
+        $data['title'] = 'Dashboard';
+        //
+        return view('newSuper/pages/dashboard/home', $data);
+    }
+    public function antigo(){
         //
         $data['title'] = 'Empresas 001';
 
