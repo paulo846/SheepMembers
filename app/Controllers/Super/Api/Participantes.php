@@ -287,14 +287,16 @@ class Participantes extends ResourceController
 
         $idEmpresa = $input['r_evento'];
         $idParticipante = $input['r_id'];
-        
+
 
         try {
             $this->mParticipante->save([
                 'id' => $idParticipante,
+                'name' => $input['r_name'],
+                'email' => $input['r_email'],
                 'password' => password_hash('mudar123', PASSWORD_BCRYPT)
             ]);
-            
+
             if ($rel = $this->mRelaciona->where(['id_cliente' => $idParticipante, 'id_empresa' => $idEmpresa])->findAll()) {
                 //dados para relacionamento
                 $this->mRelaciona->delete($rel[0]['id']);
@@ -322,23 +324,14 @@ class Participantes extends ResourceController
             //busca dados da empresa
             $plataforma = $this->mConfig->where('id_empresa', $idEmpresa)->findAll();
 
-            //html
-            $html = "<div style='font-size: 18px;'><h3>Dados para acesso {$plataforma[0]['title_pt']}</h3>";
-            $html .= "<p>{$input['r_name']}, nesse email contém os dados de acesso a plataforma para você assistir ao seu evento!</p>";
-            $html .= "Dados de acesso:
-        <ul>
-            <li><b>Link da plataforma:</b> {$plataforma[0]['slug']}</li>
-            <li><b>Seu email:</b> {$input['r_email']}</li>
-            <li><b>Sua senha:</b> mudar123</li>
-        </ul></div>";
 
-        $view = view('usuarios/emails/bem-vindo', [
-            'plataforma' => $plataforma[0]['title_pt'],
-            'logo'       => url_cloud_front().'assets/admin/img/logo-1.png',
-            'nome'       => $input['r_name'],
-            'link'       => $plataforma[0]['slug'],
-            'email'      => $input['r_email']
-        ]);
+            $view = view('usuarios/emails/bem-vindo', [
+                'plataforma' => $plataforma[0]['title_pt'],
+                'logo'       => url_cloud_front() . 'assets/admin/img/logo-1.png',
+                'nome'       => $input['r_name'],
+                'link'       => $plataforma[0]['slug'],
+                'email'      => $input['r_email']
+            ]);
 
             //envia email de boas vindas!
             $email = new Ses;
@@ -347,7 +340,7 @@ class Participantes extends ResourceController
                 'sender' => 'contato@sheepmembers.com',
                 'sender_name' => 'SHEEP MEMBERS',
                 'recipient' => $input['r_email'],
-                'subject' => 'Seu acesso chegou - '.ucfirst($plataforma[0]['title_pt']),
+                'subject' => 'Seu acesso chegou - ' . ucfirst($plataforma[0]['title_pt']),
                 'body'    => $view
             ]);
             return $this->respond(['msg' => 'Atualizado com sucesso!']);
@@ -356,8 +349,9 @@ class Participantes extends ResourceController
         }
     }
 
-    public function bloquear (int $id, int $tipo){
-        
+    public function bloquear(int $id, int $tipo)
+    {
+
         $this->mParticipante->save([
             'id' => $id,
             'bloqueio' => $tipo

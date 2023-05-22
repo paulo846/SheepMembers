@@ -10,11 +10,11 @@
                 <div class="modal-body">
                     <div class="mb-2">
                         <label for="r_name" class="col-form-label">Nome:</label>
-                        <input type="text" class="form-control" id="r_name" name="r_name" readonly>
+                        <input type="text" class="form-control" id="r_name" name="r_name">
                     </div>
                     <div class="mb-2">
                         <label for="r_email" class="col-form-label">Email:</label>
-                        <input type="text" class="form-control" id="r_email" name="r_email" readonly>
+                        <input type="text" class="form-control" id="r_email" name="r_email">
                     </div>
                     <div class="mb-2">
                         <label for="r_evento" class="col-form-label">Evento</label>
