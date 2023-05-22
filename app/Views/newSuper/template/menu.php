@@ -9,13 +9,13 @@
                 <div class="mt-2 text-center">
                     <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
                     <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                        <h4>Are you sure ?</h4>
-                        <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
+                        <h4>Tem certeza ?</h4>
+                        <p class="text-muted mx-4 mb-0">Tem certeza de que deseja remover esta notificação?</p>
                     </div>
                 </div>
                 <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
+                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn w-sm btn-danger" id="delete-notification">Sim, excluí-lo!</button>
                 </div>
             </div>
 
@@ -61,34 +61,34 @@
                     </a>
                 </li>
                 <!-- end Dashboard Menu -->
-                <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Clientes</span></li>
+                <li class="menu-title">
+                    <i class="ri-more-fill"></i> <span data-key="t-pages">Clientes</span>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="<?= site_url('superadmin/empresas') ?>">
                         <i class="ri-building-line"></i> <span data-key="t-widgets">Ações</span>
                     </a>
                 </li>
-                <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Alunos</span></li>
+                <li class="menu-title">
+                    <i class="ri-more-fill"></i> <span data-key="t-pages">Alunos</span>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="<?= site_url('superadmin/alunos') ?>">
                         <i class="ri-user-search-line"></i> <span data-key="t-widgets">Ações</span>
                     </a>
                 </li>
-
             </ul>
         </div>
         <!-- Sidebar -->
     </div>
-
     <div class="sidebar-background"></div>
 </div>
 <!-- Left Sidebar End -->
 <!-- Vertical Overlay-->
 <div class="vertical-overlay"></div>
-
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">

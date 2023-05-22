@@ -46,8 +46,8 @@ class Home extends BaseController
                 
                 $data['name']        = $builder[0]['title_pt'];
                 $data['description'] = $builder[0]['description_pt'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream_pt']   = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
@@ -55,8 +55,8 @@ class Home extends BaseController
 
                 $data['name']        = $builder[0]['title_en'];
                 $data['description'] = $builder[0]['description_en'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream_pt']   = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false ;
@@ -65,8 +65,8 @@ class Home extends BaseController
                 
                 $data['name']        = $builder[0]['title_es'];
                 $data['description'] = $builder[0]['description_es'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream_pt']   = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false ;
@@ -75,8 +75,8 @@ class Home extends BaseController
 
                 $data['name']        = $builder[0]['title_pt'];
                 $data['description'] = $builder[0]['description_pt'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream_pt']   = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
