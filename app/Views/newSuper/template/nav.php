@@ -35,6 +35,7 @@
                 <?= form_open('/superadmin/alunos', 'method="get" class="app-search d-none d-md-block"') ?>
                 <div class="position-relative">
                     <input type="text" name="s" class="form-control" placeholder="Search..." autocomplete="off" value="<?= (isset($_GET['s'])) ? $_GET['s'] : '' ?>">
+                    <input type="hidden" name="c" value="20">
                     <span class="mdi mdi-magnify search-widget-icon"></span>
                     <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none" id="search-close-options"></span>
                 </div>
@@ -51,6 +52,7 @@
                         <div class="form-group m-0">
                             <div class="input-group">
                                 <input name="s" type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username"  value="<?= (isset($_GET['s'])) ? $_GET['s'] : '' ?>">
+                                <input type="hidden" name="c" value="20">
                                 <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
                             </div>
                         </div>
