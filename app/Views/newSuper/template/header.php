@@ -41,7 +41,7 @@
     <!-- Bootstrap Css -->
     <link href="<?= url_cloud_front() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="<?= url_cloud_front() ?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="<?= url_cloud_front() ?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
