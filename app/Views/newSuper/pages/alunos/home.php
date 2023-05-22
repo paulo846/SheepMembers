@@ -69,10 +69,10 @@ use CodeIgniter\I18n\Time; ?>
                                 </td>
                                 <td>
                                     <div class="dropdown">
-                                        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a href="#" role="button" id="dropdownMenuLink<?= $row['id'] ?>" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="ri-more-2-fill"></i>
                                         </a>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink<?= $row['id'] ?>">
                                             <!-- <li><a class="dropdown-item" href="#">View</a></li>
                                 <li><a class="dropdown-item" href="#">Edit</a></li>-->
                                             <li><a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#varyingcontentModal" onclick="search_item('<?= $row['id'] ?>')">Reenviar</a></li>
