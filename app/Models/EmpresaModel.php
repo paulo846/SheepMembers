@@ -14,7 +14,7 @@ class EmpresaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'empresa', 'evento', 'valor', 'contrato'];
+    protected $allowedFields    = ['name', 'empresa', 'evento', 'valor', 'contrato', 'bloqueio', 'prazo'];
 
     // Dates
     protected $useTimestamps = true;

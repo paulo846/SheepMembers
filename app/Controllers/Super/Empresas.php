@@ -22,6 +22,7 @@ class Empresas extends BaseController
     }
     public function index(){
         $data['title'] = 'Clientes';
+        $data['empresas'] = $this->mEmpresa->findAll();
         //
         return view('newSuper/pages/clientes/home', $data);
     }

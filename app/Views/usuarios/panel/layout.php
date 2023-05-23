@@ -210,7 +210,7 @@
 
     <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
     <script>
-        const player = new Plyr('#player');
+        const player  = new Plyr('#player');
         const player1 = new Plyr('#player1');
         const player2 = new Plyr('#player2');
         const player3 = new Plyr('#player3');
@@ -249,7 +249,7 @@
         });
 
 
-        function logIn() {
+        /*function logIn() {
             $.ajax({
                 type: "get",
                 url: site + "client/api/verify/" + client,
@@ -263,6 +263,9 @@
                 }
             });
         }
+        
+        logIn(), setInterval(logIn, 5e3),
+        */
 
 
         function ouvirAvisos() {
@@ -280,7 +283,7 @@
         }
 
         $(document).ready(function() {
-            logIn(), setInterval(logIn, 5e3), ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
+            ouvirAvisos(), setInterval(ouvirAvisos, 5e3);
         });
     </script>
     <!--  <script type="text/javascript">

@@ -37,11 +37,11 @@ Listados: <?= count($cliente) ?>
                     <tbody>
                         <?php foreach ($cliente as $row) : ?>
                             <tr>
-                                <th scope="row" class="position-relative">
+                                <td scope="row" class="position-relative">
                                     <div class="position-absolute top-50 start-50 translate-middle">
                                         <?= $row['id'] ?>
                                     </div>
-                                </th>
+                                </td>
                                 <td>
                                     <?= $row['name'] ?><br>
                                     <small><?= $row['email'] ?></small><br>
