@@ -285,7 +285,7 @@ class Participantes extends ResourceController
 
         $input = $this->request->getPost();
 
-        $idEmpresa = $input['r_evento'];
+        $idEmpresa      = $input['r_evento'];
         $idParticipante = $input['r_id'];
 
 

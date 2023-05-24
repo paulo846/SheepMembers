@@ -11,12 +11,11 @@ use Exception;
 
 class Login extends BaseController
 {
-    private $urlClient ;
+    private $urlClient;
     public function __construct()
     {
         $this->urlClient = $_SERVER['HTTP_HOST'];
         helper('url');
-
     }
     public function index()
     {
@@ -33,11 +32,10 @@ class Login extends BaseController
             $data['id_empresa']  = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['linkVenda']   = $builder[0]['link_venda'];
             $data['analytics']   = $builder[0]['analytics'];
-
         } else {
             //se não acha as configurações retorna dados padrão
             $data['name']        = 'Sheep Members';
@@ -47,8 +45,6 @@ class Login extends BaseController
             $data['linkVenda']   = false;
             $data['analytics']   = false;
             $data['id_empresa']  = false;
-
-
         }
         //titulo da página
         $data['title'] = 'Login | ' . $data['name'];
@@ -58,7 +54,7 @@ class Login extends BaseController
 
     public function recover()
     {
-        
+
         $mConfig = new ConfigModel();
         $s3 = new S3;
         $builder = $mConfig->where('slug', $this->urlClient)->findAll();
@@ -67,19 +63,14 @@ class Login extends BaseController
             $data['id_empresa'] = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['link_venda']  = $builder[0]['link_venda'];
             $data['analytics'] = $builder[0]['analytics'];
-
         } else {
-            $data['id_empresa']  = false;
-            $data['name']        = 'Sheep Members';
-            $data['description'] = false;
-            $data['logo']        = false;
-            $data['fundo']       = false;
-            $data['link_venda']  = false;
-            $data['analytics']   = false;
+            //alerta de erros
+            session()->setFlashdata('error', lang('Alertas.idEmpresa'));
+            return redirect()->to('/login');
         }
         $data['title'] = 'Login | ' . $data['name'];
         return view('usuarios/login/pages/recupera', $data);
@@ -97,35 +88,73 @@ class Login extends BaseController
         }
     }
 
-    public function reloadpass(){
+    public function reloadpass()
+    {
+        //recupera dados enviados
         $input = $this->request->getPost();
 
-        
+        //model participante
         $clientsModel = new ClientModel();
 
-        try{
+        //tratamento de erros
+        try {
+            //verifica se o id está preenchido
+            if(!isset($input['idEmpresa'])){
+                //erro traduzido para a linguagem escolhida
+                //url invalída
+                throw new Exception(lang('Alertas.idEmpresa'));
+            }
+
+            //bucas dados do participante com base no email
             $builder = $clientsModel->where('email', $input['email'])->findAll();
-            if(count($builder)){ 
+            
+            //se encontra um
+            if (count($builder)) {
+                //dados para alteração de senha
                 $data[] = [
                     'email'    => $input['email'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
-                
+
+                //altera senha para a senha padrão
                 $clientsModel->updateBatch($data, 'email');
-                
-                $ses = new Ses();
-
-                $ses->acessoInicialGeral($data[0]);
 
                 
-                session()->setFlashdata('success', lang('Panel.recuperado')); 
+                //busca dados da empresa
+                $mConfig    = new ConfigModel();
+                $plataforma = $mConfig->where('id_empresa', $input['idEmpresa'])->findAll();
+
+                //monta email
+                $view = view('usuarios/emails/bem-vindo', [
+                    'plataforma' => $plataforma[0]['title_pt'],
+                    'logo'       => url_cloud_front() . 'assets/admin/img/logo-1.png',
+                    'nome'       => $builder[0]['name'],
+                    'link'       => $plataforma[0]['slug'],
+                    'email'      => $input['email']
+                ]);
+
+                //envia email de boas vindas!
+                $email = new Ses;
+                $email->sendEmail([
+                    'sender' => 'contato@sheepmembers.com',
+                    'sender_name' => 'SHEEP MEMBERS',
+                    'recipient' => $input['email'],
+                    'subject' => 'Recuperação de senha - ' . ucfirst($plataforma[0]['title_pt']),
+                    'body'    => $view
+                ]);
+
+                //mensagem de sucesso
+                session()->setFlashdata('success', lang('Panel.recuperado'));
+                //redireciona
                 return redirect()->to('/login');
-
-            }else{
-                throw new Exception('Cliente não cadastrado.');
+        
+            } else {
+                //usuário não encontrado
+                throw new Exception(lang('Alertas.naoEncontrado'));
             }
-        }catch(\Exception $e){
-            session()->setFlashdata('error', 'Erro ao recuperar conta. <br>'. $e->getMessage());
+        } catch (\Exception $e) {
+            //alerta de erros
+            session()->setFlashdata('error', lang('Alertas.erroRecuperacao').'<br>' . $e->getMessage());
             return redirect()->to('/login');
         }
     }

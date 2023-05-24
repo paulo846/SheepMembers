@@ -13,8 +13,8 @@
     <!-- Favicons -->
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="<?= ($logo) ? $logo : url_cloud_front().'favicon.ico' ?>" sizes="32x32">
-    <link rel="apple-touch-icon" href="<?= ($logo) ? $logo : url_cloud_front().'favicon.ico' ?>">
+    <link rel="icon" type="image/png" href="<?= ($logo) ? $logo : url_cloud_front() . 'favicon.ico' ?>" sizes="32x32">
+    <link rel="apple-touch-icon" href="<?= ($logo) ? $logo : url_cloud_front() . 'favicon.ico' ?>">
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $name ?>">
     <meta name="author" content="SHEEP MEMBERS">
@@ -31,17 +31,40 @@
             left: 0;
             right: 0;
         }
+
         .sign__form {
             background-color: rgba(0, 0, 0, 0.6) !important;
         }
+
+        .alert {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .alert-danger {
+            background-color: red;
+            color: #ffffff;
+        }
+
+        .alert-success {
+            background-color: green;
+            color: #ffffff;
+        }
     </style>
-    
+
     <?= $this->renderSection('css') ?>
 </head>
 <?= $analytics ?>
+
 <body>
     <!-- sign in -->
-    <div class="sign section--bg" data-bg="<?= ($fundo) ? $fundo : url_cloud_front().'assets/admin/img/bg.jpg' ?>">
+    <div class="sign section--bg" data-bg="<?= ($fundo) ? $fundo : url_cloud_front() . 'assets/admin/img/bg.jpg' ?>">
         <div class="container">
             <div class="row">
                 <div class="col-12">

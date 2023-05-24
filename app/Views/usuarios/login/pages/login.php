@@ -1,25 +1,6 @@
 <?= $this->extend('usuarios/login/layout') ?>
 <?= $this->section('css') ?>
-<style>
-    .alert {
-        padding: 15px;
-        text-align: center;
-        font-weight: bold;
-        width: 100%;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-    }
-    .alert-danger {
-        background-color: red;
-        color: #ffffff;
-    }
 
-    .alert-success{
-        background-color: green;
-        color: #ffffff;
-    }
-</style>
 <?= $this->endSection() ?>
 <?= $this->section('form') ?>
 <?= form_open('/login/auth', 'class="sign__form"') ?> 

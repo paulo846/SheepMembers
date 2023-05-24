@@ -2,6 +2,7 @@
 <?= $this->section('form') ?>
 
 <?= form_open('recover', 'class="sign__form"') ?>
+    <input type="hidden" name="idEmpresa" value="<?= $id_empresa ?>">
     <a href="/" class="sign__logo">
         <img src="<?= ($logo) ? $logo : url_cloud_front().'assets/admin/img/logo-1.png' ?>" alt="">
     </a>
