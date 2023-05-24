@@ -1,6 +1,5 @@
 <?= $this->extend('usuarios/login/layout') ?>
 <?= $this->section('form') ?>
-
 <?= form_open('recover', 'class="sign__form"') ?>
     <input type="hidden" name="idEmpresa" value="<?= $id_empresa ?>">
     <a href="/" class="sign__logo">
