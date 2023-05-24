@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+    <?= $analytics ?>
     <title><?= $title ?></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -103,11 +104,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 </head>
-<?= $analytics ?>
 
 <body>
     <?= $this->include('usuarios/panel/header'); ?>
-    <main class="container mt-3" id="container"> 
+    <main class="container mt-3" id="container">
         <!-- <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
                 <?php if ($stream_pt) : ?>
@@ -210,7 +210,7 @@
 
     <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
     <script>
-        const player  = new Plyr('#player');
+        const player = new Plyr('#player');
         const player1 = new Plyr('#player1');
         const player2 = new Plyr('#player2');
         const player3 = new Plyr('#player3');
