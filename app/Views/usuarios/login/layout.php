@@ -2,7 +2,17 @@
 <html lang="<?= service('language')->getLocale() ?>">
 
 <head>
-<?= $analytics ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDSN5Q7JM1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-CDSN5Q7JM1');
+    </script>
+    <?= $analytics ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- CSS -->
@@ -61,6 +71,7 @@
 
     <?= $this->renderSection('css') ?>
 </head>
+
 <body>
     <!-- sign in -->
     <div class="sign section--bg" data-bg="<?= ($fundo) ? $fundo : url_cloud_front() . 'assets/admin/img/bg.jpg' ?>">
