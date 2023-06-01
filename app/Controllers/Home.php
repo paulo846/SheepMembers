@@ -10,6 +10,11 @@ use App\Models\GravacoesModel;
 
 class Home extends BaseController
 {
+    public function __construct()
+    {
+        //carrega helper
+        helper('url');
+    }
 
     /*public function index()
     {
@@ -26,37 +31,54 @@ class Home extends BaseController
     }
     public function teste()
     {
-
-
         echo date('h:i:s');
     }
 
     public function index()
     {
-        helper('url');
+        
+        //model de configuração
         $mConfig = new ConfigModel();
 
-        $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
+        //define data como array
         $data = array();
 
+        //biblioteca configurada do S3
         $s3 = new S3();
 
+        //Começa as ações de dados de configuações para retornar na tela
+        //busca informações através da url
+        $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
+        
+        //conta resultados
         if (count($builder)) {
 
+            /**
+             * CONFIGURAÇÕES PADRÃO DA PLATAFORMA
+             * DE ACORDO COM 
+             */
+            //id da empresa
             $data['idEmpresa'] = $builder[0]['id_empresa'];
 
+            //dados do analytics header
             $data['analytics'] = $builder[0]['analytics'];
 
+            //dados do analytics footer
+            $data['analyticsFooter'] = $builder[0]['scripts_footer'];
+
+            //imagem de fundo
             $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
+            //imagem logo
             $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
+            //imagem favicon
             $data['favicon']        = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
+            //imagem capa
             $data['capa']        = ($builder[0]['capa']) ? $s3->getImageUrl($builder[0]['capa']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
-
-
+            //informações para o idioma em português
             if (session()->lang == 'pt-BR') {
 
                 $data['name']        = $builder[0]['title_pt'];
@@ -65,20 +87,28 @@ class Home extends BaseController
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
                 $data['capaVideo']   = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) : false;
+            
+            //informações para o idioma em inglês
             } elseif (session()->lang == 'en') {
 
                 $data['name']        = $builder[0]['title_en'];
                 $data['description'] = $builder[0]['description_en'];
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
-                $data['stream']   = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false;
-            } elseif (session()->lang == 'es') {
+                $data['stream']      = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false;
+                $data['capaVideo']   = ($builder[0]['logo_en']) ? $s3->getImageUrl($builder[0]['logo_en']) : false;
 
+
+            //informações para o idioma em espanhol
+            } elseif (session()->lang == 'es') {
                 $data['name']        = $builder[0]['title_es'];
                 $data['description'] = $builder[0]['description_es'];
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
-                $data['stream']   = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false;
+                $data['stream']      = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false;
+                $data['capaVideo']   = ($builder[0]['logo_es']) ? $s3->getImageUrl($builder[0]['logo_es']) : false;
+                
+                //informações para o idioma padrão, PT BR
             } else {
                 $data['name']        = $builder[0]['title_pt'];
                 $data['description'] = $builder[0]['description_pt'];
@@ -88,31 +118,24 @@ class Home extends BaseController
                 $data['capaVideo']   = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) : false;
             }
         } else {
-
-            //alerta de erros
+            //se não houver resulstado na busca pela url, volta a página de login com um erro traduzido
             session()->setFlashdata('error', lang('Alertas.erroPlataforma'));
             return redirect()->to('login');
-
-            /*$data['name']        = 'Sheep Members';
-            $data['description'] = false;
-            $data['logo']        = false;
-            $data['fundo']       = false;
-            $data['link_venda']  = false;
-            $data['id']          = null;
-            $data['stream']   = false;
-            $data['analytics']   = false;
-            $data['capa'] = false ;
-            $data['capaVideo'] = false ;*/
         }
 
+        //verificar de ainda precisa desse bloco
         $data['live'] = true;
         if ($data['live']) {
             $data['classHeader'] = "header--hidden";
         } else {
             $data['classHeader'] = "header--static";
         }
+        /////
 
+        //titulo da página
         $data['title'] = 'Members | ' . $data['name'];
+        
+        //view
         return view('usuarios/newPainel/pages/home', $data);
     }
 
