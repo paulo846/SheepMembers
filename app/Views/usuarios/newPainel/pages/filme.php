@@ -27,7 +27,7 @@
         <div class="row">
             <?php if ($filme['comentarios'] == 'on') :
                 $buildComentUser = $comentarios->where(['id_gravacao' => $filme['id'], 'aprovado' => false, 'id_usuario' => session('idUser')])->countAllResults();
-                $buildComent = $comentarios->where(['id_gravacao' => $filme['id'], 'aprovado' => true])->findAll();
+                $buildComent = $comentarios->where(['id_gravacao' => $filme['id'], 'aprovado' => true])->findAll(10);
 
             ?>
                 <div class="col-12 col-xl-8 offset-xl-2">
@@ -59,7 +59,7 @@
                                             <div class="comments__autor">
                                                 <img class="comments__avatar" src="/assets/painel/img/avatar.svg" alt="">
                                                 <span class="comments__name"><?= $userComents->find($comentario['id_usuario'])['name'] ?></span>
-                                                <span class="comments__time"><?= formatarDataComent($comentario['created_at']) ?> - <?php if($comentario['id_usuario'] == session('idUser')) : ?><a href="/client/api/comentario/<?= session('idUser')  ?>/<?= $comentario['id'] ?>"><?= lang('Panel.comentarios.excluir') ?></a><?php endif; ?></span>
+                                                <span class="comments__time"><?= formatarDataComent($comentario['created_at']) ?> - <?php if($comentario['id_usuario'] == session('idUser')) : ?><a href="/client/api/comentario/<?= session('idUser')  ?>/<?= $comentario['id'] ?>" class="text-danger" onclick="deletar()"><?= lang('Panel.comentarios.excluir') ?></a><?php endif; ?></span>
                                             </div>
                                             <p class="comments__text"><?= esc($comentario['comentario']) ?></p>
                                         </li>

@@ -49,6 +49,10 @@
 			background-color: rgba(0, 0, 0, 0) !important;
 			background: rgba(0, 0, 0, 0) !important;
 		}
+
+		.text-danger{
+			color: #ff4746 !important;
+		}
 	</style>
 	<?= $analytics ?>
 	<!-- Meta Pixel Code -->
