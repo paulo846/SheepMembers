@@ -33,9 +33,10 @@ return [
     'recuperado' => "Enviamos mais instruções para o seu e-mail!",
 
     'comentarios' => [
-        'text' => 'Comentários',
-        'add' => 'Comentar',
-        'button' => 'Enviar'
+        'text'    => 'Comentários',
+        'add'     => 'Comentar',
+        'button'  => 'Enviar',
+        'excluir' => 'Excluir'
     ],
 
     'userComentario' => "Você tem comentário's a serem aprovados. <b>Total: {0, number}</b>"

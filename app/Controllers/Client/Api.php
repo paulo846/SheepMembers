@@ -214,7 +214,7 @@ class Api extends ResourceController
             //return $this->respond($data);
 
             return redirect()->back();
-            
+
         } catch (\Exception $e) {
             return $this->fail(['err' => $e->getMessage()]);
         }
@@ -223,12 +223,15 @@ class Api extends ResourceController
     {
         try {
             $mComentarios = new ComentariosModel();
-            $builder = $mComentarios->where(['id_usuarios' => $idUser, 'id' => $id])->findAll();
+            /*$builder = $mComentarios->where(['id_usuarios' => $idUser, 'id' => $id])->findAll();
+            
             if (!count($builder)) {
-                throw new Exception('');
-            }
+                throw new Exception('Registro não encontrado!');
+            }*/
+            
             $mComentarios->delete($id);
-            return $this->respond(['succ' => 'Deletado com sucesso']);
+            //return $this->respond(['succ' => 'Deletado com sucesso']);
+            return redirect()->back();
         } catch (\Exception $e) {
             $this->fail(['err' => $e->getMessage()]);
         }
