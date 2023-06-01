@@ -33,5 +33,5 @@ return [
         'excluir' => 'Borrar'
     ],
 
-    'userComentario' => "Tienes comentarios que están siendo aprobados. <b>Total: {0, número</b>"
+    'userComentario' => "Tienes comentarios que están siendo aprobados. <b>Total: {0, number}</b>"
 ];

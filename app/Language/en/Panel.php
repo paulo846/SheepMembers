@@ -37,5 +37,5 @@ return [
         'excluir' => 'Delete'
     ],
 
-    'userComentario' => "Tiene comentarios para aprobar. <b>Total: {0, número</b>"
+    'userComentario' => "You have comments to approve. <b>Total: {0, number}</b>"
 ];
