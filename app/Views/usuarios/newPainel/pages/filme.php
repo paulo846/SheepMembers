@@ -26,7 +26,7 @@
 
         <div class="row">
             <?php if ($filme['comentarios'] == 'on') :
-                $buildComent = $comentarios->where('id_gravacao', $filme['id'])->findAll();
+                $buildComent = $comentarios->where(['id_gravacao' => $filme['id'], 'aprovado' => true])->findAll();
 
             ?>
                 <div class="col-12 col-xl-8 offset-xl-2">

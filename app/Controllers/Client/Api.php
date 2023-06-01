@@ -210,8 +210,11 @@ class Api extends ResourceController
                 'body'    => $input['comentario']
             ]);
 
-            return $this->respond($data);
 
+            //return $this->respond($data);
+
+            return redirect()->back();
+            
         } catch (\Exception $e) {
             return $this->fail(['err' => $e->getMessage()]);
         }
