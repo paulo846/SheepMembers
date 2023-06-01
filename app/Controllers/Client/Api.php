@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Client;
 
+use App\Libraries\Ses;
 use App\Models\ClientModel;
 use App\Models\ComentariosModel;
 use App\Models\ConfigModel;
@@ -191,12 +192,26 @@ class Api extends ResourceController
                 'id_empresa'  => $input['idEmpresa'],
                 'id_gravacao' => $input['idFilme'],
                 'id_usuario'  => $input['idUser'],
-                'aprovado'    => true,
+                'aprovado'    => false,
                 'comentario'  => $input['comentario']
             ];
+
             $mComentarios = new ComentariosModel();
-            $mComentarios->insert($data);
+            $id           = $mComentarios->insert($data);
+
+            //envia email!
+            $email = new Ses;
+
+            $email->sendEmail([
+                'sender' => 'contato@sheepmembers.com',
+                'sender_name' => 'SHEEP MEMBERS',
+                'recipient' => 'sheepmembers@gmail.com',
+                'subject' => "Novo comentário - {$id}",
+                'body'    => $input['comentario']
+            ]);
+
             return $this->respond($data);
+
         } catch (\Exception $e) {
             return $this->fail(['err' => $e->getMessage()]);
         }
