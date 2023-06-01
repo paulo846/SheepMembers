@@ -252,7 +252,7 @@ use CodeIgniter\I18n\Time; ?>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-12">
-                                                                            <a href="<?= $config['slug'] . '/filme/' . $gravacao['slug'] ?>" target="_blank"><?= $config['slug'] . '/filme/' . $gravacao['slug'] ?></a>
+                                                                            <a href="https://<?= $config['slug'] . '/filme/' . $gravacao['slug'] ?>" target="_blank"><?= $config['slug'] . '/filme/' . $gravacao['slug'] ?></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
