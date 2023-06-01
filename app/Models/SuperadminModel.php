@@ -25,9 +25,11 @@ class SuperadminModel extends Model
             if(password_verify($input['password'], $builder[0]['password'])){
                 $session = session();
                 $data = [
+                    'idUser' => $builder[0]['id'],
                     'name'  => $builder[0]['name'],
                     'email' => $builder[0]['email'],
-                    'loggedSuper' => true
+                    'loggedSuper' => true,
+                    'loggedClient' => true
                 ];
                 $session->set($data);
             }else{

@@ -6,6 +6,7 @@
         background-color: #f1f1f1;
         padding: 10px;
         border-top-left-radius: 10px;
+        z-index: 1;
     }
     .language-select label {
         font-weight: bold;

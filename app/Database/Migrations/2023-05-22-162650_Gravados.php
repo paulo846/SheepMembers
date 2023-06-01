@@ -9,6 +9,9 @@ class Gravados extends Migration
     public function up()
     {
         //
+        $db = db_connect();
+
+        $db->disableForeignKeyChecks();
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -17,6 +20,11 @@ class Gravados extends Migration
                 'auto_increment' => true,
             ],
             'id_empresa' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
+            ],
+            'id_carrossel' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -66,7 +74,11 @@ class Gravados extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_empresa', 'empresa', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_carrossel', 'carrosseis', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('gravados', true);
+        
+        $db->enableForeignKeyChecks();
+
     }
 
     public function down()

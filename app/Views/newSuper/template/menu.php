@@ -69,11 +69,11 @@
                         <i class="ri-building-line"></i> <span data-key="t-widgets">Ações</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link menu-link" href="<?= site_url('superadmin/empresas/antigo') ?>">
                         <i class="ri-building-line"></i> <span data-key="t-widgets">Painel antigo</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="menu-title">
                     <i class="ri-more-fill"></i> <span data-key="t-pages">Alunos</span>
                 </li>

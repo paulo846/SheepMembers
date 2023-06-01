@@ -30,5 +30,11 @@ return [
 
     'comprarAcesso' => 'Comprar acceso',
 
-    'recuperado' => "Enviamos mais instruções para o seu e-mail!"
+    'recuperado' => "Enviamos mais instruções para o seu e-mail!",
+
+    'comentarios' => [
+        'text' => 'Comentários',
+        'add' => 'Comentar',
+        'button' => 'Enviar'
+    ]
 ];

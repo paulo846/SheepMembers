@@ -3,9 +3,12 @@
 namespace App\Controllers\Client;
 
 use App\Models\ClientModel;
+use App\Models\ComentariosModel;
+use App\Models\ConfigModel;
 use App\Models\MessagesModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\RESTful\ResourceController;
+use Exception;
 
 class Api extends ResourceController
 {
@@ -120,27 +123,31 @@ class Api extends ResourceController
         $mMessage->save($data);
     }
 
-    public function avisos()
-    {
+    public function addaviso(){
+        
+    }
 
+    public function avisos($id = null)
+    {
+        $mConfig = new ConfigModel();
+        $builder = $mConfig->where('id_empresa', $id)->select('alertas')->find()[0];
         $data[] = [
             'title' => 'Avisos!!',
-            'text'  => '',
+            'text'  => $builder['alertas'],
         ];
-
         return $this->respond($data, 200);
     }
 
     public function verify(int $id)
-    {        
+    {
         $mClient = new ClientModel();
         $builder = $mClient->find($id);
-        if($builder){
-            if($builder['bloqueio']){
+        if ($builder) {
+            if ($builder['bloqueio']) {
                 session();
                 session_destroy();
             }
-        }else{
+        } else {
             session();
             session_destroy();
         }
@@ -174,5 +181,38 @@ class Api extends ResourceController
             $this->fail($e->getMessage());
         }
         print_r($input);
+    }
+
+    public function comentar()
+    {
+        try {
+            $input = $this->request->getPost();
+            $data = [
+                'id_empresa'  => $input['idEmpresa'],
+                'id_gravacao' => $input['idFilme'],
+                'id_usuario'  => $input['idUser'],
+                'aprovado'    => true,
+                'comentario'  => $input['comentario']
+            ];
+            $mComentarios = new ComentariosModel();
+            $mComentarios->insert($data);
+            return $this->respond($data);
+        } catch (\Exception $e) {
+            return $this->fail(['err' => $e->getMessage()]);
+        }
+    }
+    public function deleteComent($idUser, $id)
+    {
+        try {
+            $mComentarios = new ComentariosModel();
+            $builder = $mComentarios->where(['id_usuarios' => $idUser, 'id' => $id])->findAll();
+            if (!count($builder)) {
+                throw new Exception('');
+            }
+            $mComentarios->delete($id);
+            return $this->respond(['succ' => 'Deletado com sucesso']);
+        } catch (\Exception $e) {
+            $this->fail(['err' => $e->getMessage()]);
+        }
     }
 }

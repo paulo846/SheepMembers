@@ -115,12 +115,54 @@ if (!function_exists('converterParaTimestamp')) {
         return $timestamp;
     }
 }
-
+if (!function_exists('formatarDataComent')) {
+    function formatarDataComent($data)
+    {
+        $data_formatada = date("d.m.Y, H:i", strtotime($data));
+        return $data_formatada;
+    }
+}
 
 if (!function_exists('format_date')) {
     function format_date($data)
     {
         $formatted_date = date('d/m/Y \á\s H:i:s', strtotime($data));
         return $formatted_date;
+    }
+}
+
+if (!function_exists('obterIDVideoYouTube')) {
+    function obterIDVideoYouTube($url)
+    {
+        $padrao = '/embed\/([a-zA-Z0-9_-]+)$/i';
+        preg_match($padrao, $url, $matches);
+
+        if (isset($matches[1])) {
+            return $matches[1];
+        } else {
+            return false;
+        }
+    }
+}
+
+
+if (!function_exists('slugGravacao')) {
+    function slugGravacao($titulo)
+    {
+        // Remover caracteres especiais e espaços em branco do título
+        $slug = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($titulo));
+
+        // Truncar o slug se exceder 255 caracteres
+        if (strlen($slug) > 255) {
+            $slug = substr($slug, 0, 255);
+        }
+
+        // Gerar um código único baseado na data e hora atual
+        $codigoUnico = date('YmdHis');
+
+        // Concatenar o código único no final do slug
+        $slugComCodigoUnico = $slug . '-' . $codigoUnico;
+
+        return $slugComCodigoUnico;
     }
 }

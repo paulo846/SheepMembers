@@ -41,7 +41,7 @@
         font-size: 14px;
         color: #e0e0e0;
         transition: 0.5s;
-    }
+    } 
 
     .form__logo label:hover {
         color: #fff;
@@ -436,11 +436,9 @@
             function readLogo(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-
                     reader.onload = function(e) {
                         $('#form__logo').attr('src', e.target.result);
                     }
-
                     reader.readAsDataURL(input.files[0]);
                 }
             }

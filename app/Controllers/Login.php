@@ -32,13 +32,15 @@ class Login extends BaseController
             $data['id_empresa']  = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['favicon']       = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['linkVenda']   = $builder[0]['link_venda'];
             $data['analytics']   = $builder[0]['analytics'];
         } else {
             //se não acha as configurações retorna dados padrão
             $data['name']        = 'Sheep Members';
+            $data['favicon']     = false;
             $data['description'] = false;
             $data['logo']        = false;
             $data['fundo']       = false;
@@ -63,8 +65,9 @@ class Login extends BaseController
             $data['id_empresa'] = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['favicon']       = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['link_venda']  = $builder[0]['link_venda'];
             $data['analytics'] = $builder[0]['analytics'];
         } else {

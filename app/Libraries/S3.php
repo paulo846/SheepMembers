@@ -37,11 +37,11 @@ class S3
         // Carrega a imagem para comprimi-la
         $img = $this->image->make($file->getPathname());
 
-        // Comprime a imagem com 50% de qualidade
-        $img->encode('webp', 99);
+        // Comprime a imagem com 10% de qualidade
+        $img->encode('png', 10);
 
         // Define o nome do arquivo no S3
-        $fileName = 'clients/' . $uniqueName . '.webp'; //. $file->guessExtension();
+        $fileName = 'clients/' . $uniqueName . '.png'; //. $file->guessExtension();
 
         // Upload do arquivo para o S3
         try {
@@ -49,7 +49,7 @@ class S3
                 'Bucket' => $this->awsBucket,
                 'Key' => $fileName,
                 'Body' => $img->stream(),
-                'ContentType' => 'image/webp',
+                'ContentType' => 'image/png',
                 'ACL' => 'public-read'
             ]);
         } catch (AwsException $e) {
