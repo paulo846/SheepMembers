@@ -34,5 +34,7 @@ return [
         'text' => 'Comments',
         'add' => 'Add comment',
         'button' => 'Send'
-    ]
+    ],
+
+    'userComentario' => "Tiene comentarios para aprobar. <b>Total: {0, número</b>"
 ];

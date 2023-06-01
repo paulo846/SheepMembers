@@ -26,6 +26,7 @@
 
         <div class="row">
             <?php if ($filme['comentarios'] == 'on') :
+                $buildComentUser = $comentarios->where(['id_gravacao' => $filme['id'], 'aprovado' => false, 'id_usuario' => session('idUser')])->countAllResults();
                 $buildComent = $comentarios->where(['id_gravacao' => $filme['id'], 'aprovado' => true])->findAll();
 
             ?>
@@ -47,7 +48,11 @@
                         <div class="tab-content">
                             <!-- comments -->
                             <div class="tab-pane fade show active" id="tab-1" role="tabpanel">
-
+                                <?php if ($buildComentUser) : ?>
+                                    <div class="alert alert-danger">
+                                        <?= lang('Panel.userComentario', [$buildComentUser]) ?>
+                                    </div>
+                                <?php endif; ?>
                                 <?php foreach ($buildComent as $comentario) : ?>
                                     <ul class="comments__list">
                                         <li class="comments__item">
