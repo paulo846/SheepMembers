@@ -6,6 +6,7 @@ use App\Libraries\S3;
 use App\Models\ClientModel;
 use App\Models\ComentariosModel;
 use App\Models\ConfigModel;
+use App\Models\EmpresaModel;
 use App\Models\GravacoesModel;
 
 class Home extends BaseController
@@ -36,7 +37,7 @@ class Home extends BaseController
 
     public function index()
     {
-        
+
         //model de configuração
         $mConfig = new ConfigModel();
 
@@ -49,7 +50,7 @@ class Home extends BaseController
         //Começa as ações de dados de configuações para retornar na tela
         //busca informações através da url
         $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
-        
+
         //conta resultados
         if (count($builder)) {
 
@@ -87,8 +88,8 @@ class Home extends BaseController
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
                 $data['capaVideo']   = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) : false;
-            
-            //informações para o idioma em inglês
+
+                //informações para o idioma em inglês
             } elseif (session()->lang == 'en') {
 
                 $data['name']        = $builder[0]['title_en'];
@@ -99,7 +100,7 @@ class Home extends BaseController
                 $data['capaVideo']   = ($builder[0]['logo_en']) ? $s3->getImageUrl($builder[0]['logo_en']) : false;
 
 
-            //informações para o idioma em espanhol
+                //informações para o idioma em espanhol
             } elseif (session()->lang == 'es') {
                 $data['name']        = $builder[0]['title_es'];
                 $data['description'] = $builder[0]['description_es'];
@@ -107,7 +108,7 @@ class Home extends BaseController
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false;
                 $data['capaVideo']   = ($builder[0]['logo_es']) ? $s3->getImageUrl($builder[0]['logo_es']) : false;
-                
+
                 //informações para o idioma padrão, PT BR
             } else {
                 $data['name']        = $builder[0]['title_pt'];
@@ -130,11 +131,14 @@ class Home extends BaseController
         } else {
             $data['classHeader'] = "header--static";
         }
+
         /////
+        $mEmpresa     = new EmpresaModel();
+        $nameEvento   = $mEmpresa->select('evento')->find($builder[0]['id_empresa'])['evento'];
 
         //titulo da página
-        $data['title'] = 'Members | ' . $data['name'];
-        
+        $data['title'] = 'Members | ' . $nameEvento;
+
         //view
         return view('usuarios/newPainel/pages/home', $data);
     }
@@ -146,19 +150,22 @@ class Home extends BaseController
     {
         helper('url');
         $mConfig = new ConfigModel();
-        
+
 
         $builder = $mConfig->where('slug', $_SERVER['HTTP_HOST'])->findAll();
         $data = array();
 
         $s3 = new S3();
 
-        $data['s3'] = $s3 ;
+        $data['s3'] = $s3;
 
         if (count($builder)) {
             $data['idEmpresa'] = $builder[0]['id_empresa'];
 
             $data['analytics'] = $builder[0]['analytics'];
+            
+            //dados do analytics footer
+            $data['analyticsFooter'] = $builder[0]['scripts_footer'];
 
             $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
@@ -174,7 +181,7 @@ class Home extends BaseController
 
             $gravacao = $mGravacao->where('slug', $slug)->findAll();
 
-            if(!$gravacao){
+            if (!$gravacao) {
                 //mensagem de gravação não encontrada
                 return redirect()->to(site_url());
                 exit();
@@ -199,7 +206,7 @@ class Home extends BaseController
 
         $data['userComents'] = $mUsuarios;
 
-        $data['title'] = "SheepMembers | ".$gravacao[0]['title'];
+        $data['title'] = "SheepMembers | " . $gravacao[0]['title'];
         return view('usuarios/newPainel/pages/filme', $data);
     }
 
@@ -219,7 +226,7 @@ class Home extends BaseController
     {
         return redirect()->to('/');
         exit;
-        
+
         helper('url');
         $mConfig = new ConfigModel();
 

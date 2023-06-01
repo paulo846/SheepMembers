@@ -30,12 +30,12 @@ class Login extends BaseController
         $data = array();
         //se tem configuração retorna em PT BR
         if (count($builder)) {
-            $mEmpresa = new EmpresaModel();
-            
-            $nameEvento = $mEmpresa->select('evento')->find($builder[0]['id_empresa'])['evento'];
+            $mEmpresa     = new EmpresaModel();
+            $nameEvento   = $mEmpresa->select('evento')->find($builder[0]['id_empresa'])['evento'];
+            $data['name'] = $nameEvento ;
 
             $data['id_empresa']  = $builder[0]['id_empresa'];
-            $data['name']        = $nameEvento ;
+            
             $data['description'] = $builder[0]['description_pt'];
             $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
