@@ -34,7 +34,8 @@ return [
         'text' => 'Comments',
         'add' => 'Add comment',
         'button' => 'Send',
-        'excluir' => 'Delete'
+        'excluir' => 'Delete',
+        'excluirAviso' => 'Are you sure you want to delete your comment?'
     ],
 
     'userComentario' => "You have comments to approve. <b>Total: {0, number}</b>"

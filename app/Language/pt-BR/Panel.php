@@ -36,7 +36,8 @@ return [
         'text'    => 'Comentários',
         'add'     => 'Comentar',
         'button'  => 'Enviar',
-        'excluir' => 'Excluir'
+        'excluir' => 'Excluir',
+        'excluirAviso' => 'Tem certeza de que deseja excluir seu comentário?'
     ],
 
     'userComentario' => "Você tem comentário's a serem aprovados. <b>Total: {0, number}</b>"

@@ -30,7 +30,8 @@ return [
         'text' => 'Comentarios',
         'add' => 'Agregar comentario',
         'button' => 'Mandar',
-        'excluir' => 'Borrar'
+        'excluir' => 'Borrar',
+        'excluirAviso' => '¿Seguro que quieres borrar tu comentario?'
     ],
 
     'userComentario' => "Tienes comentarios que están siendo aprobados. <b>Total: {0, number}</b>"

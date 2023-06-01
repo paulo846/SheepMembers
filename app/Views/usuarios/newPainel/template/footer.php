@@ -30,9 +30,9 @@
 
 <script>
 	const site = "<?= site_url() ?>";
-	
-	$(document).ready(function () {
-		$(".aviso").click(function(){
+
+	$(document).ready(function() {
+		$(".aviso").click(function() {
 			alert('Página em desenvolvimento...');
 		})
 	});

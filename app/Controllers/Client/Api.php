@@ -25,71 +25,12 @@ class Api extends ResourceController
     {
         $this->request = service('request');
     }
+    
     use ResponseTrait;
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
+     * POSSIVEL BATE PAPO
      */
-    public function show($id = null)
-    {
-        //
-    }
-
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        //
-    }
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
-    public function edit($id = null)
-    {
-        //
-    }
-
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
-    }
     public function messages($empresa)
     {
         $mMessage = new MessagesModel();
@@ -107,7 +48,9 @@ class Api extends ResourceController
         return $this->respond($data, 200);
     }
 
-    /** ENVIA MENSAGEM */
+    /**
+     * ENVIA MENSAGEM DO BATE PAPO
+     * */
     public function send($empresa)
     {
         $request = service('request');
@@ -124,10 +67,9 @@ class Api extends ResourceController
         $mMessage->save($data);
     }
 
-    public function addaviso(){
-        
-    }
-
+    /**
+     * MOSTRA AVISOS
+     */
     public function avisos($id = null)
     {
         $mConfig = new ConfigModel();
@@ -139,6 +81,9 @@ class Api extends ResourceController
         return $this->respond($data, 200);
     }
 
+    /**
+     * VERIFICA USUÁRIO LOGADO
+     */
     public function verify(int $id)
     {
         $mClient = new ClientModel();
@@ -162,6 +107,9 @@ class Api extends ResourceController
         }
     }
 
+    /**
+     * ATUALIZA PERFIL
+     */
     public function perfil()
     {
         $input = $this->request->getPost();
@@ -179,11 +127,14 @@ class Api extends ResourceController
             session_destroy();
             return $this->respond(['message' => 'Alteração realizada com sucesso!']);
         } catch (\Exception $e) {
-            $this->fail($e->getMessage());
+            return $this->fail($e->getMessage());
         }
-        print_r($input);
+        
     }
 
+    /**
+     * ENVIA COMENTÁRIO
+     */
     public function comentar()
     {
         try {
@@ -199,6 +150,7 @@ class Api extends ResourceController
             $mComentarios = new ComentariosModel();
             $id           = $mComentarios->insert($data);
 
+            $usuarios = new ClientModel();
             //envia email!
             $email = new Ses;
 
@@ -219,6 +171,10 @@ class Api extends ResourceController
             return $this->fail(['err' => $e->getMessage()]);
         }
     }
+
+    /**
+     * DELETA COMENTÁRIO
+     */
     public function deleteComent($idUser, $id)
     {
         try {

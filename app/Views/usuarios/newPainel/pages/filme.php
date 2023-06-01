@@ -100,5 +100,9 @@
 <?= $this->section('js') ?>
 <script>
     const player3 = new Plyr('#player3');
+    function deletar() {
+		// Retorna true se confirmado, ou false se cancelado
+		return confirm(<?= lang('Panel.comentarios.excluirAviso') ?>);
+	}
 </script>
 <?= $this->endSection() ?>
