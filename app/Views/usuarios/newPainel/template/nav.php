@@ -8,7 +8,7 @@
                         <img src="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" alt="Sheep Members">
                     </a>
                     <div class="header__actions ml-auto">
-                        <a href="#" class="header__user ml-auto aviso" title="Ver perfil">
+                        <a href="/sair" class="header__user ml-auto aviso" title="Ver perfil">
                             <span>
                                 Olá <?= session('name') ?>
                             </span>
