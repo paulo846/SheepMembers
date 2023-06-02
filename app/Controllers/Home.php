@@ -81,8 +81,8 @@ class Home extends BaseController
 
             //VERIFICA SE TEM LINK DE TRANSMISSÃO NOS IDIOMAS
             $data['vStrPt'] = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
-            $data['vStrEn'] = ($builder[0]['stream_en']) ? $s3->getImageUrl($builder[0]['stream_en']) : false;
-            $data['vStrEs'] = ($builder[0]['stream_es']) ? $s3->getImageUrl($builder[0]['stream_es']) : false;;
+            $data['vStrEn'] = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false;
+            $data['vStrEs'] = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false;;
 
             //informações para o idioma em português
             if (session()->lang == 'pt-BR') {

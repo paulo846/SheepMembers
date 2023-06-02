@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'saudacao' => 'Hola {0}',
     'msgEscolhaTransmissao' => 'Elegir transmisión',
     'msgRodaPe' => 'Copyright © 2023 Todos los derechos reservados',
     'escolhaIdioma'         => 'Elige lengua',
@@ -34,5 +35,8 @@ return [
         'excluirAviso' => '¿Seguro que quieres borrar tu comentario?'
     ],
 
-    'userComentario' => "Tienes comentarios que están siendo aprobados. <b>Total: {0, number}</b>"
+    'userComentario' => "Tienes comentarios que están siendo aprobados. <b>Total: {0, number}</b>",
+
+    'disponivelEm' => "Disponible:"
+
 ];

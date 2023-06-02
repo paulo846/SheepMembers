@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'saudacao' => 'Hello {0}', 
     'msgEscolhaTransmissao' => 'Choose the transmission',
     'escolhaIdioma'         => 'Choose language',
     'idiomas'                => [
@@ -38,5 +39,7 @@ return [
         'excluirAviso' => 'Are you sure you want to delete your comment?'
     ],
 
-    'userComentario' => "You have comments to approve. <b>Total: {0, number}</b>"
+    'userComentario' => "You have comments to approve. <b>Total: {0, number}</b>",
+
+    'disponivelEm' => "Available in:"
 ];

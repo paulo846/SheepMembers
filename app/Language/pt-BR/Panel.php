@@ -1,9 +1,10 @@
 <?php
 
 return [
+    'saudacao' => 'Olá {0}',
     'msgEscolhaTransmissao' => 'Escolha a transmissão',
     'msgRodaPe' => 'Copyright © 2023 Todos os direitos reservados',
-    'escolhaIdioma'         => 'Escolha o idioma:',
+    'escolhaIdioma'         => 'Escolha de idioma',
     'idiomas'                => [
         'br' => 'Português',
         'es' => 'Espanhol',
@@ -40,5 +41,8 @@ return [
         'excluirAviso' => 'Tem certeza de que deseja excluir seu comentário?'
     ],
 
-    'userComentario' => "Você tem comentário's a serem aprovados. <b>Total: {0, number}</b>"
+    'userComentario' => "Você tem comentário's a serem aprovados. <b>Total: {0, number}</b>",
+
+    'disponivelEm' => "Disponível em:"
+
 ];

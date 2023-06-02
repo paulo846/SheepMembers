@@ -6,14 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="/assets/painel/css/bootstrap-reboot.min.css">
-	<link rel="stylesheet" href="/assets/painel/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="/assets/painel/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="/assets/painel/css/slider-radio.css">
-	<link rel="stylesheet" href="/assets/painel/css/select2.min.css">
-	<link rel="stylesheet" href="/assets/painel/css/magnific-popup.css">
-	<link rel="stylesheet" href="/assets/painel/css/plyr.css">
-	<link rel="stylesheet" href="/assets/painel/css/main.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/slider-radio.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/select2.min.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/magnific-popup.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/plyr.css">
+	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/main.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="<?= $favicon ?>" sizes="32x32">

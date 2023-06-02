@@ -15,17 +15,16 @@
 	</div>
 </footer>
 <!-- end footer -->
-<?= $this->include('includes/escolhaIdioma.php') ?>
 <!-- JS -->
-<script src="/assets/painel/js/jquery-3.5.1.min.js"></script>
-<script src="/assets/painel/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/painel/js/owl.carousel.min.js"></script>
-<script src="/assets/painel/js/slider-radio.js"></script>
-<script src="/assets/painel/js/select2.min.js"></script>
-<script src="/assets/painel/js/smooth-scrollbar.js"></script>
-<script src="/assets/painel/js/jquery.magnific-popup.min.js"></script>
-<script src="/assets/painel/js/plyr.min.js"></script>
-<script src="/assets/painel/js/main.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/jquery-3.5.1.min.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/bootstrap.bundle.min.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/owl.carousel.min.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/slider-radio.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/select2.min.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/smooth-scrollbar.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/jquery.magnific-popup.min.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/plyr.min.js"></script>
+<script src="<?= url_cloud_front() ?>assets/painel/js/main.js"></script>
 
 
 <script>
