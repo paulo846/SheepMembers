@@ -28,8 +28,7 @@ class SuperadminModel extends Model
                     'idUser' => $builder[0]['id'],
                     'name'  => $builder[0]['name'],
                     'email' => $builder[0]['email'],
-                    'loggedSuper' => true,
-                    'loggedClient' => true
+                    'loggedSuper' => true
                 ];
                 $session->set($data);
             }else{
