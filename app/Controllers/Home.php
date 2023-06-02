@@ -79,6 +79,11 @@ class Home extends BaseController
             //imagem capa
             $data['capa']        = ($builder[0]['capa']) ? $s3->getImageUrl($builder[0]['capa']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
+            //VERIFICA SE TEM LINK DE TRANSMISSÃO NOS IDIOMAS
+            $data['vStrPt'] = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
+            $data['vStrEn'] = ($builder[0]['stream_en']) ? $s3->getImageUrl($builder[0]['stream_en']) : false;
+            $data['vStrEs'] = ($builder[0]['stream_es']) ? $s3->getImageUrl($builder[0]['stream_es']) : false;;
+
             //informações para o idioma em português
             if (session()->lang == 'pt-BR') {
 
