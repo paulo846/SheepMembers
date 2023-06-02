@@ -30,7 +30,6 @@
 
 <script>
 	const site = "<?= site_url() ?>";
-	var stream = "<?= $id ?>";
 	var client = "<?= session('idUser') ?>";
 
 	function logIn() {
