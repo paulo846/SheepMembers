@@ -52,11 +52,11 @@
 
 		.text-danger{
 			color: #ff4746 !important;
-			transition: transform 0.6s ease-in-out; 
+			transition: transform 0.6s !important; 
 		}
-		.text-danger:hover{
-			color: #ff0000;
-			transform: scale(1.5); 
+		.text-danger :hover{
+			color: #ff0000 !important;
+			transform: scale(1.5) !important; 
 		}
 	</style>
 	<?= $analytics ?>
