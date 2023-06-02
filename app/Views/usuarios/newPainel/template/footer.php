@@ -30,8 +30,26 @@
 
 <script>
 	const site = "<?= site_url() ?>";
+	var stream = "<?= $id ?>";
+	var client = "<?= session('idUser') ?>";
+
+	function logIn() {
+		$.ajax({
+			type: "get",
+			url: site + "client/api/verify/" + client,
+			dataType: "json",
+			success: function(res) {
+				console.log(res);
+			},
+			error: function(xhr, status, error) {
+				console.log("Ocorreu um erro na requisição: " + status + " - " + error);
+				window.location.reload();
+			}
+		});
+	}
 
 	$(document).ready(function() {
+		logIn(), setInterval(logIn, 5e3)
 		$(".aviso").click(function() {
 			alert('Página em desenvolvimento...');
 		})
