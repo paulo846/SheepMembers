@@ -59,7 +59,7 @@
                                             <div class="comments__autor">
                                                 <img class="comments__avatar" src="/assets/painel/img/avatar.svg" alt="">
                                                 <span class="comments__name"><?= $userComents->find($comentario['id_usuario'])['name'] ?></span>
-                                                <span class="comments__time"><?= formatarDataComent($comentario['created_at']) ?> - <?php if($comentario['id_usuario'] == session('idUser')) : ?><a href="/client/api/comentario/<?= session('idUser')  ?>/<?= $comentario['id'] ?>" class="text-danger" onclick="return deletar();"><?= lang('Panel.comentarios.excluir') ?></a><?php endif; ?></span>
+                                                <span class="comments__time"><?= formatarDataComent($comentario['created_at']) ?><?php if($comentario['id_usuario'] == session('idUser')) : ?><a href="/client/api/comentario/<?= session('idUser')  ?>/<?= $comentario['id'] ?>" class="text-danger" onclick="return deletar();"> - <?= lang('Panel.comentarios.excluir') ?></a><?php endif; ?></span>
                                             </div>
                                             <p class="comments__text"><?= esc($comentario['comentario']) ?></p>
                                         </li>
