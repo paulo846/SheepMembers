@@ -14,27 +14,10 @@ class Teste extends BaseController
 {
     public function index()
     {
-
-        // use the factory to create a Faker\Generator instance
-        /*$faker = \Faker\Factory::create();
-
-        $data = array();
-
-        for ($i=0; $i < 7000; $i++) { 
-            $data[] = [
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'phone' => $faker->phoneNumber,
-                'password' => 'mudar123',//password_hash('mudar123', PASSWORD_BCRYPT),
-                'token' => uniqid() 
-            ]; 
+        echo 'Loop infinito';
+        while (true) {
+            // Executa um loop infinito
         }
-
-        $user = new ClientModel();
-
-        $user->insertBatch($data);
-        echo "<pre>";
-        print_r($data);*/
 
     }
     public function upload()
