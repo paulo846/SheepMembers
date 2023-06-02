@@ -21,9 +21,12 @@
                 </div>
             </div>
         <?php endif; ?>
-
-        <div class="col-12 col-xl-8 offset-xl-2">
-            <div id="lista-avisos"></div>
+        <div class="article">
+            <div class="row">
+                <div class="col-12 col-xl-8 offset-xl-2">
+                    <div id="lista-avisos"></div>
+                </div>
+            </div>
         </div>
 
         <?= view_cell('App\Cells\ListaFilmes::grade', ['idEmpresa' => $idEmpresa]) ?>
