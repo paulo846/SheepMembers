@@ -166,3 +166,17 @@ if (!function_exists('slugGravacao')) {
         return $slugComCodigoUnico;
     }
 }
+
+if (!function_exists('limitarNome')) {
+    function limitarNome($nomeCompleto)
+    {
+        $nomes = explode(' ', $nomeCompleto);
+        $nomeLimitado = '';
+        if (count($nomes) >= 2) {
+            $nomeLimitado = $nomes[0] . ' ' . $nomes[1];
+        } elseif (count($nomes) == 1) {
+            $nomeLimitado = $nomes[0];
+        }
+        return $nomeLimitado;
+    }
+}
