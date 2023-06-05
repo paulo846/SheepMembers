@@ -45,7 +45,7 @@
         <p class="fw-bolder">Configuração inglês</p>
 
         <?= form_open_multipart('superadmin/api/config/traducao/en', ['class' => 'ajax_envio_update']) ?>
-        <input type="hidden" name="id_config" value="<?= $empresa['id'] ?>">
+        <input type="hidden" name="id_config" value="<?= $config['id'] ?>">
         <input type="hidden" name="id_empresa" value="<?= $empresa['id'] ?>">
         <div class="row">
             <div class="col-12">
@@ -83,7 +83,7 @@
     <div class="col-lg-4">
         <p class="fw-bolder">Configuração espanhol</p>
         <?= form_open_multipart('superadmin/api/config/traducao/es', ['class' => 'ajax_envio_update']) ?>
-        <input type="hidden" name="id_config" value="<?= $empresa['id'] ?>">
+        <input type="hidden" name="id_config" value="<?= $config['id'] ?>">
         <input type="hidden" name="id_empresa" value="<?= $empresa['id'] ?>">
         <div class="row">
             <div class="col-12">

@@ -193,6 +193,8 @@ class Config extends ResourceController
                 $this->mConfig->save($data);
 
                 //atualização para idioma em inglês
+            
+            
             } elseif ($tipo == 'en') {
 
                 //recupera dados
@@ -227,7 +229,12 @@ class Config extends ResourceController
                 }
 
                 //atualiza dados
-                $this->mConfig->save($data);
+                $test = $this->mConfig->save($data);
+
+                var_dump($data);
+
+exit;
+
             } elseif ($tipo == 'es') {
                 //recupera dados
                 $input = $this->request->getPost();
