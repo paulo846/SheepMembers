@@ -229,11 +229,7 @@ class Config extends ResourceController
                 }
 
                 //atualiza dados
-                $test = $this->mConfig->save($data);
-
-                var_dump($data);
-
-exit;
+                $this->mConfig->save($data);
 
             } elseif ($tipo == 'es') {
                 //recupera dados
