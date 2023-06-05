@@ -148,7 +148,7 @@ class Participantes extends ResourceController
 
             $email->sendEmail([
                 'sender' => 'contato@sheepmembers.com',
-                'sender_name' => 'SHEEP MEMBERS',
+                'sender_name' => ucfirst($empresa['evento']),
                 'recipient' => $input['email'],
                 'subject' => 'Seu acesso chegou - ' . ucfirst($empresa['evento']),
                 'body'    => $view
@@ -345,7 +345,7 @@ class Participantes extends ResourceController
 
             $email->sendEmail([
                 'sender' => 'contato@sheepmembers.com',
-                'sender_name' => 'SHEEP MEMBERS',
+                'sender_name' => ucfirst($empresa['evento']),
                 'recipient' => $input['r_email'],
                 'subject' => 'Seu acesso chegou - ' . ucfirst($empresa['evento']),
                 'body'    => $view
