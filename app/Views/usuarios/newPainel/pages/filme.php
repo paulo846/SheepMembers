@@ -69,7 +69,7 @@
                                     <input type="hidden" value="<?= session('idUser') ?>" name="idUser">
                                     <input type="hidden" value="<?= $idEmpresa ?>" name="idEmpresa">
                                     <input type="hidden" value="<?= $filme['id'] ?>" name="idFilme">
-                                    <textarea id="text" name="comentario" class="sign__textarea" placeholder="<?= lang('Panel.comentarios.add') ?>"></textarea>
+                                    <textarea id="text" name="comentario" class="sign__textarea" placeholder="<?= lang('Panel.comentarios.add') ?>" required></textarea>
                                 </div>
                                 <button type="submit" class="sign__btn"><?= lang('Panel.comentarios.button') ?></button>
                                 </form>
