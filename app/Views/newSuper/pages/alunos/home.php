@@ -10,16 +10,37 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<?php use CodeIgniter\I18n\Time; ?>
+<?php
+
+use CodeIgniter\I18n\Time; ?>
 <?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 
 <div class="row">
     <div class="col-xl-12">
-<pre>
+
+        <div class="align-items-center d-flex mb-3">
+            <h4 class="text-dark mb-0 flex-grow-1">Lista de usuários/alunos</h4>
+            <div class="flex-shrink-0">
+                <button class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#modalNovoAluno">
+                    <i class="ri-user-line" title="Novo aluno" data-bs-toggle="tooltip"></i>
+                </button>
+                <button class="btn bg-danger text-bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                    <i class="ri-contacts-line" title="Lista de alunos em CSV" data-bs-toggle="tooltip"></i>
+                </button>
+                <a href="#" class="btn btn-sm bg-dark text-bg-dark">
+                    <i class="ri-file-download-line" title="Modelo de arquivo para lista de alunos" data-bs-toggle="tooltip"></i>
+                </a>
+            </div>
+        </div>
+
+        <pre>
 Número de cadastros: <?= $totalAlunos ?>
 
 Listados: <?= count($cliente) ?>
 </pre>
+
+
+
         <?php if (count($cliente)) : ?>
             <div class="table-responsive">
                 <table class="table table-bordered table-nowrap">
@@ -30,7 +51,7 @@ Listados: <?= count($cliente) ?>
                             <th scope="col">Status</th>
                             <th scope="col">Eventos</th>
                             <th scope="col">Acessos</th>
-                            <th scope="col">Criado</th>
+                            <th scope="col">Criado e Alterado</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -63,12 +84,18 @@ Listados: <?= count($cliente) ?>
                                     ?>
                                 </td>
                                 <td>
-                                    <?php
-                                    $current = Time::parse(date('Y-m-d H:i:s'));
-                                    $test    = Time::parse($row['created_at']);
-                                    $diff = $current->difference($test);
-                                    echo $diff->humanize();
-                                    ?>
+                                    Alterado: <?php
+                                                $current      = Time::parse(date('Y-m-d H:i:s'));
+                                                $dateAlterado = Time::parse($row['updated_at']);
+                                                $diffAlterado = $current->difference($dateAlterado);
+                                                echo $diffAlterado->humanize();
+                                                ?> <br>
+                                    Criado: <?php
+                                            $dateCreate    = Time::parse($row['created_at']);
+                                            $diffCreate = $current->difference($dateCreate);
+                                            echo $diffCreate->humanize();
+                                            ?> <br>
+
                                 </td>
                                 <td>
                                     <div class="dropdown">
@@ -106,6 +133,7 @@ Listados: <?= count($cliente) ?>
 </div>
 
 <?= $this->include('newSuper/pages/alunos/modals/reenvio') ?>
+<?= $this->include('newSuper/pages/alunos/modals/novoAluno') ?>
 
 <?= $pager->links('default', 'pager_movie') ?>
 
@@ -159,6 +187,30 @@ Listados: <?= count($cliente) ?>
                 /*setTimeout(function() {
                     location.reload();
                 }, 5000);*/
+            },
+
+            error: function(response) {
+                // Ação a ser executada em caso de erro
+                toastr.error('Verique os logs do navegador!')
+                console.log(response)
+            }
+        });
+
+        $('.form-update-page').ajaxForm({
+            dataType: 'json',
+            // Ação a ser executada em caso de sucesso
+
+            // Configuração para adicionar barra de progresso
+            beforeSubmit: function() {
+                toastr.warning('Enviando dados!!!')
+            },
+
+            success: function(response) {
+                // Ação a ser executada em caso de sucesso
+                toastr.success('Enviado com sucesso!!!')
+                setTimeout(function() {
+                    location.reload();
+                }, 5000);
             },
 
             error: function(response) {

@@ -26,9 +26,9 @@ class App extends BaseConfig
         parent::__construct();
         // Extrai o nome do host atual da URL
         if (isset($_SERVER['HTTP_HOST'])) {
-            $this->baseURL = "https://{$_SERVER['HTTP_HOST']}";
+            $this->baseURL = "http://{$_SERVER['HTTP_HOST']}";
         } else {
-            $this->baseURL = "https://conect.app";
+            $this->baseURL = "http://conect.app";
             // Adicione aqui uma ação apropriada para lidar com a situação em que a variável não está definida
         }
     }
