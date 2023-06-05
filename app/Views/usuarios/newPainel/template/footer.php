@@ -41,7 +41,7 @@
 			},
 			error: function(xhr, status, error) {
 				console.log("Ocorreu um erro na requisição: " + status + " - " + error);
-				window.location.reload();
+				//window.location.reload();
 			}
 		});
 	}
