@@ -24,7 +24,7 @@ use CodeIgniter\I18n\Time; ?>
                 <button class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#modalNovoAluno">
                     <i class="ri-user-line" title="Novo aluno" data-bs-toggle="tooltip"></i>
                 </button>
-                <button class="btn bg-danger text-bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                <button class="btn bg-danger text-bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalcsv">
                     <i class="ri-contacts-line" title="Lista de alunos em CSV" data-bs-toggle="tooltip"></i>
                 </button>
                 <a href="#" class="btn btn-sm bg-dark text-bg-dark">
@@ -134,6 +134,7 @@ Listados: <?= count($cliente) ?>
 
 <?= $this->include('newSuper/pages/alunos/modals/reenvio') ?>
 <?= $this->include('newSuper/pages/alunos/modals/novoAluno') ?>
+<?= $this->include('newSuper/pages/alunos/modals/novaLista') ?>
 
 <?= $pager->links('default', 'pager_movie') ?>
 

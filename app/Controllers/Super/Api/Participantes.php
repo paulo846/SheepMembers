@@ -249,9 +249,10 @@ class Participantes extends ResourceController
                             $email->acessoInicial($row, $this->request->getPost('empresa'));
                         }
                     }
-                }
+                } 
 
-                return $this->respond(['Cadastrado com sucesso!']);
+                return $this->respond(['msg' => 'Cadastrado com sucesso!']);
+                
             } catch (\Exception $e) {
 
                 return $this->fail([$e->getMessage()]);
@@ -324,32 +325,11 @@ class Participantes extends ResourceController
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
             }
-
-            //busca dados da empresa
-            $plataforma = $this->mConfig->where('id_empresa', $idEmpresa)->findAll();
-
-            //Busca dados empresa
-            $empresa = $this->mEmpresa->select('evento')->find($idEmpresa);
-
-
-            $view = view('usuarios/emails/bem-vindo', [
-                'plataforma' => ucfirst($empresa['evento']),
-                'logo'       => url_cloud_front() . 'assets/admin/img/logo-1.png',
-                'nome'       => $input['r_name'],
-                'link'       => $plataforma[0]['slug'],
-                'email'      => $input['r_email']
-            ]);
-
+            
             //envia email de boas vindas!
             $email = new Ses;
+            $email->acessoInicial(['name' => $input['r_name'], 'email' => $input['r_email']], $idEmpresa);
 
-            $email->sendEmail([
-                'sender' => 'contato@sheepmembers.com',
-                'sender_name' => ucfirst($empresa['evento']),
-                'recipient' => $input['r_email'],
-                'subject' => 'Seu acesso chegou - ' . ucfirst($empresa['evento']),
-                'body'    => $view
-            ]);
             return $this->respond(['msg' => 'Atualizado com sucesso!']);
         } catch (\Exception $e) {
             return $this->fail(['error' => $e->getMessage()]);

@@ -48,10 +48,14 @@ if (!function_exists('formatar_valor_monetario')) {
 if (!function_exists('url_cloud_front')) {
     function url_cloud_front($caminho = false)
     {
-        $url = "https://cdn.conect.app/";
-        $key = $caminho;
+        if ($caminho) {
+            $url = "https://cdn.conect.app/";
+        } else {
+            $url = "https://cdn.conect.app/".$caminho ;
+        }
 
-        return $url . $key;
+
+        return $url;
     }
 }
 

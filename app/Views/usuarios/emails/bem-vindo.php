@@ -20,22 +20,26 @@
 					<div style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
 						<!--begin:Email content-->
 						<div style="padding-bottom: 15px; font-size: 17px;">
-							<strong>Olá, <?= $nome ?>!</strong>
+							<strong>Graça e paz!</strong>
 						</div>
-						<div style="padding-bottom: 30px">
-							<p>Dados para acesso á plataforma <br><b><?= $plataforma ?></b></p>
-							<p><?= $nome ?>, nesse email contém os dados de acesso a plataforma para você assistir ao seu evento!</p>
+						<div style="padding-bottom: 10px">
+							<p><strong><?= $nome ?></strong><br>
+								Aqui estão os dados de acesso para a <b><?= $plataforma ?></b>
+							</p>
 							<p>
 								<b>Link da plataforma:</b> https://<?= $link ?><br>
 								<b>Login:</b> <?= $email ?><br>
 								<b>Senha:</b> mudar123<br>
 							</p>
 						</div>
+						<div style="padding-bottom: 30px">
+							<p><i>Atenção! Se você já recebeu esse e-mail anteriormente, favor desconsiderar.</i></p>
+						</div>
 						<!--end:Email content-->
 						<div style="padding-bottom: 10px">
 							<tr>
 								<td align="center" valign="center" style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">
-									<p>Copyright ©<?= date('Y') ?> sheepmebers 
+									<p>Copyright ©<?= date('Y') ?> sheepmebers
 										<a href="https://sheepmembers.com" rel="noopener" target="_blank">https://sheepmembers.com</a>.
 									</p>
 								</td>
