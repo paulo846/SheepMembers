@@ -68,14 +68,14 @@ class Ses
             'logo'       => ($plataforma[0]['logo']) ? url_cloud_front().$plataforma[0]['logo'] : url_cloud_front().'assets/admin/img/logo-1.png',
             'nome'       => $dados['name'],
             'link'       => $plataforma[0]['slug'],
-            'email'      => $dados['email']
+            'email'      => strtolower($dados['email'])
         ]);
 
         //envia email de boas vindas!
         $this->sendEmail([
             'sender' => 'contato@sheepmembers.com',
             'sender_name' => utf8_encode(ucfirst($empresaRow['evento'])),
-            'recipient' => $dados['email'],
+            'recipient' => strtolower($dados['email']),
             'subject' => 'Seu acesso chegou - ' . ucfirst($empresaRow['evento']),
             'body'      => $html
         ]);
