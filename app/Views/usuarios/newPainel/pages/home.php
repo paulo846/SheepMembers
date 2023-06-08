@@ -92,12 +92,12 @@
 <style>
     .plyr__time--current,
     .plyr__time--duration {
-        display: inline-block;
+        display: none;
         vertical-align: middle;
     }
 
     .plyr__progress__container {
-        display: flex;
+        display: none;
         align-items: center;
     }
 
