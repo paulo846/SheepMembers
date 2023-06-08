@@ -29,46 +29,46 @@
             </div>
         <?php endif; ?>
 
-        <?php if($vStrEn || $vStrPt || $vStrEs) :?>
-            
-        <section class="section" style="text-align: center !important; ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h4 class="section__title"><?= lang('Panel.disponivelEm') ?></h4>
-                        <div class="row row--grid">
-                        <?php if($vStrEn) :?>
-                            <div class="col-6 col-sm-4 col-lg-4">
-                                <div class="card">
-                                    <a href="/lang/en" class="card__cover p-3">
-                                        <img src="<?= url_cloud_front() ?>assets/img/En.png" alt="Português Brasil" style="width: 200px;">
-                                    </a>
-                                </div>
+        <?php if ($vStrEn || $vStrPt || $vStrEs) : ?>
+
+            <section class="section" style="text-align: center !important; ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="section__title"><?= lang('Panel.disponivelEm') ?></h4>
+                            <div class="row row--grid">
+                                <?php if ($vStrEn) : ?>
+                                    <div class="col-6 col-sm-4 col-lg-4">
+                                        <div class="card">
+                                            <a href="/lang/en" class="card__cover p-3">
+                                                <img src="<?= url_cloud_front() ?>assets/img/En.png" alt="Português Brasil" style="width: 200px;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($vStrPt) : ?>
+                                    <div class="col-6 col-sm-4 col-lg-4">
+                                        <div class="card">
+                                            <a href="/lang/pt-BR" class="card__cover p-3">
+                                                <img src="<?= url_cloud_front() ?>assets/img/Br.png" alt="Inglês" style="width: 200px;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($vStrEs) : ?>
+                                    <div class="col-6 col-sm-4 col-lg-4">
+                                        <div class="card">
+                                            <a href="/lang/es" class="card__cover p-3">
+                                                <img src="<?= url_cloud_front() ?>assets/img/Es.png" alt="Espanhol" style="width: 200px;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                            <?php endif; ?>
-                            <?php if($vStrPt) :?>
-                            <div class="col-6 col-sm-4 col-lg-4">
-                                <div class="card">
-                                    <a href="/lang/pt-BR" class="card__cover p-3">
-                                        <img src="<?= url_cloud_front() ?>assets/img/Br.png" alt="Inglês" style="width: 200px;">
-                                    </a>
-                                </div>
-                            </div>
-                            <?php endif; ?>
-                            <?php if($vStrEs) :?>
-                            <div class="col-6 col-sm-4 col-lg-4">
-                                <div class="card">
-                                    <a href="/lang/es" class="card__cover p-3">
-                                        <img src="<?= url_cloud_front() ?>assets/img/Es.png" alt="Espanhol" style="width: 200px;">
-                                    </a>
-                                </div>
-                            </div>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         <?php endif; ?>
 
         <?= view_cell('App\Cells\ListaFilmes::grade', ['idEmpresa' => $idEmpresa]) ?>
@@ -89,6 +89,22 @@
 <script>
     const player3 = new Plyr('#player3');
 </script>
+<style>
+    .plyr__time--current,
+    .plyr__time--duration {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .plyr__progress__container {
+        display: flex;
+        align-items: center;
+    }
+
+    .plyr__progress--played {
+        margin-right: 0;
+    }
+</style>
 <script>
     function ouvirAvisos() {
         $.getJSON(site + "client/api/avisos/<?= $idEmpresa ?>", (function(res) {
