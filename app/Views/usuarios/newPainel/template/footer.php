@@ -8,8 +8,13 @@
 						<a href="#" class="aviso"><?= lang('Panel.termos.privacidade') ?></a>
 						<a href="#" class="aviso"><?= lang('Panel.termos.uso') ?></a>
 					</div>
-					<small class="footer__copyright">© 2023 Created by <a href="#" target="_blank">SheepMembers</a>. Meu IP: <?php $request = service('request');
-																																echo $request->getIPAddress(); ?></small>
+					<small class="footer__copyright">
+						© 2023 Created by <a href="#" target="_blank">SheepMembers</a>. Meu IP: <?php $request = service('request'); echo $request->getIPAddress(); ?><br>
+						<?php
+						$ip = $request->getServer('SERVER_ADDR');
+						echo "Servidor: " . $ip;
+						?>
+					</small>
 				</div>
 			</div>
 		</div>
