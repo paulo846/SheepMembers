@@ -64,6 +64,9 @@ class Home extends BaseController
             //dados do analytics header
             $data['analytics'] = $builder[0]['analytics'];
 
+            //suporte
+            $data['suporte'] = $builder[0]['whatsapp'];
+
             //dados do analytics footer
             $data['analyticsFooter'] = $builder[0]['scripts_footer'];
 
@@ -168,6 +171,9 @@ class Home extends BaseController
             $data['idEmpresa'] = $builder[0]['id_empresa'];
 
             $data['analytics'] = $builder[0]['analytics'];
+
+            //suporte
+            $data['suporte'] = $builder[0]['whatsapp'];
             
             //dados do analytics footer
             $data['analyticsFooter'] = $builder[0]['scripts_footer'];

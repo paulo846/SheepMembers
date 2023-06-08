@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<!-- CSS -->
 	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/bootstrap-reboot.min.css">
 	<link rel="stylesheet" href="<?= url_cloud_front() ?>assets/painel/css/bootstrap-grid.min.css">
@@ -24,6 +25,30 @@
 	<meta name="author" content="SheepMembers">
 	<title><?= $title ?></title>
 	<style>
+		.whatsapp-button {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			z-index: 9999;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background-color: #25d366;
+			color: #fff;
+			text-align: center;
+			font-size: 24px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+			cursor: pointer;
+		}
+
+		.whatsapp-button i {
+			line-height: 60px;
+		}
+
+		.whatsapp-button:hover {
+			background-color: #128c7e;
+		}
+
 		.alert {
 			padding: 15px;
 			text-align: center;
@@ -45,18 +70,19 @@
 			color: #ffffff;
 		}
 
-		.catalog .container{
+		.catalog .container {
 			background-color: rgba(0, 0, 0, 0) !important;
 			background: rgba(0, 0, 0, 0) !important;
 		}
 
-		.text-danger{
+		.text-danger {
 			color: #ff4746 !important;
-			transition: transform 0.6s !important; 
+			transition: transform 0.6s !important;
 		}
-		.text-danger :hover{
+
+		.text-danger :hover {
 			color: #ff0000 !important;
-			transform: scale(1.5) !important; 
+			transform: scale(1.5) !important;
 		}
 	</style>
 	<?= $analytics ?>
@@ -86,5 +112,4 @@
 	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=588447679769578&ev=PageView&noscript=1" /></noscript> -->
 	<!-- End Meta Pixel Code -->
 </head>
-
 <body>

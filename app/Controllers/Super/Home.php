@@ -24,7 +24,9 @@ class Home extends BaseController
     }
     public function index()
     {
-
+        $data['clientes']    = $this->mEmpresa;
+        $data['assinaturas'] = $this->mEmpresaCliente;
+        
         $data['title'] = 'Dashboard';
         //
         return view('newSuper/pages/dashboard/home', $data);

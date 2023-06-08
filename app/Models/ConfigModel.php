@@ -37,7 +37,8 @@ class ConfigModel extends Model
         'logo',
         'capa',
         'background',
-        'favicon'
+        'favicon',
+        'whatsapp'
     ];
 
     // Dates
