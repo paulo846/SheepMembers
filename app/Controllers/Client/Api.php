@@ -143,7 +143,7 @@ class Api extends ResourceController
                 'id_empresa'  => $input['idEmpresa'],
                 'id_gravacao' => $input['idFilme'],
                 'id_usuario'  => $input['idUser'],
-                'aprovado'    => false,
+                'aprovado'    => true,
                 'comentario'  => $input['comentario']
             ];
 
