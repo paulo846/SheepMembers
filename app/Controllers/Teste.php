@@ -14,10 +14,9 @@ class Teste extends BaseController
 {
     public function index()
     {
-        echo 'Loop infinito';
-        while (true) {
-            // Executa um loop infinito
-        }
+        $request = service('request');
+
+        print_r($request->getServer());
 
     }
     public function upload()
