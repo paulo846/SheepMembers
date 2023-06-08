@@ -46,7 +46,7 @@
 	const site = "<?= site_url() ?>";
 	var client = "<?= session('idUser') ?>";
 
-	function logIn() {
+	/*function logIn() {
 		$.ajax({
 			type: "get",
 			url: site + "client/api/verify/" + client,
@@ -59,10 +59,10 @@
 				window.location.reload();
 			}
 		});
-	}
+	}*/
 
 	$(document).ready(function() {
-		logIn(), setInterval(logIn, 5e3)
+		//logIn(), setInterval(logIn, 5e3)
 		$(".aviso").click(function() {
 			alert('Página em desenvolvimento...');
 		})
