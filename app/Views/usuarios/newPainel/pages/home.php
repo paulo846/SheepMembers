@@ -89,22 +89,7 @@
 <script>
     const player3 = new Plyr('#player3');
 </script>
-<style>
-    .plyr__time--current,
-    .plyr__time--duration {
-        display: none;
-        vertical-align: middle;
-    }
 
-    .plyr__progress__container {
-        display: none;
-        align-items: center;
-    }
-
-    .plyr__progress--played {
-        margin-right: 0;
-    }
-</style>
 <script>
     function ouvirAvisos() {
         $.getJSON(site + "client/api/avisos/<?= $idEmpresa ?>", (function(res) {
