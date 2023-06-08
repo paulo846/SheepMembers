@@ -5,9 +5,8 @@ $routes->get('filme/(:any)', 'Home::filme/$1', ['filter' => 'loggedclient']);
 $routes->get('perfil', 'Home::perfil', ['filter' => 'loggedclient']);
 //$routes->get('/', 'Home::index');
 
-$routes->get('/teste', 'Teste::index');
-
-$routes->get('/mostrar', 'Teste::mostrar');
+//$routes->get('/teste', 'Teste::index');
+//$routes->get('/mostrar', 'Teste::mostrar');
 
 
 
