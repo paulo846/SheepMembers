@@ -16,7 +16,9 @@ class Teste extends BaseController
     {
         $request = service('request');
 
+        echo "<pre>";
         print_r($request->getServer());
+        echo "</pre>";
 
     }
     public function upload()
