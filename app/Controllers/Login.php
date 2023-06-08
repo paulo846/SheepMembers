@@ -35,6 +35,8 @@ class Login extends BaseController
             $data['name'] = $nameEvento ;
 
             $data['id_empresa']  = $builder[0]['id_empresa'];
+            $data['suporte']     = $builder[0]['whatsapp'];
+
             
             $data['description'] = $builder[0]['description_pt'];
             $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
@@ -52,6 +54,8 @@ class Login extends BaseController
             $data['linkVenda']   = false;
             $data['analytics']   = false;
             $data['id_empresa']  = false;
+            $data['suporte'] = null;
+
         }
         //titulo da página
         $data['title'] = 'Login | ' . $data['name'];
