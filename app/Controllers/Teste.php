@@ -16,10 +16,13 @@ class Teste extends BaseController
     {
         $request = service('request');
 
-        echo "<pre>";
-        print_r($request->getServer());
-        echo "</pre>";
+        $instanceId = file_get_contents("http://169.254.169.254/latest/meta-data/instance-id");
+        $publicIp = file_get_contents("http://169.254.169.254/latest/meta-data/public-ipv4");
+        $instanceName = file_get_contents("http://169.254.169.254/latest/meta-data/hostname");
 
+        echo "ID da Instância: " . $instanceId . "<br>";
+        echo "Endereço IP Público: " . $publicIp . "<br>";
+        echo "Nome da Instância: " . $instanceName . "<br>";
     }
     public function upload()
     {
