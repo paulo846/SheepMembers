@@ -91,7 +91,7 @@
 			/* Estilos para telas menores que 600px */
 			/* Aqui você pode definir o layout, tamanhos de fonte, etc. para telas menores */
 			h1 {
-				font-size: medium !important;
+				font-size: large !important;
 			}
 		}
 	</style>
