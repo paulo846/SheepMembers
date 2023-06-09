@@ -84,18 +84,28 @@
 			color: #ff0000 !important;
 			transform: scale(1.5) !important;
 		}
+
+		/* Estilos para telas menores */
+		@media only screen and (max-width: 600px) {
+
+			/* Estilos para telas menores que 600px */
+			/* Aqui você pode definir o layout, tamanhos de fonte, etc. para telas menores */
+			h1 {
+				font-size: medium !important;
+			}
+		}
 	</style>
 	<!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDSN5Q7JM1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CDSN5Q7JM1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-CDSN5Q7JM1');
-    </script>
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-CDSN5Q7JM1');
+	</script>
 	<!-- Google tag (gtag.js) -->
 	<?= $analytics ?>
 	<!-- Meta Pixel Code-->
@@ -121,7 +131,8 @@
 		fbq('init', '588447679769578');
 		fbq('track', 'PageView');
 	</script>
-	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=588447679769578&ev=PageView&noscript=1" /></noscript> 
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=588447679769578&ev=PageView&noscript=1" /></noscript>
 	<!-- End Meta Pixel Code -->
 </head>
+
 <body>
