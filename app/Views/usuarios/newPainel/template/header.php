@@ -93,6 +93,11 @@
 			h1 {
 				font-size: large !important;
 			}
+
+			.article__content p{
+				font-size: medium !important;
+				margin-bottom: 10px;
+			}
 		}
 	</style>
 	<!-- Google tag (gtag.js) -->
