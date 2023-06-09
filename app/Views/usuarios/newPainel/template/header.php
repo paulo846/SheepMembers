@@ -98,7 +98,7 @@
     </script>
 	<!-- Google tag (gtag.js) -->
 	<?= $analytics ?>
-	<!-- Meta Pixel Code
+	<!-- Meta Pixel Code-->
 	<script>
 		! function(f, b, e, v, n, t, s) {
 			if (f.fbq) return;
@@ -121,7 +121,7 @@
 		fbq('init', '588447679769578');
 		fbq('track', 'PageView');
 	</script>
-	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=588447679769578&ev=PageView&noscript=1" /></noscript> -->
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=588447679769578&ev=PageView&noscript=1" /></noscript> 
 	<!-- End Meta Pixel Code -->
 </head>
 <body>
