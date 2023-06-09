@@ -85,6 +85,18 @@
 			transform: scale(1.5) !important;
 		}
 	</style>
+	<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDSN5Q7JM1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-CDSN5Q7JM1');
+    </script>
+	<!-- Google tag (gtag.js) -->
 	<?= $analytics ?>
 	<!-- Meta Pixel Code
 	<script>
