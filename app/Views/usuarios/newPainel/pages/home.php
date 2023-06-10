@@ -72,7 +72,7 @@
         <?php endif; ?>
 
         <?= view_cell('App\Cells\ListaFilmes::grade', ['idEmpresa' => $idEmpresa]) ?>
-        <?= view_cell('App\Cells\ListaFilmes::slides', ['idEmpresa' => $idEmpresa]) ?>
+        <?= '';/*view_cell('App\Cells\ListaFilmes::slides', ['idEmpresa' => $idEmpresa])*/ ?>
     </div>
 </section>
 

@@ -94,10 +94,14 @@
 				font-size: large !important;
 			}
 
-			.article__content p{
+			.article__content p {
 				font-size: medium !important;
 				margin-bottom: 10px;
 			}
+		}
+
+		.section {
+			padding: 30px 0 !important;
 		}
 	</style>
 	<!-- Google tag (gtag.js) -->

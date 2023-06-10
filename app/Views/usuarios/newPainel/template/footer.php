@@ -13,7 +13,7 @@
 						Meu IP: <?php $request = service('request');
 								echo $request->getIPAddress(); ?><br>
 						<?php
-						$publicIp = file_get_contents("http://169.254.169.254/latest/meta-data/public-ipv4");
+						$publicIp = '';//file_get_contents("http://169.254.169.254/latest/meta-data/public-ipv4");
 
 						echo "Servidor: " . $publicIp;
 						?>

@@ -51,7 +51,7 @@ if (!function_exists('url_cloud_front')) {
         if ($caminho) {
             $url = "https://cdn.conect.app/";
         } else {
-            $url = "https://cdn.conect.app/".$caminho ;
+            $url = "https://cdn.conect.app/" . $caminho;
         }
 
 
@@ -59,6 +59,15 @@ if (!function_exists('url_cloud_front')) {
     }
 }
 
+
+if (!function_exists('emailType')) {
+    function emailType($data)
+    {
+        $email   = trim($data);
+        $retorno = strtolower($email);
+        return $retorno;
+    }
+}
 
 if (!function_exists('convertToEmbedUrl')) {
     function convertToEmbedUrl($url)

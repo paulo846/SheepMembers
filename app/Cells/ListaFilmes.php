@@ -36,7 +36,7 @@ class ListaFilmes
         return $html;
     }
 
-    public function slides($idEmpresa): string
+/*    public function slides($idEmpresa): string
     {
         $html = '';
         $mCarrossel = new CarrosselModel();
@@ -44,11 +44,11 @@ class ListaFilmes
         if (count($carrossels)) {
             $html = '';
             foreach ($carrossels as $carrossel) {
-                $html .= '<section class="section">
+                $html .= '<!-- <section class="section">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <!-- <h2 class="section__title"><a href="category.html">' . $carrossel['title'] . '</a></h2> -->
+                <h2 class="section__title"><a href="category.html">' . $carrossel['title'] . '</a></h2>
             </div>
             <div class="col-12">
                 <div class="section__carousel-wrap">
@@ -87,7 +87,7 @@ class ListaFilmes
             </div>
         </div>
     </div>
-</section>';
+</section> -->';
             }
         }
         return $html;
@@ -119,7 +119,7 @@ class ListaFilmes
         </div>-->
     </div>';
         return $html;
-    }
+    }*/
 
     private function filmesGrade($idCarrossel): string
     {

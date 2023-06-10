@@ -111,7 +111,7 @@ Listados: <?= count($cliente) ?>
                                             <?php else : ?>
                                                 <li><a class="dropdown-item" href="#" onclick="bloquear('<?= $row['id'] ?>', 0)">Desbloquear</a></li>
                                             <?php endif; ?>
-                                            <!-- <li><a class="dropdown-item" href="#">Delete</a></li>-->
+                                            <li><a class="dropdown-item" href="#" onclick="confirmaAcao()">Excluir</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -154,6 +154,10 @@ Listados: <?= count($cliente) ?>
                 $("#r_id").val(id);
             }
         );
+    }
+
+    function confirmaAcao() {
+        confirm('Tem certeza?');
     }
 
     function bloquear(id, tipo) {

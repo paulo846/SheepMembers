@@ -56,12 +56,23 @@ class ConfigModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
+    protected $beforeInsert   = ['tratarEmail'];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
+    protected $beforeUpdate   = ['tratarEmail'];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    protected function tratarEmail(array $data)
+    {
+        if (isset($data['data']['email'])) {
+            $email = trim($data['data']['email']);
+            $email = strtolower($email);
+            $data['data']['email'] = $email;
+        }
+
+        return $data;
+    }
 }

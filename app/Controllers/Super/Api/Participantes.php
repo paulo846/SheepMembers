@@ -79,13 +79,13 @@ class Participantes extends ResourceController
             $input = $this->request->getPost();
 
             //verifica se email já esta no banco de dados
-            if ($row = $this->mParticipante->where('email', $input['email'])->select('id')->findAll()) {
+            if ($row = $this->mParticipante->where('email', emailType($input['email']))->select('id')->findAll()) {
                 //dados para atualização
                 $id = $row[0]['id'];
                 $update = [
                     'id'    => $id,
                     'name'  => $input['name'],
-                    'email' => $input['email'],
+                    'email' => emailType($input['email']),
                     'phone' => $input['phone'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
@@ -95,7 +95,7 @@ class Participantes extends ResourceController
                 //dados para inserção
                 $data = [
                     'name'  => $input['name'],
-                    'email' => $input['email'],
+                    'email' => emailType($input['email']),
                     'phone' => $input['phone'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
@@ -140,7 +140,7 @@ class Participantes extends ResourceController
                 'logo'       => url_cloud_front() . 'assets/admin/img/logo-1.png',
                 'nome'       => $input['name'],
                 'link'       => $plataforma[0]['slug'],
-                'email'      => $input['email']
+                'email'      => emailType($input['email'])
             ]);
 
             //envia email de boas vindas!
@@ -149,7 +149,7 @@ class Participantes extends ResourceController
             $email->sendEmail([
                 'sender' => 'contato@sheepmembers.com',
                 'sender_name' => ucfirst($empresa['evento']),
-                'recipient' => $input['email'],
+                'recipient' => emailType($input['email']),
                 'subject' => 'Seu acesso chegou - ' . ucfirst($empresa['evento']),
                 'body'    => $view
             ]);
@@ -201,7 +201,7 @@ class Participantes extends ResourceController
 
                             $data[] = [
                                 'name' => $row[0],
-                                'email' => $row[1],
+                                'email' => emailType($row[1]),
                                 'phone' => $row[2],
                                 'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                             ];
@@ -298,7 +298,7 @@ class Participantes extends ResourceController
             $this->mParticipante->save([
                 'id' => $idParticipante,
                 'name' => $input['r_name'],
-                'email' => $input['r_email'],
+                'email' => emailType($input['r_email']),
                 'password' => password_hash('mudar123', PASSWORD_BCRYPT)
             ]);
 
