@@ -100,7 +100,7 @@
 			}
 		}
 
-		.section {
+		.section-grade {
 			padding: 30px 0 !important;
 		}
 	</style>

@@ -17,7 +17,7 @@ class ListaFilmes
             $html = '';
             foreach ($carrossels as $carrossel) {
                 $html .= '
-<section class="section">
+<section class="section section-grade">
     <div class="container">
         <div class="row">
             <div class="col-12">
