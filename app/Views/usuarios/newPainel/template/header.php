@@ -103,6 +103,10 @@
 		.section-grade {
 			padding: 30px 0 !important;
 		}
+
+		.section-title-grade{
+			font-size: 30px !important;
+		}
 	</style>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CDSN5Q7JM1"></script>

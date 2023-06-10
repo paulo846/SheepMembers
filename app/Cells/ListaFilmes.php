@@ -21,7 +21,7 @@ class ListaFilmes
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h4 class="section__title">' . $carrossel['title'] . '</h4>
+                <h4 class="section__title section-title-grade">' . $carrossel['title'] . '</h4>
                 <div class="row row--grid">';
                 $html .= $this->filmesGrade($carrossel['id']);
                 $html .= '
