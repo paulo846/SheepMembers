@@ -12,7 +12,7 @@ class ListaFilmes
     {
         $mCarrossel = new CarrosselModel();
 
-        $carrossels = $mCarrossel->where(['id_empresa' => $idEmpresa, 'config' => 1])->findAll();
+        $carrossels = $mCarrossel->where(['id_empresa' => $idEmpresa, 'config' => 1])->orderBy('ordem', 'ASC')->findAll();
         if (count($carrossels)) {
             $html = '';
             foreach ($carrossels as $carrossel) {

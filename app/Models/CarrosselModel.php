@@ -16,7 +16,8 @@ class CarrosselModel extends Model
     protected $allowedFields    = [
         'id_empresa',
         'title',
-        'config'
+        'config',
+        'ordem'
     ];
 
     // Dates
