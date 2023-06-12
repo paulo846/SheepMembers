@@ -393,9 +393,6 @@ class Participantes extends ResourceController
 
         $empresa = $mEmpresa->find($id);
 
-        echo "<h1>{$empresa['name']}</h1>";
-        echo "<h1>{$empresa['evento']}</h1>";
-
         $clientes = $mCliente->select('empresa_cliente.name, empresa_cliente.id, empresa_cliente.name empresa_name, empresa_cliente.email, empresa.id id_empresa, relaciona.id relacionamento')
             ->join('empresa_relaciona_cliente relaciona', 'relaciona.id_cliente = empresa_cliente.id')
             ->join('empresa', 'empresa.id = relaciona.id_empresa')
@@ -405,14 +402,16 @@ class Participantes extends ResourceController
             ->orderBy('empresa_cliente.id', 'ASC')
             ->findAll();
 
-            $total = count($clientes);
-            $valor = (count($clientes) * 18) + 2000 ;
+        $total = count($clientes);
+        $valor = (count($clientes) * 18) + 2000;
 
+        echo "<b>Cliente: {$empresa['empresa']}</b>";
+        echo "<b>Evento: {$empresa['evento']}</b>";
         echo '<b>Valor de entrada:</b> R$ 2.000,00 <br>';
         echo '<b>Valor por usuário:</b> R$ 18,00 <br>';
-        echo '<b>Total de usuários:</b> '. $total.' <br>';
-        echo "<b>Total em reais:</b> ". formatarValor($valor);
-        echo '<hr>';
+        echo '<b>Total de usuários:</b> ' . $total . ' <br>';
+        echo "<b>Total em reais:</b> " . formatarValor($valor);
+        echo '<br>';
         echo "<table border='2'>";
         echo "<thead>";
         echo "<tr>";
@@ -430,14 +429,15 @@ class Participantes extends ResourceController
             echo '<td>' . $cliente['id'] . '</td>';
             echo '<td>' . $cliente['name'] . '</td>';
             echo '<td>' . $cliente['email'] . '</td>';
-            echo '<td> <a href="'.site_url().'/superadmin/relacionamento/excluir/' . $cliente['relacionamento']. '">Excluir</a></td>';
+            echo '<td> <a href="' . site_url() . '/superadmin/relacionamento/excluir/' . $cliente['relacionamento'] . '">Excluir</a></td>';
             echo '</tr>';
         }
         echo "</tbody>";
         echo "</table>";
     }
 
-    public function excluirRelacionamento($id){
+    public function excluirRelacionamento($id)
+    {
         $mRelaciona = new EmpresaClienteModel();
 
         $mRelaciona->delete($id);
