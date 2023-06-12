@@ -412,7 +412,7 @@ class Participantes extends ResourceController
         echo "<table border='2'>";
         echo "<thead>";
         echo "<tr>";
-        echo "<th>Empresa</th>";
+        echo "<th>Num</th>";
         echo "<th>Id</th>";
         echo "<th>Nome</th>";
         echo "<th>Email</th>";
@@ -420,9 +420,9 @@ class Participantes extends ResourceController
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
-        foreach ($clientes as $cliente) {
+        foreach ($clientes as $key => $cliente) {
             echo "<tr>";
-            echo '<td>' . $cliente['id_empresa'] . '</td>';
+            echo '<td>' . ++$key . '</td>';
             echo '<td>' . $cliente['id'] . '</td>';
             echo '<td>' . $cliente['name'] . '</td>';
             echo '<td>' . $cliente['email'] . '</td>';
