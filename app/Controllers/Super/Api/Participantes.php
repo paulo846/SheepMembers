@@ -406,7 +406,7 @@ class Participantes extends ResourceController
             ->findAll();
 
             $total = count($clientes);
-            $valor = count($clientes) * 18 ;
+            $valor = (count($clientes) * 18) + 2000 ;
         echo "<h1>Total: " . $total . " - Valor: ".formatarValor($valor)."</h1>";
 
         echo "<table border='2'>";
