@@ -93,14 +93,14 @@ class Teste extends BaseController
         //echo "<pre>";
         echo "<table border='2' style='width: 60%;'>";
         echo   "<tr>";
-            echo "<th>Empresa</th>";
+            echo "<th>Num</th>";
             echo "<th>Id</th>";
             echo "<th>Nome</th>";
             echo "<th>Email</th>";
         echo "</tr>";
-        foreach ($clientes as $cliente) {
+        foreach ($clientes as $key => $cliente) {
             echo "<tr>";
-                echo '<td>' . $cliente['id_empresa'] . '</td>';
+                echo '<td>' . ++$key . '</td>';
                 echo '<td>' . $cliente['id'] . '</td>';
                 echo '<td>' . $cliente['name'] . '</td>';
                 echo '<td>' . $cliente['email'] . '</td>';
