@@ -410,7 +410,7 @@ class Participantes extends ResourceController
         echo '<b>Valor de entrada:</b> R$ 2.000,00 <br>';
         echo '<b>Valor por usuário:</b> R$ 18,00 <br>';
         echo '<b>Total de usuários:</b> ' . $total . ' <br>';
-        echo "<b>Total em reais:</b> " . formatarValor($valor);
+        echo "<b><a href='".site_url('/superadmin/imprimir/csv/'.$id)."'}>Total</a> em reais:</b> " . formatarValor($valor);
         echo '<br>';
         echo "<table border='2'>";
         echo "<thead>";
@@ -434,6 +434,61 @@ class Participantes extends ResourceController
         }
         echo "</tbody>";
         echo "</table>";
+    }
+
+    public function downloadListRelatorio($id)
+    {
+        $mCliente   = new ClientModel();
+        $mEmpresa   = new EmpresaModel();
+        $mRelaciona = new EmpresaClienteModel();
+
+        $empresa = $mEmpresa->find($id);
+
+        $clientes = $mCliente->select('empresa_cliente.name, empresa_cliente.id, empresa_cliente.name empresa_name, empresa_cliente.email, empresa.id id_empresa, relaciona.id relacionamento')
+            ->join('empresa_relaciona_cliente relaciona', 'relaciona.id_cliente = empresa_cliente.id')
+            ->join('empresa', 'empresa.id = relaciona.id_empresa')
+            ->where('empresa.id', $id)
+            ->where('relaciona.deleted_at IS NULL')
+            ->where('empresa.deleted_at IS NULL')
+            ->orderBy('empresa_cliente.id', 'ASC')
+            ->findAll();
+
+
+
+        $filename = "clientes.csv";
+        $delimiter = ",";
+
+        // Abrir o arquivo para escrita
+        $file = fopen($filename, 'w');
+
+        // Escrever o cabeçalho no arquivo CSV
+        $header = array('id', 'Name', 'Email');
+        fputcsv($file, $header, $delimiter);
+
+        // Escrever os dados no arquivo CSV
+        foreach ($clientes as $key => $cliente) {
+            $row = array(
+                $cliente['id'],
+                $cliente['name'],
+                $cliente['email']
+            );
+            fputcsv($file, $row, $delimiter);
+        }
+
+        // Fechar o arquivo
+        fclose($file);
+
+        // Definir o cabeçalho da resposta HTTP para download
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+        // Ler o arquivo e enviá-lo para o cliente
+        readfile($filename);
+
+        // Remover o arquivo CSV após o download
+        unlink($filename);
+
+        return redirect()->back();
     }
 
     public function excluirRelacionamento($id)

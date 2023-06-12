@@ -4,6 +4,9 @@ $routes->group('superadmin', static function ($routes) {
     
     //imprimir
     $routes->get('imprimir/lista/(:num)', 'Super\Api\Participantes::listaEmpresaCliente/$1', ['filter' => 'loggedsuper']);
+    $routes->get('imprimir/csv/(:num)', 'Super\Api\Participantes::downloadListRelatorio/$1', ['filter' => 'loggedsuper']);
+
+
     $routes->get('relacionamento/excluir/(:num)', 'Super\Api\Participantes::excluirRelacionamento/$1', ['filter' => 'loggedsuper']);
 
     //GETS PROTEGIDOS
