@@ -1,6 +1,11 @@
 <?php
 
 $routes->group('superadmin', static function ($routes) {
+    
+    //imprimir
+    $routes->get('imprimir/lista/(:num)', 'Super\Api\Participantes::listaEmpresaCliente/$1', ['filter' => 'loggedsuper']);
+    $routes->get('relacionamento/excluir/(:num)', 'Super\Api\Participantes::excluirRelacionamento/$1', ['filter' => 'loggedsuper']);
+
     //GETS PROTEGIDOS
     $routes->get('', 'Super\Home::index', ['filter' => 'loggedsuper']);
     $routes->get('alunos', 'Super\Home::alunos', ['filter' => 'loggedsuper']);
@@ -41,6 +46,9 @@ $routes->group('superadmin', static function ($routes) {
 
         //Avisos
         $routes->post('empresa/aviso/add', 'Super\Api\Empresas::addaviso');
+
+        //
+        
 
         //CONFIG
         $routes->post('config/(:num)/(:any)', 'Super\Api\Config::update/$1/$2');

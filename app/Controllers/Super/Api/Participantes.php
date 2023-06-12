@@ -155,7 +155,6 @@ class Participantes extends ResourceController
             ]);
 
             return $this->respond(['msg' => 'Atualizado com sucesso!']);
-
         } catch (\Exception $e) {
 
             //resposta 400 - Qualquer erro
@@ -249,10 +248,9 @@ class Participantes extends ResourceController
                             $email->acessoInicial($row, $this->request->getPost('empresa'));
                         }
                     }
-                } 
+                }
 
                 return $this->respond(['msg' => 'Cadastrado com sucesso!']);
-                
             } catch (\Exception $e) {
 
                 return $this->fail([$e->getMessage()]);
@@ -325,7 +323,7 @@ class Participantes extends ResourceController
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
             }
-            
+
             //envia email de boas vindas!
             $email = new Ses;
             $email->acessoInicial(['name' => $input['r_name'], 'email' => $input['r_email']], $idEmpresa);
@@ -344,5 +342,102 @@ class Participantes extends ResourceController
             'bloqueio' => $tipo
         ]);
         return $this->respond(['msg' => 'Bloqueado com sucesso!']);
+    }
+
+    public function listaEmpresaCliente($id)
+    {
+        echo '<style>
+        /* Estilos gerais da página */
+        
+        
+        
+
+
+        table {
+            font-size: 12px;
+            width: 600px;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            padding: 10px;
+        }
+
+        /* Estilos específicos para impressão */
+        @media print {
+          /* Oculta elementos que não devem ser impressos */
+            .no-print {
+                display: none;
+            }
+    
+          /* Estilos da tabela */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+    
+            th, td {
+                border: 1px solid #000;
+                padding: 8px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            }
+        </style>';
+
+        $mCliente   = new ClientModel();
+        $mEmpresa   = new EmpresaModel();
+        $mRelaciona = new EmpresaClienteModel();
+        //$mRelaciona->purgeDeleted();
+
+        $empresa = $mEmpresa->find($id);
+
+        echo "<h1>{$empresa['name']}</h1>";
+        echo "<h1>{$empresa['evento']}</h1>";
+
+        $clientes = $mCliente->select('empresa_cliente.name, empresa_cliente.id, empresa_cliente.name empresa_name, empresa_cliente.email, empresa.id id_empresa, relaciona.id relacionamento')
+            ->join('empresa_relaciona_cliente relaciona', 'relaciona.id_cliente = empresa_cliente.id')
+            ->join('empresa', 'empresa.id = relaciona.id_empresa')
+            ->where('empresa.id', $id)
+            ->where('relaciona.deleted_at IS NULL')
+            ->where('empresa.deleted_at IS NULL')
+            ->orderBy('empresa_cliente.id', 'ASC')
+            ->findAll();
+
+            $total = count($clientes);
+            $valor = count($clientes) * 18 ;
+        echo "<h1>Total: " . $total . " - Valor: ".formatarValor($valor)."</h1>";
+
+        echo "<table border='2'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>Empresa</th>";
+        echo "<th>Id</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Email</th>";
+        echo "<th>Ação</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        foreach ($clientes as $cliente) {
+            echo "<tr>";
+            echo '<td>' . $cliente['id_empresa'] . '</td>';
+            echo '<td>' . $cliente['id'] . '</td>';
+            echo '<td>' . $cliente['name'] . '</td>';
+            echo '<td>' . $cliente['email'] . '</td>';
+            echo '<td> <a href="'.site_url().'/superadmin/relacionamento/excluir/' . $cliente['relacionamento']. '">Excluir</a></td>';
+            echo '</tr>';
+        }
+        echo "</tbody>";
+        echo "</table>";
+    }
+
+    public function excluirRelacionamento($id){
+        $mRelaciona = new EmpresaClienteModel();
+
+        $mRelaciona->delete($id);
+
+        return redirect()->back();
     }
 }

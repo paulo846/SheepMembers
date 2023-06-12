@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Libraries\S3;
 use App\Models\ClientModel;
+use App\Models\EmpresaClienteModel;
+use App\Models\EmpresaModel;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 
@@ -68,8 +70,46 @@ class Teste extends BaseController
         }*/
     }
 
-
     public function mostrar()
+    {
+        $mCliente   = new ClientModel();
+        $mEmpresa   = new EmpresaModel();
+        $mRelaciona = new EmpresaClienteModel();
+
+        $rows = $mCliente->findAll();
+
+        $mRelaciona->purgeDeleted();
+
+        $clientes = $mCliente->select('empresa_cliente.name, empresa_cliente.id, empresa_cliente.email, empresa.id id_empresa')
+            ->join('empresa_relaciona_cliente relaciona', 'relaciona.id_cliente = empresa_cliente.id')
+            ->join('empresa', 'empresa.id = relaciona.id_empresa')
+            ->where('empresa.id', 4)
+            ->where('empresa_cliente.deleted_at IS NULL')
+            ->orderBy('empresa_cliente.id', 'ASC')
+            ->findAll();
+
+
+        echo "<h1>" . count($clientes) . "</h1>";
+        //echo "<pre>";
+        echo "<table border='2' style='width: 60%;'>";
+        echo   "<tr>";
+            echo "<th>Empresa</th>";
+            echo "<th>Id</th>";
+            echo "<th>Nome</th>";
+            echo "<th>Email</th>";
+        echo "</tr>";
+        foreach ($clientes as $cliente) {
+            echo "<tr>";
+                echo '<td>' . $cliente['id_empresa'] . '</td>';
+                echo '<td>' . $cliente['id'] . '</td>';
+                echo '<td>' . $cliente['name'] . '</td>';
+                echo '<td>' . $cliente['email'] . '</td>';
+            echo '</tr>';
+        }
+        echo "</table>";
+    }
+
+    public function mostrar0()
     {
         $image = new S3();
 

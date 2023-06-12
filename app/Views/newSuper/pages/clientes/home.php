@@ -62,6 +62,7 @@ use CodeIgniter\I18n\Time; ?>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink<?= $empresa['id'] ?>">
                                         <li><a href="/superadmin/config/<?= $empresa['id'] ?>" class="dropdown-item">Configurar plataforma</a></li>
+                                        <li><a href="/superadmin/imprimir/lista/<?= $empresa['id'] ?>" class="dropdown-item" target="_blank">Lista de alunos</a></li>
                                     </ul>
                                 </div>
                             </td>

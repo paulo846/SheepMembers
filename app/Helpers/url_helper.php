@@ -45,6 +45,13 @@ if (!function_exists('formatar_valor_monetario')) {
     }
 }
 
+function formatarValor($valor)
+{
+    $valor_formatado = 'R$ ' . number_format($valor, 2, ',', '.');
+
+    return $valor_formatado;
+}
+
 if (!function_exists('url_cloud_front')) {
     function url_cloud_front($caminho = false)
     {
