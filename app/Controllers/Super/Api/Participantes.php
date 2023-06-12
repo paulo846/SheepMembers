@@ -411,7 +411,7 @@ class Participantes extends ResourceController
         echo '<b>Valor por usuário:</b> R$ 18,00 <br>';
         echo '<b>Total de usuários:</b> ' . $total . ' <br>';
         echo "<b><a href='".site_url('/superadmin/imprimir/csv/'.$id)."'}>Total</a> em reais:</b> " . formatarValor($valor);
-        echo '<br>';
+        echo '<br><br>';
         echo "<table border='2'>";
         echo "<thead>";
         echo "<tr>";
@@ -488,7 +488,7 @@ class Participantes extends ResourceController
         // Remover o arquivo CSV após o download
         unlink($filename);
 
-        return redirect()->back();
+        //return redirect()->back();
     }
 
     public function excluirRelacionamento($id)
