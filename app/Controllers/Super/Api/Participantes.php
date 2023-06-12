@@ -407,8 +407,12 @@ class Participantes extends ResourceController
 
             $total = count($clientes);
             $valor = (count($clientes) * 18) + 2000 ;
-        echo "<h1>Total: " . $total . " - Valor: ".formatarValor($valor)."</h1>";
 
+        echo 'Valor de entrada: R$2.000,00 <br>';
+        echo 'Valor por usuário: R$ 18,00 <br>';
+        echo 'Total de usuários: '. $total.' <br>';
+        echo "Total em reais: ". formatarValor($valor);
+        
         echo "<table border='2'>";
         echo "<thead>";
         echo "<tr>";
