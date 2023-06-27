@@ -205,7 +205,7 @@ if (!function_exists('limitarNome')) {
 
 
 if (!function_exists('whatsapp')){
-    function whatsapp($numero, $message){
+    function whatsapp( int $numero, string $message){
         
         $nodeurl = 'https://api.dw-api.com/send';
 

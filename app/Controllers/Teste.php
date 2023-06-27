@@ -6,38 +6,15 @@ use App\Libraries\S3;
 use App\Models\ClientModel;
 use App\Models\EmpresaClienteModel;
 use App\Models\EmpresaModel;
-use Aws\S3\S3Client;
-use Aws\S3\Exception\S3Exception;
-use GuzzleHttp\Client;
-
-use Config\Aws;
-
 
 class Teste extends BaseController
 {
     public function index()
     {
-        /*$nodeurl = 'https://api.dw-api.com/send';
-        $mediaurl = 'https://painel.dw-api.com/public/users/1/avatar.png';
-        $data = [
-            'receiver'  => '5562981154120',
-            'msgtext'   => 'Testing send message through API',
-            'token'     => '7estObsVehchnAtBcQKS',
-            'mediaurl'  => $mediaurl, // delete this line if no media
-        ];
-
-        $client = new Client();
-        $response = $client->request('POST', $nodeurl, [
-            'form_params' => $data,
-            'verify' => false, // Desabilita a verificação SSL (opcional, apenas se necessário)
-        ]);
-
-        $body = $response->getBody();
-        echo $body; // output {success:true} or success:false */
-
-        return whatsapp('5562981154120', 'TESTE');
-
+        //envia mensagem no whatsapp de acordo com o numero do cliente
+        return whatsapp('5562981154120', 'Teste de envio de mensagem');
     }
+
     public function index0()
     {
         $request = service('request');

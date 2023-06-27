@@ -32,12 +32,12 @@ class Login extends BaseController
         if (count($builder)) {
             $mEmpresa     = new EmpresaModel();
             $nameEvento   = $mEmpresa->select('evento')->find($builder[0]['id_empresa'])['evento'];
-            $data['name'] = $nameEvento ;
+            $data['name'] = $nameEvento;
 
             $data['id_empresa']  = $builder[0]['id_empresa'];
             $data['suporte']     = $builder[0]['whatsapp'];
 
-            
+
             $data['description'] = $builder[0]['description_pt'];
             $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
@@ -55,7 +55,6 @@ class Login extends BaseController
             $data['analytics']   = false;
             $data['id_empresa']  = false;
             $data['suporte'] = null;
-
         }
         //titulo da página
         $data['title'] = 'Login | ' . $data['name'];
@@ -127,7 +126,7 @@ class Login extends BaseController
         //tratamento de erros
         try {
             //verifica se o id está preenchido
-            if(!isset($input['idEmpresa'])){
+            if (!isset($input['idEmpresa'])) {
                 //erro traduzido para a linguagem escolhida
                 //url invalída
                 throw new Exception(lang('Alertas.idEmpresa'));
@@ -135,7 +134,7 @@ class Login extends BaseController
 
             //bucas dados do participante com base no email
             $builder = $clientsModel->where('email', $input['email'])->findAll();
-            
+
             //se encontra um
             if (count($builder)) {
                 //dados para alteração de senha
@@ -147,7 +146,7 @@ class Login extends BaseController
                 //altera senha para a senha padrão
                 $clientsModel->updateBatch($data, 'email');
 
-                
+
                 //busca dados da empresa
                 $mConfig    = new ConfigModel();
                 $plataforma = $mConfig->where('id_empresa', $input['idEmpresa'])->findAll();
@@ -171,18 +170,34 @@ class Login extends BaseController
                     'body'    => $view
                 ]);
 
+
+                if ($builder[0]['phone']) {
+                    $msg = "Olá {$builder[0]['name']},
+Segue os dados da sua conta.
+
+Link da plataforma: {$plataforma[0]['slug']}
+
+*Login:* {$input['email']}
+
+*Senha:* mudar123
+
+Qualquer dúvida estamos a disposição atravéz do WhatsApp disponibilizado no site.
+
+";
+                    whatsapp($builder[0]['phone'], $msg);
+                }
+
                 //mensagem de sucesso
                 session()->setFlashdata('success', lang('Panel.recuperado'));
                 //redireciona
                 return redirect()->to('/login');
-        
             } else {
                 //usuário não encontrado
                 throw new Exception(lang('Alertas.naoEncontrado'));
             }
         } catch (\Exception $e) {
             //alerta de erros
-            session()->setFlashdata('error', lang('Alertas.erroRecuperacao').'<br>' . $e->getMessage());
+            session()->setFlashdata('error', lang('Alertas.erroRecuperacao') . '<br>' . $e->getMessage());
             return redirect()->to('/login');
         }
     }
