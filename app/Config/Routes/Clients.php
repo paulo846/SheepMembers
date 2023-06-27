@@ -6,7 +6,7 @@ $routes->get('perfil', 'Home::perfil', ['filter' => 'loggedclient']);
 //$routes->get('/', 'Home::index');
 
 $routes->get('/dataserver', 'Teste::index');
-$routes->get('/teste', 'Teste::mostrar');
+$routes->get('/teste', 'Teste::teste');
 
 
 

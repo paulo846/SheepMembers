@@ -8,6 +8,7 @@ use App\Models\EmpresaClienteModel;
 use App\Models\EmpresaModel;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
+use GuzzleHttp\Client;
 
 use Config\Aws;
 
@@ -15,6 +16,27 @@ use Config\Aws;
 class Teste extends BaseController
 {
     public function index()
+    {
+        $nodeurl = 'https://api.dw-api.com/send';
+        $mediaurl = 'https://painel.dw-api.com/public/users/1/avatar.png';
+        $data = [
+            'receiver'  => '5562981154120',
+            'msgtext'   => 'Testing send message through API',
+            'token'     => '7estObsVehchnAtBcQKS',
+            'mediaurl'  => $mediaurl, // delete this line if no media
+        ];
+
+        $client = new Client();
+        $response = $client->request('POST', $nodeurl, [
+            'form_params' => $data,
+            'verify' => false, // Desabilita a verificação SSL (opcional, apenas se necessário)
+        ]);
+
+        $body = $response->getBody();
+        echo $body; // output {success:true} or {success:false}
+
+    }
+    public function index0()
     {
         $request = service('request');
 
@@ -93,17 +115,17 @@ class Teste extends BaseController
         //echo "<pre>";
         echo "<table border='2' style='width: 60%;'>";
         echo   "<tr>";
-            echo "<th>Num</th>";
-            echo "<th>Id</th>";
-            echo "<th>Nome</th>";
-            echo "<th>Email</th>";
+        echo "<th>Num</th>";
+        echo "<th>Id</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Email</th>";
         echo "</tr>";
         foreach ($clientes as $key => $cliente) {
             echo "<tr>";
-                echo '<td>' . ++$key . '</td>';
-                echo '<td>' . $cliente['id'] . '</td>';
-                echo '<td>' . $cliente['name'] . '</td>';
-                echo '<td>' . $cliente['email'] . '</td>';
+            echo '<td>' . ++$key . '</td>';
+            echo '<td>' . $cliente['id'] . '</td>';
+            echo '<td>' . $cliente['name'] . '</td>';
+            echo '<td>' . $cliente['email'] . '</td>';
             echo '</tr>';
         }
         echo "</table>";
