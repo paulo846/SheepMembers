@@ -8,6 +8,7 @@
         "php": "^7.4 || ^8.0",
         "aws/aws-sdk-php": "^3.263",
         "codeigniter4/framework": "^4.0",
+        "guzzlehttp/guzzle": "*",
         "intervention/image": "^2.7"
     },
     "require-dev": {
