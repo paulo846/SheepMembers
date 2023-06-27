@@ -80,7 +80,6 @@ class Login extends BaseController
 
     public function recover()
     {
-
         $mConfig = new ConfigModel();
         $s3 = new S3;
         $builder = $mConfig->where('slug', $this->urlClient)->findAll();
@@ -99,6 +98,9 @@ class Login extends BaseController
             session()->setFlashdata('error', lang('Alertas.idEmpresa'));
             return redirect()->to('/login');
         }
+        
+        $data['suporte'] = false ;
+
         $data['title'] = 'Login | ' . $data['name'];
         return view('usuarios/login/pages/recupera', $data);
     }
@@ -175,16 +177,14 @@ class Login extends BaseController
                     $msg = "Olá {$builder[0]['name']},
 Segue os dados da sua conta.
 
-Link da plataforma: {$plataforma[0]['slug']}
+Link da plataforma: https://{$plataforma[0]['slug']}
 
 *Login:* {$input['email']}
 
 *Senha:* mudar123
 
-Qualquer dúvida estamos a disposição atravéz do WhatsApp disponibilizado no site.
-
-";
-                    whatsapp($builder[0]['phone'], $msg);
+Qualquer dúvida estamos a disposição atravéz do WhatsApp disponibilizado no site.";
+                    whatsapp(formatPhoneNumber($builder[0]['phone']), $msg);
                 }
 
                 //mensagem de sucesso
