@@ -17,7 +17,7 @@ class Teste extends BaseController
 {
     public function index()
     {
-        $nodeurl = 'https://api.dw-api.com/send';
+        /*$nodeurl = 'https://api.dw-api.com/send';
         $mediaurl = 'https://painel.dw-api.com/public/users/1/avatar.png';
         $data = [
             'receiver'  => '5562981154120',
@@ -33,7 +33,9 @@ class Teste extends BaseController
         ]);
 
         $body = $response->getBody();
-        echo $body; // output {success:true} or {success:false}
+        echo $body; // output {success:true} or success:false */
+
+        return whatsapp('5562981154120', 'TESTE');
 
     }
     public function index0()

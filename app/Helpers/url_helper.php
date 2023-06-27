@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Client;
+
 if (!function_exists('get_subdomain')) {
     function get_subdomain($url)
     {
@@ -198,5 +200,29 @@ if (!function_exists('limitarNome')) {
             $nomeLimitado = $nomes[0];
         }
         return $nomeLimitado;
+    }
+}
+
+
+if (!function_exists('whatsapp')){
+    function whatsapp($numero, $message){
+        
+        $nodeurl = 'https://api.dw-api.com/send';
+
+        $data = [
+            'receiver'  => $numero,
+            'msgtext'   => $message,
+            'token'     => '7estObsVehchnAtBcQKS'
+        ];
+
+        $client = new Client();
+        $response = $client->request('POST', $nodeurl, [
+            'form_params' => $data,
+            'verify' => false, // Desabilita a verificação SSL (opcional, apenas se necessário)
+        ]);
+
+        $body = $response->getBody();
+
+        echo $body; // output {success:true} or {success:false}
     }
 }
