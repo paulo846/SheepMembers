@@ -39,9 +39,9 @@ class Login extends BaseController
 
 
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['favicon']       = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['logo']        = ($builder[0]['logo']) ? url_cloud_front($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['fundo']       = ($builder[0]['background']) ? url_cloud_front($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['favicon']       = ($builder[0]['favicon']) ? url_cloud_front($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['linkVenda']   = $builder[0]['link_venda'];
             $data['analytics']   = $builder[0]['analytics'];
         } else {
@@ -88,9 +88,9 @@ class Login extends BaseController
             $data['id_empresa'] = $builder[0]['id_empresa'];
             $data['name']        = $builder[0]['title_pt'];
             $data['description'] = $builder[0]['description_pt'];
-            $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-            $data['favicon']       = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['logo']        = ($builder[0]['logo']) ? url_cloud_front($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['fundo']       = ($builder[0]['background']) ? url_cloud_front($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+            $data['favicon']       = ($builder[0]['favicon']) ? url_cloud_front($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['link_venda']  = $builder[0]['link_venda'];
             $data['analytics'] = $builder[0]['analytics'];
         } else {
