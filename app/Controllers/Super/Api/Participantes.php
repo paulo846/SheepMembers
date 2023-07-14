@@ -177,6 +177,7 @@ class Participantes extends ResourceController
 
                 $email = new Ses;
                 $file = $this->request->getFile('csvfile');
+                $newClients = array();
 
                 // Verifica se o arquivo enviado é um arquivo CSV válido
                 if ($file->isValid() && $file->getClientMimeType() === 'text/csv') {
