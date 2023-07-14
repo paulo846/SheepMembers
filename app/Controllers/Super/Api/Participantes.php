@@ -444,7 +444,7 @@ class Participantes extends ResourceController
 
         $empresa = $mEmpresa->find($id);
 
-        $clientes = $mCliente->select('empresa_cliente.name, empresa_cliente.id, empresa_cliente.name empresa_name, empresa_cliente.email, empresa.id id_empresa, relaciona.id relacionamento')
+        $clientes = $mCliente->select('empresa_cliente.name, empresa_cliente.phone, empresa_cliente.id, empresa_cliente.name empresa_name, empresa_cliente.email, empresa.id id_empresa, relaciona.id relacionamento')
             ->join('empresa_relaciona_cliente relaciona', 'relaciona.id_cliente = empresa_cliente.id')
             ->join('empresa', 'empresa.id = relaciona.id_empresa')
             ->where('empresa.id', $id)
@@ -462,7 +462,7 @@ class Participantes extends ResourceController
         $file = fopen($filename, 'w');
 
         // Escrever o cabeçalho no arquivo CSV
-        $header = array('id', 'Name', 'Email');
+        $header = array('id', 'Name', 'Email', 'phone');
         fputcsv($file, $header, $delimiter);
 
         // Escrever os dados no arquivo CSV
@@ -470,7 +470,8 @@ class Participantes extends ResourceController
             $row = array(
                 $cliente['id'],
                 $cliente['name'],
-                $cliente['email']
+                $cliente['email'],
+                $cliente['phone']
             );
             fputcsv($file, $row, $delimiter);
         }
