@@ -167,17 +167,18 @@ class Participantes extends ResourceController
      *
      * @return mixed
      */
-    public function list()
+    /*public function list()
     {
         $clientsModel = $this->mParticipante;
+        $email = new Ses;
+
+        // Separa os novos clientes e os clientes existentes que precisam ser atualizados
+        $newClients     = array();
+        $updatedClients = array();
 
         if ($this->request->isAJAX() && $this->request->getFile('csvfile')) {
-
             try {
-
-                $email = new Ses;
                 $file = $this->request->getFile('csvfile');
-                $newClients = array();
 
                 // Verifica se o arquivo enviado é um arquivo CSV válido
                 if ($file->isValid() && $file->getClientMimeType() === 'text/csv') {
@@ -214,10 +215,6 @@ class Participantes extends ResourceController
                         // Obtém todos os clientes existentes do banco de dados
                         $existingClients = $clientsModel->whereIn('email', array_column($data, 'email'))->findAll();
 
-                        // Separa os novos clientes e os clientes existentes que precisam ser atualizados
-                        $newClients = [];
-                        $updatedClients = [];
-
                         foreach ($data as $row) {
                             if ($existingClients) {
                                 foreach ($existingClients as $client) {
@@ -233,6 +230,7 @@ class Participantes extends ResourceController
 
                     // Insere os novos clientes no banco de dados
                     if ($newClients) {
+
                         $clientsModel->insertBatch($newClients);
 
                         foreach ($newClients as $row) {
@@ -252,12 +250,113 @@ class Participantes extends ResourceController
                 }
 
                 return $this->respond(['msg' => 'Cadastrado com sucesso!']);
-            } catch (\Exception $e) {
+           } catch (\Exception $e) {
 
                 return $this->fail([$e->getMessage()]);
             }
         }
+    }*/
+
+    public function list()
+    {
+        $clientsModel = $this->mParticipante;
+        $email = new Ses();
+
+        // Separa os novos clientes e os clientes existentes que precisam ser atualizados
+        $newClients = [];
+        $updatedClients = [];
+
+        if ($this->request->isAJAX() && $this->request->getFile('csvfile')) {
+            try {
+                $file = $this->request->getFile('csvfile');
+
+                // Verifica se o arquivo enviado é um arquivo CSV válido
+                if ($file->isValid() && $file->getClientMimeType() === 'text/csv') {
+                    $data = $this->readCSVFile($file);
+
+                    if (!empty($data)) {
+                        // Obtém todos os clientes existentes do banco de dados
+                        $existingClients = $clientsModel->whereIn('email', array_column($data, 'email'))->findAll();
+
+                        foreach ($data as $row) {
+                            $clientExists = false;
+
+                            foreach ($existingClients as $client) {
+                                if ($client['email'] === $row['email']) {
+                                    $updatedClients[] = $row;
+                                    $clientExists = true;
+                                    break;
+                                }
+                            }
+
+                            if (!$clientExists) {
+                                $newClients[] = $row;
+                            }
+                        }
+
+                        // Insere os novos clientes no banco de dados
+                        if (!empty($newClients)) {
+                            $clientsModel->insertBatch($newClients);
+
+                            foreach ($newClients as $row) {
+                                $this->mRelaciona->relacionaClienteCsv($row, $this->request->getPost('empresa'));
+                                $email->acessoInicial($row, $this->request->getPost('empresa'));
+                            }
+                        }
+
+                        // Atualiza os clientes existentes no banco de dados
+                        if (!empty($updatedClients)) {
+                            //$clientsModel->updateBatch($updatedClients, 'email');
+                            foreach ($updatedClients as $row) {
+                                $this->mRelaciona->relacionaClienteCsv($row, $this->request->getPost('empresa'));
+                                $email->acessoInicial($row, $this->request->getPost('empresa'));
+                            }
+                        }
+
+                        return $this->respond(['msg' => 'Cadastrado com sucesso!']);
+                    } else {
+                        return $this->fail(['O arquivo CSV está vazio.']);
+                    }
+                } else {
+                    return $this->fail(['O arquivo enviado não é um arquivo CSV válido.']);
+                }
+            } catch (\Exception $e) {
+                return $this->fail([$e->getMessage()]);
+            }
+        } else {
+            return $this->fail(['Nenhum arquivo CSV foi enviado.']);
+        }
     }
+
+    private function readCSVFile($file)
+    {
+        $csv = new \SplFileObject($file->getTempName());
+        $csv->setFlags(\SplFileObject::READ_CSV);
+        $csv->setCsvControl(',');
+        $data = [];
+
+        foreach ($csv as $lineNumber => $row) {
+            // Pular a primeira linha (cabeçalho)
+            if ($lineNumber === 0) {
+                continue;
+            }
+
+            // Verificar se a linha contém as colunas esperadas
+            if (count($row) < 3 || empty($row[0]) || empty($row[1])) {
+                continue;
+            }
+
+            $data[] = [
+                'name'     => $row[0],
+                'email'    => emailType($row[1]),
+                'phone'    => isset($row[2]) ? $row[2] : '', // Verificar se o campo existe
+                'password' => password_hash('mudar123', PASSWORD_BCRYPT)
+            ];
+        }
+
+        return $data;
+    }
+
 
 
     public function edit($id = null)
@@ -411,7 +510,7 @@ class Participantes extends ResourceController
         echo '<b>Valor de entrada:</b> R$ 2.000,00 <br>';
         echo '<b>Valor por usuário:</b> R$ 18,00 <br>';
         echo '<b>Total de usuários:</b> ' . $total . ' <br>';
-        echo "<b><a href='".site_url('/superadmin/imprimir/csv/'.$id)."'}>Total</a> em reais:</b> " . formatarValor($valor);
+        echo "<b><a href='" . site_url('/superadmin/imprimir/csv/' . $id) . "'}>Total</a> em reais:</b> " . formatarValor($valor);
         echo '<br><br>';
         echo "<table border='2'>";
         echo "<thead>";
