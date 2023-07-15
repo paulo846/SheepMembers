@@ -84,7 +84,7 @@ Listados: <?= count($cliente) ?>
                                     $builderAcesso = $acessos->select('created_at')->where('id_cliente', $row['id'])->findAll(1);
                                     
                                     echo 'Qtd acessos: '.count($builderAcesso);
-                                    echo '<br>';
+                                    echo '</br>';
                                     if(count($builderAcesso)){
                                         echo '<span class="badge badge-soft-info">Último acesso '.formatarDataComent($builderAcesso[0]['created_at']).'</span>';
                                     }
