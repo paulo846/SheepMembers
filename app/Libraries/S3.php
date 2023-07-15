@@ -38,7 +38,7 @@ class S3
         $img = $this->image->make($file->getPathname());
 
         // Comprime a imagem com 10% de qualidade
-        $img->encode('png', 10);
+        $img->encode('png', 50);
 
         // Define o nome do arquivo no S3
         $fileName = 'clients/' . $uniqueName . '.png'; //. $file->guessExtension();
