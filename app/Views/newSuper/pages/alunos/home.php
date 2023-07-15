@@ -77,6 +77,14 @@ Listados: <?= count($cliente) ?>
                                 </td>
                                 <td>
                                     <?= view_cell('App\Libraries\Viewhtml::relacionamento', ['idAluno' => $row['id'], 'eventos' => $eventos]) ?>
+                                    <?php
+                                    $builderAcesso = $acessos->select('created_at')->where('id_cliente', $row['id'])->findAll(1);
+                                    if(count($builderAcesso)){
+                                        echo 'Ultimo acesso em '.$builderAcesso[0]['created_at'];
+                                    }else{
+                                        echo 'Ainda não acessou';
+                                    }
+                                    ?>
                                 </td>
                                 <td>
                                     <?php
