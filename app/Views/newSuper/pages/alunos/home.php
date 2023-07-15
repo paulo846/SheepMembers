@@ -86,7 +86,7 @@ Listados: <?= count($cliente) ?>
                                     echo 'Qtd acessos: '.count($builderAcesso);
 
                                     if(count($builderAcesso)){
-                                        echo 'Último acesso '.formatarDataComent($builderAcesso[0]['created_at']);
+                                        echo '<span class="badge badge-soft-info">Último acesso '.formatarDataComent($builderAcesso[0]['created_at']).'</span>';
                                     }
                                     ?>
                                 </td>
