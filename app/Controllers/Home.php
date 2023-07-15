@@ -71,16 +71,16 @@ class Home extends BaseController
             $data['analyticsFooter'] = $builder[0]['scripts_footer'];
 
             //imagem de fundo 
-            $data['fundo']       = ($builder[0]['background']) ? url_cloud_front().$builder[0]['background'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
             //imagem logo
-            $data['logo']        = ($builder[0]['logo']) ? url_cloud_front().$builder[0]['logo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
             //imagem favicon
-            $data['favicon']        = ($builder[0]['favicon']) ? url_cloud_front().$builder[0]['favicon'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['favicon']        = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
             //imagem capa
-            $data['capa']        = ($builder[0]['capa']) ? url_cloud_front().$builder[0]['capa'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['capa']        = ($builder[0]['capa']) ? $s3->getImageUrl($builder[0]['capa']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
             //VERIFICA SE TEM LINK DE TRANSMISSÃO NOS IDIOMAS
             $data['vStrPt'] = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
@@ -95,7 +95,7 @@ class Home extends BaseController
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
-                $data['capaVideo']   = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] : false;
+                $data['capaVideo']   = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) : false;
 
                 //informações para o idioma em inglês
             } elseif (session()->lang == 'en') {
@@ -105,7 +105,7 @@ class Home extends BaseController
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false;
-                $data['capaVideo']   = ($builder[0]['logo_en']) ? url_cloud_front().$builder[0]['logo_en'] : false;
+                $data['capaVideo']   = ($builder[0]['logo_en']) ? $s3->getImageUrl($builder[0]['logo_en']) : false;
 
 
                 //informações para o idioma em espanhol
@@ -115,7 +115,7 @@ class Home extends BaseController
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false;
-                $data['capaVideo']   = ($builder[0]['logo_es']) ? url_cloud_front().$builder[0]['logo_es'] : false;
+                $data['capaVideo']   = ($builder[0]['logo_es']) ? $s3->getImageUrl($builder[0]['logo_es']) : false;
 
                 //informações para o idioma padrão, PT BR
             } else {
@@ -124,7 +124,7 @@ class Home extends BaseController
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']      = ($builder[0]['stream_pt']) ? $builder[0]['stream_pt'] : false;
-                $data['capaVideo']   = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo_pt'] : false;
+                $data['capaVideo']   = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) : false;
             }
         } else {
             //se não houver resulstado na busca pela url, volta a página de login com um erro traduzido
@@ -178,13 +178,13 @@ class Home extends BaseController
             //dados do analytics footer
             $data['analyticsFooter'] = $builder[0]['scripts_footer'];
 
-            $data['fundo']       = ($builder[0]['background']) ? url_cloud_front().$builder[0]['background'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['fundo']       = ($builder[0]['background']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
-            $data['logo']        = ($builder[0]['logo']) ? url_cloud_front().$builder[0]['logo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['logo']        = ($builder[0]['logo']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
-            $data['favicon']        = ($builder[0]['favicon']) ? url_cloud_front().$builder[0]['favicon'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['favicon']        = ($builder[0]['favicon']) ? $s3->getImageUrl($builder[0]['favicon']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
-            $data['capa']        = ($builder[0]['capa']) ? url_cloud_front().$builder[0]['capa'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+            $data['capa']        = ($builder[0]['capa']) ? $s3->getImageUrl($builder[0]['capa']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
 
             $data['analytics'] = $builder[0]['analytics'];
 
@@ -251,8 +251,8 @@ class Home extends BaseController
             if (session()->lang == 'pt-BR') {
                 $data['name']        = $builder[0]['title_pt'];
                 $data['description'] = $builder[0]['description_pt'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front().$builder[0]['logo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front().$builder[0]['background'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['background']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']   = ($builder[0]['stream']) ? $builder[0]['stream'] : false;
@@ -260,8 +260,8 @@ class Home extends BaseController
 
                 $data['name']        = $builder[0]['title_en'];
                 $data['description'] = $builder[0]['description_en'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']   = ($builder[0]['stream_en']) ? $builder[0]['stream_en'] : false;
@@ -269,16 +269,16 @@ class Home extends BaseController
 
                 $data['name']        = $builder[0]['title_es'];
                 $data['description'] = $builder[0]['description_es'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']   = ($builder[0]['stream_es']) ? $builder[0]['stream_es'] : false;
             } else {
                 $data['name']        = $builder[0]['title_pt'];
                 $data['description'] = $builder[0]['description_pt'];
-                $data['logo']        = ($builder[0]['logo_pt']) ? url_cloud_front() . $builder[0]['logo_pt'] . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
-                $data['fundo']       = ($builder[0]['fundo']) ? url_cloud_front() . $builder[0]['fundo'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
+                $data['logo']        = ($builder[0]['logo_pt']) ? $s3->getImageUrl($builder[0]['logo_pt']) . '?t=' . converterParaTimestamp($builder[0]['updated_at']) : false;
+                $data['fundo']       = ($builder[0]['fundo']) ? $s3->getImageUrl($builder[0]['fundo']) . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
                 $data['link_venda']  = $builder[0]['link_venda'];
                 $data['id']          = $builder[0]['id'];
                 $data['stream']   = ($builder[0]['stream']) ? $builder[0]['stream'] : false;
