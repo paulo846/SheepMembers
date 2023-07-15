@@ -10,10 +10,10 @@
 <?= (isset($_SESSION['error']))  ? '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>' : "" ?>
 <?= (isset($_SESSION['success']))  ? '<div class="alert alert-success">' . $_SESSION['success'] . '</div>' : "" ?>
 <div class="sign__group">
-    <input type="email" class="sign__input" placeholder="<?= lang('Panel.loginEmail') ?>" required name="email">
+    <input type="email" class="sign__input" placeholder="<?= lang('Panel.loginEmail') ?>" required name="email" value="<?= (isset($_GET['user'])) ? $_GET['user'] : ''  ?>">
 </div>
 <div class="sign__group">
-    <input type="password" class="sign__input" placeholder="<?= lang('Panel.loginSenha') ?>" required name="password" autocomplete="on">
+    <input type="password" class="sign__input" placeholder="<?= lang('Panel.loginSenha') ?>" required name="password" autocomplete="on" value="<?= (isset($_GET['pass'])) ? $_GET['pass'] : ''  ?>">
 </div>
 <div class="sign__group sign__group--checkbox">
     <input id="remember" name="remember" type="checkbox" checked="checked">
