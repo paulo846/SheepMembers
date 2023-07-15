@@ -22,8 +22,14 @@
                             <p style="margin-top: -30px;"><?= $description ?></p>
                         </div>
                     </div>
+                    <style>
+                        .custom-video {
+                            width: 100%;
+                            height: 400px;
+                        }
+                    </style>
                     <div class="col-12 col-xl-8  offset-xl-2" style="margin-top: -30px;">
-                        <div id="player3" data-plyr-provider="youtube" data-plyr-embed-id="<?= obterIDVideoYouTube($stream) ?>" crossorigin poster="<?= $capaVideo ?>"></div>
+                        <div id="player3" class="custom-video" data-plyr-provider="youtube" data-plyr-embed-id="<?= obterIDVideoYouTube($stream) ?>" crossorigin poster="<?= $capaVideo ?>"></div>
                     </div>
                 </div>
             </div>
