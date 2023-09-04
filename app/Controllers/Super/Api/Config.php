@@ -119,7 +119,7 @@ class Config extends ResourceController
 
         if ($search = $this->mConfig->select('id')->where('id_empresa', $input['id_empresa'])->find()) {
 
-            $data['id'] = $search[0]['id'];
+            $data['id'] = $search[0]['id']; 
 
             try {
                 if ($favicon) {
