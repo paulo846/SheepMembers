@@ -1,6 +1,11 @@
 <?php
 
 $routes->get('/', 'Home::index', ['filter' => 'loggedclient']);
+
+
+
+
+
 $routes->get('filme/(:any)', 'Home::filme/$1', ['filter' => 'loggedclient']);
 $routes->get('perfil', 'Home::perfil', ['filter' => 'loggedclient']);
 //$routes->get('/', 'Home::index');

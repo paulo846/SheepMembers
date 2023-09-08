@@ -17,18 +17,18 @@ class Ses
     {
         $client = new SesClient([
             'version' => 'latest',
-            'region'  => env('AWS_DEFAULT_REGION'),
+            'region'  => env('AWS_DEFAULT_REGION_SES'),
             'credentials' => [
-                'key'    => env('AWS_ACCESS_KEY_ID'),
-                'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                'key'    => env('AWS_ACCESS_KEY_ID_SES'),
+                'secret' => env('AWS_SECRET_ACCESS_KEY_SES'),
             ],
         ]);
 
-        $sender    = $data['sender'];
+        $sender     = $data['sender'];
         $senderName = $data['sender_name']; // Novo campo para o nome do remetente
-        $recipient = $data['recipient'];
-        $subject   = $data['subject'];
-        $body      = $data['body'];
+        $recipient  = $data['recipient'];
+        $subject    = $data['subject'];
+        $body       = $data['body'];
 
         $message = [
             'Subject' => [
@@ -73,7 +73,7 @@ class Ses
 
         //envia email de boas vindas!
         $this->sendEmail([
-            'sender' => 'contato@sheepmembers.com',
+            'sender' => 'contato@vinhaonline.com',
             'sender_name' => utf8_encode(ucfirst($empresaRow['evento'])),
             'recipient' => strtolower($dados['email']),
             'subject' => 'Seu acesso chegou - ' . ucfirst($empresaRow['evento']),

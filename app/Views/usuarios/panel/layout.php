@@ -1,17 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDSN5Q7JM1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-CDSN5Q7JM1');
-    </script>
     <?= $analytics ?>
     <title><?= $title ?></title>
     <!-- Required meta tags -->

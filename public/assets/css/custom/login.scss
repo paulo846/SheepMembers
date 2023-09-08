@@ -1,0 +1,133 @@
+// Variáveis
+$whatsapp-button-bg: #25d366;
+$whatsapp-button-hover-bg: #128c7e;
+$alert-danger-bg: red;
+$alert-success-bg: green;
+$text-danger-color: #ff4746;
+$text-danger-hover-color: #ff0000;
+$language-select-bg: #f1f1f1;
+
+// Mixin para botões
+@mixin button-style($bg-color, $color, $hover-bg) {
+    background-color: $bg-color;
+    color: $color;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $hover-bg;
+    }
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $whatsapp-button-bg;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    i {
+        line-height: 60px;
+    }
+
+    &:hover {
+        background-color: $whatsapp-button-hover-bg;
+    }
+}
+
+.section--bg::before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.sign__form {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.alert {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: 12px;
+
+    &.alert-danger {
+        background-color: $alert-danger-bg;
+        color: #ffffff;
+    }
+
+    &.alert-success {
+        background-color: $alert-success-bg;
+        color: #ffffff;
+    }
+}
+
+.text-danger {
+    color: $text-danger-color;
+
+    &:hover {
+        color: $text-danger-hover-color;
+        transform: scale(1.5);
+    }
+}
+
+.language-select {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: $language-select-bg;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    z-index: 1;
+
+    label {
+        font-weight: bold;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+    select {
+        font-size: 12px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: large !important;
+    }
+
+    .article__content p {
+        font-size: medium !important;
+        margin-bottom: 10px;
+    }
+}
+
+.section-grade {
+    padding: 30px 0 !important;
+}
+
+.section-title-grade {
+    font-size: 30px !important;
+}

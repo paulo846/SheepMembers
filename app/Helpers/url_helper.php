@@ -207,7 +207,7 @@ if (!function_exists('whatsapp')) {
     function whatsapp(int $numero, string $message)
     {
 
-        $nodeurl = 'https://api.dw-api.com/send';
+       /* $nodeurl = 'https://api.dw-api.com/send';
 
         $data = [
             'receiver'  => $numero,
@@ -223,6 +223,7 @@ if (!function_exists('whatsapp')) {
 
         $body = $response->getBody();
 
-        echo $body; // output {success:true} or {success:false}
+        echo $body; // output {success:true} or success:false*/ 
+        return true ;
     }
 }

@@ -26,7 +26,6 @@ class Home extends ResourceController
         $this->mEmpresa      = new EmpresaModel();
         $this->mParticipante = new ClientModel();
         $this->mRelaciona    = new EmpresaClienteModel();
-
     }
     /**
      * Return an array of resource objects, themselves in array format
@@ -37,6 +36,10 @@ class Home extends ResourceController
     public function index()
     {
         //
+        return $this->response->setJSON([
+            'NAME' => 'SHEEPMEMBERS',
+            'RESP' => 200
+        ]);
     }
 
     /**
@@ -98,18 +101,19 @@ class Home extends ResourceController
         //
     }
 
-    public function teste(){
+    public function teste()
+    {
         return $this->respondCreated(['Usuário criado!']);
     }
 
     public function cliente($idEmpresa = null)
     {
-        if(!$idEmpresa){
+        if (!$idEmpresa) {
             return $this->fail(['Empresa não informada!']);
             exit;
         }
 
-        if(!$this->mEmpresa->where('id', $idEmpresa)->countAllResults()){
+        if (!$this->mEmpresa->where('id', $idEmpresa)->countAllResults()) {
             return $this->fail(['Empresa não informada!']);
             exit;
         }
@@ -121,7 +125,7 @@ class Home extends ResourceController
 
             //verifica se email já esta no banco de dados
             if ($row = $this->mParticipante->where('email', $input['email'])->select('id')->findAll()) {
-        
+
                 //dados para atualização
                 $id = $row[0]['id'];
                 $update = [
@@ -131,12 +135,11 @@ class Home extends ResourceController
                     'phone' => $input['phone'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
-        
+
                 //atualiza
                 $this->mParticipante->save($update);
-        
             } else {
-        
+
                 //dados para inserção
                 $data = [
                     'name'  => $input['name'],
@@ -144,13 +147,13 @@ class Home extends ResourceController
                     'phone' => $input['phone'],
                     'password' => password_hash('mudar123', PASSWORD_BCRYPT)
                 ];
-        
+
                 //cadastra
                 $id = $this->mParticipante->insert($data);
             }
 
             if ($rel = $this->mRelaciona->where(['id_cliente' => $id, 'id_empresa' => $idEmpresa])->findAll()) {
-                
+
                 //dados para relacionamento
                 $this->mRelaciona->delete($rel[0]['id']);
 
@@ -160,9 +163,14 @@ class Home extends ResourceController
                     'id_empresa' => $idEmpresa,
                     'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
                 ];
-                
+
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
+
+                $email = new Ses;
+                $email->acessoInicial(['name' => $input['name'], 'email' => $input['email']], $idEmpresa);
+
+                return $this->fail(['msg' => 'O usuário foi atualizado mas não houve envio no whatsapp!']);
             } else {
 
                 //dados para relacionamento
@@ -171,18 +179,19 @@ class Home extends ResourceController
                     'id_empresa' => $idEmpresa,
                     'vencimento' => (isset($input['vencimento'])) ? $input['vencimento'] : 12,
                 ];
-        
+
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
+
+                $email = new Ses;
+                $email->acessoInicial(['name' => $input['name'], 'email' => $input['email']], $idEmpresa);
+
+                return $this->respondCreated(['msg' => 'Ação realizada com sucesso!']);
             }
-
-            return $this->respondCreated(['Ação realizada com sucesso!']);
-
         } catch (\Exception $e) {
 
             //resposta 400 - Qualquer erro
             return $this->fail($e->getMessage());
         }
     }
-    
 }

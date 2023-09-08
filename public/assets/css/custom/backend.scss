@@ -1,0 +1,84 @@
+// Variáveis
+$whatsapp-button-bg: #25d366;
+$whatsapp-button-hover-bg: #128c7e;
+$alert-danger-bg: red;
+$alert-success-bg: green;
+$text-danger-color: #ff4746;
+$text-danger-hover-color: #ff0000;
+
+// Mixin para botões
+@mixin button-style($bg-color, $color, $hover-bg) {
+    background-color: $bg-color;
+    color: $color;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $hover-bg;
+    }
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    @include button-style($whatsapp-button-bg, #fff, $whatsapp-button-hover-bg);
+
+    i {
+        line-height: 60px;
+    }
+}
+
+.alert {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: 12px;
+
+    &.alert-danger {
+        background-color: $alert-danger-bg;
+        color: #ffffff;
+    }
+
+    &.alert-success {
+        background-color: $alert-success-bg;
+        color: #ffffff;
+    }
+}
+
+.text-danger {
+    color: $text-danger-color;
+
+    &:hover {
+        color: $text-danger-hover-color;
+        transform: scale(1.5);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: large !important;
+    }
+
+    .article__content p {
+        font-size: medium !important;
+        margin-bottom: 10px;
+    }
+}
+
+.section-grade {
+    padding: 30px 0 !important;
+}
+
+.section-title-grade {
+    font-size: 30px !important;
+}

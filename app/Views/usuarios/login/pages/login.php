@@ -1,7 +1,4 @@
 <?= $this->extend('usuarios/login/layout') ?>
-<?= $this->section('css') ?>
-
-<?= $this->endSection() ?>
 <?= $this->section('form') ?>
 <?= form_open('/login/auth', 'class="sign__form"') ?> 
 <a href="/" class="sign__logo">

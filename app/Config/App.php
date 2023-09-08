@@ -19,7 +19,7 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = '';
+    public $baseURL = 'http://sheepmembers.com';
 
     public function __construct()
     {
@@ -28,7 +28,7 @@ class App extends BaseConfig
         if (isset($_SERVER['HTTP_HOST'])) {
             $this->baseURL = "https://{$_SERVER['HTTP_HOST']}";
         } else {
-            $this->baseURL = "https://conect.app";
+            $this->baseURL = "http://sheepmembers.com";
             // Adicione aqui uma ação apropriada para lidar com a situação em que a variável não está definida
         }
     }
@@ -151,21 +151,6 @@ class App extends BaseConfig
 
     /**
      * --------------------------------------------------------------------------
-     * Session Driver
-     * --------------------------------------------------------------------------
-     *
-     * The session storage driver to use:
-     * - `CodeIgniter\Session\Handlers\FileHandler`
-     * - `CodeIgniter\Session\Handlers\DatabaseHandler`
-     * - `CodeIgniter\Session\Handlers\MemcachedHandler`
-     * - `CodeIgniter\Session\Handlers\RedisHandler`
-     *
-     * @deprecated use Config\Session::$driver instead.
-     */
-    public string $sessionDriver = FileHandler::class;
-
-    /**
-     * --------------------------------------------------------------------------
      * Session Cookie Name
      * --------------------------------------------------------------------------
      *
@@ -246,28 +231,6 @@ class App extends BaseConfig
 
     /**
      * --------------------------------------------------------------------------
-     * Session Database Group
-     * --------------------------------------------------------------------------
-     *
-     * DB Group for the database session.
-     *
-     * @deprecated use Config\Session::$DBGroup instead.
-     */
-    public ?string $sessionDBGroup = null;
-
-    /**
-     * --------------------------------------------------------------------------
-     * Cookie Prefix
-     * --------------------------------------------------------------------------
-     *
-     * Set a cookie name prefix if you need to avoid collisions.
-     *
-     * @deprecated use Config\Cookie::$prefix property instead.
-     */
-    public string $cookiePrefix = '';
-
-    /**
-     * --------------------------------------------------------------------------
      * Cookie Domain
      * --------------------------------------------------------------------------
      *
@@ -312,30 +275,6 @@ class App extends BaseConfig
 
     /**
      * --------------------------------------------------------------------------
-     * Cookie SameSite
-     * --------------------------------------------------------------------------
-     *
-     * Configure cookie SameSite setting. Allowed values are:
-     * - None
-     * - Lax
-     * - Strict
-     * - ''
-     *
-     * Alternatively, you can use the constant names:
-     * - `Cookie::SAMESITE_NONE`
-     * - `Cookie::SAMESITE_LAX`
-     * - `Cookie::SAMESITE_STRICT`
-     *
-     * Defaults to `Lax` for compatibility with modern browsers. Setting `''`
-     * (empty string) means default SameSite attribute set by browsers (`Lax`)
-     * will be set on cookies. If set to `None`, `$cookieSecure` must also be set.
-     *
-     * @deprecated use Config\Cookie::$samesite property instead.
-     */
-    public ?string $cookieSameSite = 'Lax';
-
-    /**
-     * --------------------------------------------------------------------------
      * Reverse Proxy IPs
      * --------------------------------------------------------------------------
      *
@@ -356,17 +295,6 @@ class App extends BaseConfig
      * @var array<string, string>
      */
     public array $proxyIPs = [];
-
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF Token Name
-     * --------------------------------------------------------------------------
-     *
-     * The token name.
-     *
-     * @deprecated Use `Config\Security` $tokenName property instead of using this property.
-     */
-    public string $CSRFTokenName = 'csrf_name';
 
     /**
      * --------------------------------------------------------------------------
@@ -422,25 +350,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $redirect property instead of using this property.
      */
     public bool $CSRFRedirect = false;
-
-    /**
-     * --------------------------------------------------------------------------
-     * CSRF SameSite
-     * --------------------------------------------------------------------------
-     *
-     * Setting for CSRF SameSite cookie token. Allowed values are:
-     * - None
-     * - Lax
-     * - Strict
-     * - ''
-     *
-     * Defaults to `Lax` as recommended in this link:
-     *
-     * @see https://portswigger.net/web-security/csrf/samesite-cookies
-     *
-     * @deprecated `Config\Cookie` $samesite property is used.
-     */
-    public string $CSRFSameSite = 'Lax';
 
     /**
      * --------------------------------------------------------------------------

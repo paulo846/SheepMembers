@@ -1,25 +1,3 @@
-<style>
-    .language-select {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        background-color: #f1f1f1;
-        padding: 10px;
-        border-top-left-radius: 10px;
-        z-index: 1;
-    }
-    .language-select label {
-        font-weight: bold;
-        margin-right: 5px;
-        font-size: 12px;
-    }
-    .language-select select {
-        font-size: 12px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-    }
-</style>
 <div class="language-select">
     <label for="language"><?= lang('Panel.escolhaIdioma') ?></label>
     <select id="language">

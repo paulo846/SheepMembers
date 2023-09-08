@@ -10,6 +10,7 @@ class ListaFilmes
 {
     public function grade($idEmpresa): string
     {
+        $html = "";
         $mCarrossel = new CarrosselModel();
 
         $carrossels = $mCarrossel->where(['id_empresa' => $idEmpresa, 'config' => 1])->orderBy('ordem', 'ASC')->findAll();
@@ -123,7 +124,7 @@ class ListaFilmes
 
     private function filmesGrade($idCarrossel): string
     {
-        $html = '';
+        $html = "";
         $s3 = new S3();
         $mGravacoes = new GravacoesModel();
         $gravacoes  = $mGravacoes->where([

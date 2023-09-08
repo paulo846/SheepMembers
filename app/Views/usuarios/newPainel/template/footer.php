@@ -69,7 +69,6 @@
 	});
 </script>
 <?= $this->renderSection('js'); ?>
-
 <?= $analyticsFooter ?>
 </body>
 

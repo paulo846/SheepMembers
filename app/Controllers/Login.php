@@ -44,6 +44,7 @@ class Login extends BaseController
             $data['favicon']       = ($builder[0]['favicon']) ? url_cloud_front().$builder[0]['favicon'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['linkVenda']   = $builder[0]['link_venda'];
             $data['analytics']   = $builder[0]['analytics'];
+            $data['analyticsFooter'] = $builder[0]['scripts_footer'];
         } else {
             //se não acha as configurações retorna dados padrão
             $data['name']        = 'Sheep Members';
@@ -54,6 +55,7 @@ class Login extends BaseController
             $data['linkVenda']   = false;
             $data['analytics']   = false;
             $data['id_empresa']  = false;
+            $data['analyticsFooter'] = false;
             $data['suporte'] = null;
         }
         //titulo da página
@@ -93,6 +95,7 @@ class Login extends BaseController
             $data['favicon']       = ($builder[0]['favicon']) ? url_cloud_front().$builder[0]['favicon'] . '?t=' . converterParaTimestamp($builder[0]['updated_at'])  : false;
             $data['link_venda']  = $builder[0]['link_venda'];
             $data['analytics'] = $builder[0]['analytics'];
+            $data['analyticsFooter'] = $builder[0]['scripts_footer'];
         } else {
             //alerta de erros
             session()->setFlashdata('error', lang('Alertas.idEmpresa'));

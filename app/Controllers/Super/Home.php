@@ -57,7 +57,7 @@ class Home extends BaseController
                 ->orderBy('id', 'ASC');
         } else {
             //lista do mais atual para o mais antingo
-            $this->mCliente->orderBy('updated_at', 'DESC');
+            $this->mCliente->orderBy('created_at', 'DESC');
         }
 
         //define quantidade de cadastros retornados na mesma página, limite 150
