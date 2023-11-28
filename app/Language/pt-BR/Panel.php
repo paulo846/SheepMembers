@@ -29,7 +29,7 @@ return [
         'direitos' => 'copyright © 2023 todos os direitos reservados'
     ],
 
-    'comprarAcesso' => 'Comprar acceso',
+    'comprarAcesso' => 'Comprar acesso',
 
     'recuperado' => "Enviamos mais instruções para o seu e-mail!",
 

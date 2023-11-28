@@ -18,7 +18,7 @@
 </div>
 <button class="sign__btn" type="submit"><?= lang('Panel.loginEntrar') ?></button>
 <?php if($linkVenda) :?>
-<button class="sign__btn" type="button"><?= lang('Panel.comprarAcesso') ?></button>
+<a href="<?= $linkVenda ?>" target="_blank" class="sign__btn btn-danger" style="margin-top: -10px;"><?= lang('Panel.comprarAcesso') ?></a>
 <?php endif; ?>
 <span class="sign__text"><a href="/recover"><?= lang('Panel.loginEsqueceuAsenha') ?></a></span>
 </form>

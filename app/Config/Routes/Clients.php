@@ -1,5 +1,7 @@
 <?php
 
+$routes->get('/testeapi', 'Teste::index');
+
 $routes->get('/', 'Home::index', ['filter' => 'loggedclient']);
 
 

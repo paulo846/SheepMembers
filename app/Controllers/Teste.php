@@ -14,11 +14,11 @@ class Teste extends BaseController
         //envia mensagem no whatsapp de acordo com o numero do cliente
        // return whatsapp('5562981154120', 'Teste de envio de mensagem');
 
-       echo "loaderio-5722ebd4e621d8d8911683126c09dece";
+       return view('cast');
     }
 
     public function index0()
-    {
+    {echo "loaderio-5722ebd4e621d8d8911683126c09dece";
         $request = service('request');
 
         $instanceId = file_get_contents("http://169.254.169.254/latest/meta-data/instance-id");

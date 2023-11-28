@@ -30,7 +30,6 @@
         <?php endif; ?>
 
         <?php if (($vStrEn && $vStrPt) || ($vStrEn && $vStrEs) || ($vStrPt && $vStrEs)) : ?>
-
             <section class="section" style="text-align: center !important; ">
                 <div class="container">
                     <div class="row">
@@ -70,17 +69,15 @@
                 </div>
             </section>
         <?php else : ?>
-            <section class="section" style="text-align: center !important; ">
+            <!-- <section class="section" style="text-align: center !important; ">
                 <div class="container">
                     <div class="row">
                         <div class="col-12" style="height: 8vh !important;">
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
         <?php endif; ?>
-
-
         <?= view_cell('App\Cells\ListaFilmes::grade', ['idEmpresa' => $idEmpresa]) ?>
         <?= '';/*view_cell('App\Cells\ListaFilmes::slides', ['idEmpresa' => $idEmpresa])*/ ?>
     </div>

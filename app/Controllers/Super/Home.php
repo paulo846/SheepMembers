@@ -61,48 +61,32 @@ class Home extends BaseController
         }
 
         //define quantidade de cadastros retornados na mesma página, limite 150
-        if ($this->request->getGet('c')) {
-            if ($this->request->getGet('c') <= 150) {
-                $numBusca = intval($this->request->getGet('c'));
+        if ($this->request->getGet('limit')) {
+            if ($this->request->getGet('limit') <= 150) {
+                $numBusca = intval($this->request->getGet('limit'));
             } else {
                 $numBusca = intval(150);
             }
         } else {
             $numBusca = intval(10);
         }
-
-        
-
         //por data
-
         $dataInicial = $this->request->getGet('datein');
         $dataFinal = $this->request->getGet('dateout');
-
         if ($dataInicial && $dataFinal) {
             $this->mCliente->where('created_at >=', $dataInicial . ' 00:00:00')
                 ->where('created_at <=', $dataFinal . ' 23:59:59');
         }
-
-
-
         $data['cliente'] = $this->mCliente->paginate($numBusca);
-
         $data['pager']  = $this->mCliente->pager;
-
         $data['title'] = 'Alunos';
-
         $empresas = $this->mEmpresa->findAll();
         $eventoName = [];
-
-
         foreach ($empresas as $empresa) {
             $eventoName[$empresa['id']] = $empresa['evento'];
         }
-
         $data['eventos'] = $eventoName;
         $data['acessos'] = $this->mLogsAcessos;
-
-        //
         return view('newSuper/pages/alunos/home', $data);
     }
     public function clientes()

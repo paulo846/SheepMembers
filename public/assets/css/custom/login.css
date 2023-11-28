@@ -1,3 +1,7 @@
+.btn-danger {
+  background-color: red !important;
+}
+
 .whatsapp-button {
   position: fixed;
   bottom: 20px;

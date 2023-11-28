@@ -21,6 +21,10 @@ $language-select-bg: #f1f1f1;
     }
 }
 
+.btn-danger{
+    background-color: $alert-danger-bg !important;
+}
+
 .whatsapp-button {
     position: fixed;
     bottom: 20px;
