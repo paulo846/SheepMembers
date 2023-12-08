@@ -106,20 +106,47 @@ class Home extends ResourceController
         return $this->respondCreated(['Usuário criado!']);
     }
 
-    public function cliente($idEmpresa = null)
-    {
+    public function exclui($idEmpresa = null){
+        // Verifica se o header "apikey" está presente na requisição
+        $apiKey = $this->request->getHeaderLine('apikey');
+
+        if (!$apiKey || $apiKey !== '7a11b931-c3df-4010-bf12-88c7a48af52f') {
+            return $this->fail(['03 - API Key inválida!']); // Adapte a mensagem de erro conforme necessário
+        }
+
         if (!$idEmpresa) {
-            return $this->fail(['Empresa não informada!']);
-            exit;
+            return $this->fail(['01 - Empresa não informada!']);
         }
 
         if (!$this->mEmpresa->where('id', $idEmpresa)->countAllResults()) {
-            return $this->fail(['Empresa não informada!']);
-            exit;
+            return $this->fail(['02 - Empresa não informada!']);
+        }
+
+        $email = $this->request->getPost('email');
+
+
+    }
+
+    public function cliente($idEmpresa = null)
+    {
+        // Verifica se o header "apikey" está presente na requisição
+        $apiKey = $this->request->getHeaderLine('apikey');
+
+        if (!$apiKey || $apiKey !== '7a11b931-c3df-4010-bf12-88c7a48af52f') {
+            return $this->fail(['03 - API Key inválida!']); // Adapte a mensagem de erro conforme necessário
+        }
+
+        if (!$idEmpresa) {
+            return $this->fail(['01 - Empresa não informada!']);
+        }
+
+        if (!$this->mEmpresa->where('id', $idEmpresa)->countAllResults()) {
+            return $this->fail(['02 - Empresa não informada!']);
         }
 
         //
         try {
+
             //recupera dados do formulário
             $input = $this->request->getPost();
 
@@ -167,10 +194,10 @@ class Home extends ResourceController
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
 
-                $email = new Ses;
-                $email->acessoInicial(['name' => $input['name'], 'email' => $input['email']], $idEmpresa);
+                //$email = new Ses;
+                //$email->acessoInicial(['name' => $input['name'], 'email' => $input['email']], $idEmpresa);
 
-                return $this->fail(['msg' => 'O usuário foi atualizado mas não houve envio no whatsapp!']);
+                return $this->respond(['msg' => 'O usuário foi atualizado mas não houve envio no whatsapp!']);
             } else {
 
                 //dados para relacionamento
@@ -183,13 +210,12 @@ class Home extends ResourceController
                 //cadastra novo relacionamento
                 $this->mRelaciona->save($relaciona);
 
-                $email = new Ses;
-                $email->acessoInicial(['name' => $input['name'], 'email' => $input['email']], $idEmpresa);
+                //$email = new Ses;
+                //$email->acessoInicial(['name' => $input['name'], 'email' => $input['email']], $idEmpresa);
 
                 return $this->respondCreated(['msg' => 'Ação realizada com sucesso!']);
             }
         } catch (\Exception $e) {
-
             //resposta 400 - Qualquer erro
             return $this->fail($e->getMessage());
         }

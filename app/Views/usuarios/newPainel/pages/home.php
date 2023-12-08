@@ -141,7 +141,7 @@
     }
 
     $(document).ready(function() {
-        ouvirAvisos(), setInterval(ouvirAvisos, 5000);
+        ouvirAvisos(), setInterval(ouvirAvisos, 10000);
     });
 </script>
 <?= $this->endSection() ?>
