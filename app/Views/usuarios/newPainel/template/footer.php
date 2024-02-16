@@ -37,8 +37,14 @@
 
 						// Uso do método
 						$clientIp = getRealIpAddr();
-						echo "Endereço IP do cliente: " . $clientIp;
+
+						// Obtém o hostname do nó (máquina onde o contêiner está sendo executado)
+						$hostname = gethostname();
+
+						echo "Endereço IP do cliente: " . $clientIp . "<br>";
+						echo "Container rodando em: " . $hostname;
 						?>
+
 
 					</small>
 				</div>
