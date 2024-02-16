@@ -41,8 +41,12 @@
 						// Obtém o hostname do nó (máquina onde o contêiner está sendo executado)
 						$hostname = gethostname();
 
+						$hostIp = gethostbyname(gethostname());
+						echo "Endereço IP da máquina host: " . $hostIp . "<br>";
+
 						echo "Endereço IP do cliente: " . $clientIp . "<br>";
-						echo "Container rodando em: " . $hostname;
+						echo "Container rodando em: " . $hostname ."<br>";
+						echo "Endereço IP da máquina host: " . $hostIp;
 						?>
 
 
