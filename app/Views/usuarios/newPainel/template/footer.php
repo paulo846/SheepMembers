@@ -17,6 +17,29 @@
 
 						#echo "Servidor: " . $publicIp;
 						?>
+
+						<?php
+						// Obtém o endereço IP real do cliente, mesmo atrás de um proxy reverso
+						function getRealIpAddr()
+						{
+							if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+								// IP fornecido pelo proxy reverso
+								return $_SERVER['HTTP_X_REAL_IP'];
+							} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+								// Lista de IPs fornecidos pelo proxy reverso
+								$ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+								return trim($ips[0]);
+							} else {
+								// IP direto, sem proxy reverso
+								return $_SERVER['REMOTE_ADDR'];
+							}
+						}
+
+						// Uso do método
+						$clientIp = getRealIpAddr();
+						echo "Endereço IP do cliente: " . $clientIp;
+						?>
+
 					</small>
 				</div>
 			</div>
