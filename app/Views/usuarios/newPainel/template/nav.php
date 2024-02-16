@@ -11,7 +11,7 @@
                     </button>
 
                     <a href="/" class="header__logo">
-                        <img src="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" alt="Sheep Members">
+                        <img src="<?= ($logo) ? $logo : '/assets/admin/img/logo-1.png' ?>" alt="Sheep Members" width="150px">
                     </a>
                     <div class="header__actions ml-auto">
 

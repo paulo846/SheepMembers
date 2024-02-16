@@ -43,6 +43,12 @@
 	<meta name="author" content="SheepMembers">
 	<title><?= $title ?></title>
 
+	<style>
+		.header__logo{
+			width: 150px !important;
+		}
+	</style>
+
 	<link rel="stylesheet" href="/assets/css/custom/backend.min.css">
 	<?= $analytics ?>
 </head>
