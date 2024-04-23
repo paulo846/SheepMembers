@@ -58,9 +58,9 @@ if (!function_exists('url_cloud_front')) {
     function url_cloud_front($caminho = false)
     {
         if ($caminho) {
-            $url = "https://cdn.conect.app/";
+            $url = "https://sheepmemberss3.s3.amazonaws.com/";
         } else {
-            $url = "https://cdn.conect.app/" . $caminho;
+            $url = "https://sheepmemberss3.s3.amazonaws.com/" . $caminho;
         }
 
 
