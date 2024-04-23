@@ -12,7 +12,7 @@
 <?= $this->section('content') ?>
 <?php
 
-use CodeIgniter\I18n\Time; ?>
+use CodeIgniter\I18n\Time;?>
 <?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 
 <div class="row">
@@ -95,9 +95,8 @@ Listados: <?= count($cliente) ?>
 
                                                 // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
                                                 if (isset($row['updated_at']) && isset($row['created_at'])) {
-                                                    $time = Time::parse(Time::now(), 'america/sao_paulo');
-                                                    $diff = $time->difference($row['updated_at'], 'america/sao_paulo');
-                                                    echo $diff->humanize();
+                                                    
+                                                    echo Time::now('America/sao_paulo');
                                                 }
 
                                                 /*$current = Time::parse(date('Y-m-d H:i:s'));
