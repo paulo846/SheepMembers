@@ -10,10 +10,10 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 <?php
 
 use CodeIgniter\I18n\Time; ?>
-<?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 
 <div class="row">
     <div class="col-xl-12">
@@ -42,6 +42,7 @@ Listados: <?= count($cliente) ?>
 
 
         <?php if (count($cliente)) : ?>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-nowrap">
                     <thead>
@@ -77,32 +78,41 @@ Listados: <?= count($cliente) ?>
                                 </td>
                                 <td>
                                     <?= view_cell('App\Libraries\Viewhtml::relacionamento', ['idAluno' => $row['id'], 'eventos' => $eventos]) ?>
-                                    
+
                                 </td>
                                 <td>
                                     <?php
                                     $builderAcesso = $acessos->select('created_at')->where('id_cliente', $row['id'])->findAll(1);
-                                    
-                                    echo 'Qtd acessos: '.count($builderAcesso);
+
+                                    echo 'Qtd acessos: ' . count($builderAcesso);
                                     echo '</br>';
-                                    if(count($builderAcesso)){
-                                        echo '<span class="badge badge-soft-info">Último acesso '.formatarDataComent($builderAcesso[0]['created_at']).'</span>';
+                                    if (count($builderAcesso)) {
+                                        echo '<span class="badge badge-soft-info">Último acesso ' . formatarDataComent($builderAcesso[0]['created_at']) . '</span>';
                                     }
                                     ?>
                                 </td>
                                 <td>
-                                    Alterado: <?php
-                                                $current      = Time::parse(date('Y-m-d H:i:s'));
-                                                $dateAlterado = Time::parse($row['updated_at']);
-                                                $diffAlterado = $current->difference($dateAlterado);
-                                                echo $diffAlterado->humanize();
-                                                ?> <br>
-                                    Criado: <?php
-                                            $dateCreate    = Time::parse($row['created_at']);
-                                            $diffCreate = $current->difference($dateCreate);
-                                            echo $diffCreate->humanize();
-                                            ?> <br>
-
+                                    <?php
+                                    // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
+                                    if (isset($row['updated_at']) && isset($row['created_at'])) {
+                                        // Obter a data e hora atual
+                                        $current = Time::now();
+                                        // Obter a data e hora de alteração
+                                        $dateAlterado = Time::parse($row['updated_at']);
+                                        // Calcular a diferença entre a data de alteração e a data atual
+                                        $diffAlterado = $current->difference($dateAlterado);
+                                        // Exibir a diferença em um formato humano
+                                        echo "Alterado: " . $diffAlterado->humanize() . "<br>";
+                                        // Obter a data e hora de criação
+                                        $dateCreate = Time::parse($row['created_at']);
+                                        // Calcular a diferença entre a data de criação e a data atual
+                                        $diffCreate = $current->difference($dateCreate);
+                                        // Exibir a diferença em um formato humano
+                                        echo "Criado: " . $diffCreate->humanize() . "<br>";
+                                    } else {
+                                        echo "As chaves 'updated_at' e 'created_at' não estão definidas em \$row.";
+                                    }
+                                    ?>
                                 </td>
                                 <td>
                                     <div class="dropdown">

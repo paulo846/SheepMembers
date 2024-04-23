@@ -30,31 +30,31 @@ class S3
     }
 
     public function uploadImage($file, $uniqueName)
-{
-    // Verifica se o arquivo é uma instância de UploadedFile
-    if (!($file instanceof \CodeIgniter\HTTP\Files\UploadedFile)) {
-        throw new \InvalidArgumentException('O arquivo fornecido não é uma instância válida de UploadedFile.');
+    {
+        // Verifica se o arquivo é uma instância de UploadedFile
+        if (!($file instanceof \CodeIgniter\HTTP\Files\UploadedFile)) {
+            throw new \InvalidArgumentException('O arquivo fornecido não é uma instância válida de UploadedFile.');
+        }
+
+        // Define o nome do arquivo no S3
+        $fileName = 'clients/' . $uniqueName . '.png';
+
+        // Upload do arquivo para o S3
+        try {
+            $result = $this->s3->putObject([
+                'Bucket' => $this->awsBucket,
+                'Key' => $fileName,
+                'Body' => fopen($file->getTempName(), 'rb'), // Usamos getTempName() para obter o caminho temporário do arquivo
+                'ContentType' => $file->getMimeType(), // Usamos getMimeType() para obter o tipo MIME do arquivo
+                'ACL' => 'public-read'
+            ]);
+        } catch (AwsException $e) {
+            throw new \RuntimeException('Ocorreu um erro ao enviar a imagem para o S3: ' . $e->getMessage());
+        }
+
+        // Retorna o nome exclusivo do arquivo
+        return $fileName;
     }
-
-    // Define o nome do arquivo no S3
-    $fileName = 'clients/' . $uniqueName . '.png';
-
-    // Upload do arquivo para o S3
-    try {
-        $result = $this->s3->putObject([
-            'Bucket' => $this->awsBucket,
-            'Key' => $fileName,
-            'Body' => fopen($file->getTempName(), 'rb'), // Usamos getTempName() para obter o caminho temporário do arquivo
-            'ContentType' => $file->getMimeType(), // Usamos getMimeType() para obter o tipo MIME do arquivo
-            'ACL' => 'public-read'
-        ]);
-    } catch (AwsException $e) {
-        throw new \RuntimeException('Ocorreu um erro ao enviar a imagem para o S3: ' . $e->getMessage());
-    }
-
-    // Retorna o nome exclusivo do arquivo
-    return $fileName;
-}
 
 
 

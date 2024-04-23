@@ -124,7 +124,7 @@ class Config extends ResourceController
             try {
                 if ($favicon) {
                     $faviconUp = $this->s3->uploadImage($favicon, "{$input['id_empresa']}/favicon32");
-                    $data['favicon'] = $faviconUp;
+                    $data['favicon'] = $faviconUp; 
                 }
 
                 if ($logo) {
