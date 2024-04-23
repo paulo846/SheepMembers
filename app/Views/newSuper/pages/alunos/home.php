@@ -97,9 +97,9 @@ Listados: <?= count($cliente) ?>
                                                 if (isset($row['updated_at']) && isset($row['created_at'])) {
 
                                                     // Assume current time is: March 10, 2017 (America/Chicago)
-                                                    $time = Time::parse($row['updated_at']);
+                                                    //$time = Time::parse($row['updated_at']);
 
-                                                    echo $time->humanize(); // 1 year ago
+                                                    //echo $time->humanize(); // 1 year ago
                                                 }
 
                                                 /*$current = Time::parse(date('Y-m-d H:i:s'));
