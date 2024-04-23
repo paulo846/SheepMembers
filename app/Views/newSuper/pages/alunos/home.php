@@ -91,11 +91,14 @@ Listados: <?= count($cliente) ?>
                                     ?>
                                 </td>
                                 <td>
-                                    Alterado: <?php echo $row['updated_at'];
-                                                /*$current      = Time::parse(date('Y-m-d H:i:s'));
-                                                $dateAlterado = Time::parse($row['updated_at']);
-                                                $diffAlterado = $current->difference($dateAlterado);
-                                                echo $diffAlterado->humanize();*/
+                                    Alterado: <?php 
+                                    
+                                    //echo $row['updated_at'];
+                                    $current      = Time::parse(date('Y-m-d H:i:s'));
+                                    $dateAlterado = Time::parse($row['updated_at']);
+                                    $diffAlterado = $current->difference($dateAlterado);
+                                    echo $diffAlterado->humanize();
+
                                                 ?> <br>
                                     Criado: <?php echo $row['created_at'];
                                             /*$dateCreate    = Time::parse($row['created_at']);
