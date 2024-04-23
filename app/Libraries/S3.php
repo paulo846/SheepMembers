@@ -30,31 +30,32 @@ class S3
     }
 
     public function uploadImage($file, $uniqueName)
-    {
-        // Valida se o arquivo é uma imagem e está no formato correto
-        if (!is_uploaded_file($file['tmp_name']) || !exif_imagetype($file['tmp_name'])) {
-            throw new \InvalidArgumentException('O arquivo fornecido não é uma imagem válida.');
-        }
-
-        // Define o nome do arquivo no S3
-        $fileName = 'clients/' . $uniqueName . '.png';
-
-        // Upload do arquivo para o S3
-        try {
-            $result = $this->s3->putObject([
-                'Bucket' => $this->awsBucket,
-                'Key' => $fileName,
-                'Body' => fopen($file['tmp_name'], 'rb'),
-                'ContentType' => $file['type'],
-                'ACL' => 'public-read'
-            ]);
-        } catch (AwsException $e) {
-            throw new \RuntimeException('Ocorreu um erro ao enviar a imagem para o S3: ' . $e->getMessage());
-        }
-
-        // Retorna o nome exclusivo do arquivo
-        return $fileName;
+{
+    // Verifica se o arquivo é uma instância de UploadedFile
+    if (!($file instanceof \CodeIgniter\HTTP\Files\UploadedFile)) {
+        throw new \InvalidArgumentException('O arquivo fornecido não é uma instância válida de UploadedFile.');
     }
+
+    // Define o nome do arquivo no S3
+    $fileName = 'clients/' . $uniqueName . '.png';
+
+    // Upload do arquivo para o S3
+    try {
+        $result = $this->s3->putObject([
+            'Bucket' => $this->awsBucket,
+            'Key' => $fileName,
+            'Body' => fopen($file->getTempName(), 'rb'), // Usamos getTempName() para obter o caminho temporário do arquivo
+            'ContentType' => $file->getMimeType(), // Usamos getMimeType() para obter o tipo MIME do arquivo
+            'ACL' => 'public-read'
+        ]);
+    } catch (AwsException $e) {
+        throw new \RuntimeException('Ocorreu um erro ao enviar a imagem para o S3: ' . $e->getMessage());
+    }
+
+    // Retorna o nome exclusivo do arquivo
+    return $fileName;
+}
+
 
 
     /*public function uploadImage($file, $uniqueName)
