@@ -93,21 +93,12 @@ Listados: <?= count($cliente) ?>
                                 <td>
                                     Alterado: <?php
 
-                                    // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
-if (isset($row['updated_at']) && isset($row['created_at'])) {
-    
-    // Obter a data e hora atual
-    $current = Time::now();
-
-    // Obter a data e hora de alteração
-    $dateAlterado = Time::parse($row['updated_at']);
-    
-    // Calcular a diferença entre a data atual e a data de alteração
-    $diffAlterado = $dateAlterado->difference($current);
-
-    echo $diffAlterado->humanize();
-
-}
+                                                // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
+                                                if (isset($row['updated_at']) && isset($row['created_at'])) {
+                                                    $time = Time::parse('March 10, 2017', 'America/Chicago');
+                                                    $diff = $time->difference(Time::now());
+                                                    echo $diff->humanize();
+                                                }
 
                                                 /*$current = Time::parse(date('Y-m-d H:i:s'));
                                                 $test    = Time::parse(($row['updated_at']));
