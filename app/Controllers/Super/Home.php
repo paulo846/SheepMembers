@@ -39,6 +39,8 @@ class Home extends BaseController
     
     public function alunos()
     {
+
+        
         //dados da empresa
         //$data['mEmpresa'] = $this->mEmpresa;
         $data['totalAlunos'] = $this->mCliente->countAllResults();
@@ -88,6 +90,9 @@ class Home extends BaseController
         $data['eventos'] = $eventoName;
         $data['acessos'] = $this->mLogsAcessos;
         return view('newSuper/pages/alunos/home', $data);
+
+
+
     }
     public function clientes()
     {
