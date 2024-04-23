@@ -77,47 +77,30 @@ Listados: <?= count($cliente) ?>
                                 </td>
                                 <td>
                                     <?= view_cell('App\Libraries\Viewhtml::relacionamento', ['idAluno' => $row['id'], 'eventos' => $eventos]) ?>
-
+                                    
                                 </td>
                                 <td>
                                     <?php
                                     $builderAcesso = $acessos->select('created_at')->where('id_cliente', $row['id'])->findAll(1);
-
-                                    echo 'Qtd acessos: ' . count($builderAcesso);
+                                    
+                                    echo 'Qtd acessos: '.count($builderAcesso);
                                     echo '</br>';
-                                    if (count($builderAcesso)) {
-                                        echo '<span class="badge badge-soft-info">Último acesso ' . formatarDataComent($builderAcesso[0]['created_at']) . '</span>';
+                                    if(count($builderAcesso)){
+                                        echo '<span class="badge badge-soft-info">Último acesso '.formatarDataComent($builderAcesso[0]['created_at']).'</span>';
                                     }
-                                    ?> 
+                                    ?>
                                 </td>
                                 <td>
                                     Alterado: <?php
-
-                                                // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
-                                                if (isset($row['updated_at']) && isset($row['created_at'])) {
-
-                                                    // Assume current time is: March 10, 2017 (America/Chicago)
-                                                    $time = CodeIgniter\I18n\Time::parse($row['updated_at']);
-
-                                                    echo $time->humanize(); // 1 year ago
-                                                }
-
-                                                /*$current = Time::parse(date('Y-m-d H:i:s'));
-                                                $test    = Time::parse(($row['updated_at']));
-
-                                                $diff = $current->difference($test);
-
-
-                                                /*$current      = Time::parse(date('Y-m-d H:i:s'));
+                                                $current      = Time::parse(date('Y-m-d H:i:s'));
                                                 $dateAlterado = Time::parse($row['updated_at']);
-                                                $diffAlterado = $current->difference($dateAlterado);*/
-                                                //echo $diff->humanize();
-
+                                                $diffAlterado = $current->difference($dateAlterado);
+                                                echo $diffAlterado->humanize();
                                                 ?> <br>
-                                    Criado: <?php echo $row['created_at'];
-                                            /*$dateCreate    = Time::parse($row['created_at']);
+                                    Criado: <?php
+                                            $dateCreate    = Time::parse($row['created_at']);
                                             $diffCreate = $current->difference($dateCreate);
-                                            echo $diffCreate->humanize();*/
+                                            echo $diffCreate->humanize();
                                             ?> <br>
 
                                 </td>
