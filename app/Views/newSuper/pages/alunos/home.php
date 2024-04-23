@@ -94,8 +94,8 @@ Listados: <?= count($cliente) ?>
                                     Alterado: <?php
 
                                                 //echo $row['updated_at'];
-                                                $current = Time::parse('March 10, 2017', 'America/Chicago');
-                                                $test    = Time::parse('March 10, 2010', 'America/Chicago');
+                                                $current = Time::parse(date('Y-m-d H:i:s'));
+                                                $test    = Time::parse($row['updated_at']);
 
                                                 $diff = $current->difference($test);
 
