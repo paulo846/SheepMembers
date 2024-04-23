@@ -88,7 +88,7 @@ Listados: <?= count($cliente) ?>
                                     if (count($builderAcesso)) {
                                         echo '<span class="badge badge-soft-info">Último acesso ' . formatarDataComent($builderAcesso[0]['created_at']) . '</span>';
                                     }
-                                    ?>
+                                    ?> 
                                 </td>
                                 <td>
                                     Alterado: <?php
@@ -97,9 +97,9 @@ Listados: <?= count($cliente) ?>
                                                 if (isset($row['updated_at']) && isset($row['created_at'])) {
 
                                                     // Assume current time is: March 10, 2017 (America/Chicago)
-                                                    //$time = Time::parse($row['updated_at']);
+                                                    $time = CodeIgniter\I18n\Time::parse($row['updated_at']);
 
-                                                    //echo $time->humanize(); // 1 year ago
+                                                    echo $time->humanize(); // 1 year ago
                                                 }
 
                                                 /*$current = Time::parse(date('Y-m-d H:i:s'));
