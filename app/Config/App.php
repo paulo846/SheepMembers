@@ -123,7 +123,7 @@ class App extends BaseConfig
      * dates with the date helper, and can be retrieved through app_timezone()
      */
     
-    public string $appTimezone = 'america/sao_paulo';
+    public string $appTimezone = 'america/Sao_Paulo';
 
     /**
      * --------------------------------------------------------------------------
