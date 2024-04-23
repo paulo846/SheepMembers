@@ -107,7 +107,7 @@ Listados: <?= count($cliente) ?>
                                                 /*$current      = Time::parse(date('Y-m-d H:i:s'));
                                                 $dateAlterado = Time::parse($row['updated_at']);
                                                 $diffAlterado = $current->difference($dateAlterado);*/
-                                                echo $diff->humanize();
+                                                //echo $diff->humanize();
 
                                                 ?> <br>
                                     Criado: <?php echo $row['created_at'];
