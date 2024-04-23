@@ -21,7 +21,7 @@ class Session extends BaseConfig
      *
      * @phpstan-var class-string<BaseHandler>
      */
-    public string $driver = 'CodeIgniter\Session\Handlers\RedisHandler';
+    public string $driver = FileHandler::class;
 
     /**
      * --------------------------------------------------------------------------
