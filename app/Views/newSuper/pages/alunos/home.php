@@ -77,27 +77,33 @@ Listados: <?= count($cliente) ?>
                                 </td>
                                 <td>
                                     <?= view_cell('App\Libraries\Viewhtml::relacionamento', ['idAluno' => $row['id'], 'eventos' => $eventos]) ?>
-                                    
+
                                 </td>
                                 <td>
                                     <?php
                                     $builderAcesso = $acessos->select('created_at')->where('id_cliente', $row['id'])->findAll(1);
-                                    
-                                    echo 'Qtd acessos: '.count($builderAcesso);
+
+                                    echo 'Qtd acessos: ' . count($builderAcesso);
                                     echo '</br>';
-                                    if(count($builderAcesso)){
-                                        echo '<span class="badge badge-soft-info">Último acesso '.formatarDataComent($builderAcesso[0]['created_at']).'</span>';
+                                    if (count($builderAcesso)) {
+                                        echo '<span class="badge badge-soft-info">Último acesso ' . formatarDataComent($builderAcesso[0]['created_at']) . '</span>';
                                     }
                                     ?>
                                 </td>
                                 <td>
-                                    Alterado: <?php 
-                                    
-                                    //echo $row['updated_at'];
-                                    $current      = Time::parse(date('Y-m-d H:i:s'));
-                                    $dateAlterado = Time::parse($row['updated_at']);
-                                    $diffAlterado = $current->difference($dateAlterado);
-                                    echo $diffAlterado->humanize();
+                                    Alterado: <?php
+
+                                                //echo $row['updated_at'];
+                                                $current = Time::parse('March 10, 2017', 'America/Chicago');
+                                                $test    = Time::parse('March 10, 2010', 'America/Chicago');
+
+                                                $diff = $current->difference($test);
+
+
+                                                /*$current      = Time::parse(date('Y-m-d H:i:s'));
+                                                $dateAlterado = Time::parse($row['updated_at']);
+                                                $diffAlterado = $current->difference($dateAlterado);*/
+                                                echo $diff->humanize();
 
                                                 ?> <br>
                                     Criado: <?php echo $row['created_at'];
