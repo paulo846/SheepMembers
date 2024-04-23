@@ -95,8 +95,8 @@ Listados: <?= count($cliente) ?>
 
                                                 // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
                                                 if (isset($row['updated_at']) && isset($row['created_at'])) {
-                                                    $time = Time::parse($row['updated_at']);
-                                                    $diff = $time->difference(Time::now());
+                                                    $time = Time::parse(Time::now(), 'america/sao_paulo');
+                                                    $diff = $time->difference($row['updated_at'], 'america/sao_paulo');
                                                     echo $diff->humanize();
                                                 }
 
