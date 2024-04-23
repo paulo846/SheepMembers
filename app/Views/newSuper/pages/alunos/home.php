@@ -12,7 +12,7 @@
 <?= $this->section('content') ?>
 <?php
 
-use CodeIgniter\I18n\Time;?>
+use CodeIgniter\I18n\Time; ?>
 <?= view('newSuper/template/title', ['title' => $title, 'map' => 'Ações']) ?>
 
 <div class="row">
@@ -95,8 +95,11 @@ Listados: <?= count($cliente) ?>
 
                                                 // Certifique-se de que $row['updated_at'] e $row['created_at'] estão definidos antes de usar
                                                 if (isset($row['updated_at']) && isset($row['created_at'])) {
-                                                    
-                                                    echo Time::now('America/sao_paulo');
+
+                                                    // Assume current time is: March 10, 2017 (America/Chicago)
+                                                    $time = Time::parse($row['updated_at'], 'America/sao_paulo');
+
+                                                    echo $time->humanize(); // 1 year ago
                                                 }
 
                                                 /*$current = Time::parse(date('Y-m-d H:i:s'));
