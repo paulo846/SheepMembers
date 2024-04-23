@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('/', 'Home::index');
 
 $routes->get('extra/key', 'Extras::index');
+$routes->get('info', 'Info::index');
 
 $routes->get('api', 'Api\Home::index');
 $routes->get('loaderio-5722ebd4e621d8d8911683126c09dece', 'Teste::index');
