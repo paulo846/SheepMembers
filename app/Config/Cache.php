@@ -20,7 +20,7 @@ class Cache extends BaseConfig
      * The name of the preferred handler that should be used. If for some reason
      * it is not available, the $backupHandler will be used in its place.
      */
-    public string $handler = 'redis';
+    public string $handler = 'file';
 
     /**
      * --------------------------------------------------------------------------
@@ -141,8 +141,8 @@ class Cache extends BaseConfig
      * @var array<string, int|string|null>
      */
     public array $redis = [
-        'host'     => 'redis',
-        'password' => '',
+        'host'     => '127.0.0.1',
+        'password' => 'mudar@123',
         'port'     => 6379,
         'timeout'  => 0,
         'database' => 0,
