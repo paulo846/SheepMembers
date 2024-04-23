@@ -31,25 +31,21 @@ class S3
 
     public function uploadImage($file, $uniqueName)
     {
-        // Trata a imagem, caso necessário
-        $file = $this->handleImage($file);
-
-        // Carrega a imagem para comprimi-la
-        $img = $this->image->make($file->getPathname());
-
-        // Comprime a imagem com 10% de qualidade
-        $img->encode('png', 50);
+        // Valida se o arquivo é uma imagem e está no formato correto
+        if (!is_uploaded_file($file['tmp_name']) || !exif_imagetype($file['tmp_name'])) {
+            throw new \InvalidArgumentException('O arquivo fornecido não é uma imagem válida.');
+        }
 
         // Define o nome do arquivo no S3
-        $fileName = 'clients/' . $uniqueName . '.png'; //. $file->guessExtension();
+        $fileName = 'clients/' . $uniqueName . '.png';
 
         // Upload do arquivo para o S3
         try {
             $result = $this->s3->putObject([
                 'Bucket' => $this->awsBucket,
                 'Key' => $fileName,
-                'Body' => $img->stream(),
-                'ContentType' => 'image/png',
+                'Body' => fopen($file['tmp_name'], 'rb'),
+                'ContentType' => $file['type'],
                 'ACL' => 'public-read'
             ]);
         } catch (AwsException $e) {
@@ -59,6 +55,38 @@ class S3
         // Retorna o nome exclusivo do arquivo
         return $fileName;
     }
+
+
+    /*public function uploadImage($file, $uniqueName)
+    {
+        // Trata a imagem, caso necessário
+        $file = $this->handleImage($file);
+
+        // Carrega a imagem para comprimi-la
+        //$img = $this->image->make($file->getPathname());
+
+        // Comprime a imagem com 10% de qualidade
+        //$img->encode('png', 50);
+
+        // Define o nome do arquivo no S3
+        $fileName = 'clients/' . $uniqueName . '.png'; //. $file->guessExtension();
+
+        // Upload do arquivo para o S3
+        try {
+            $result = $this->s3->putObject([
+                'Bucket' => $this->awsBucket,
+                'Key' => $fileName,
+                'Body' => $file,
+                'ContentType' => 'image/png',
+                'ACL' => 'public-read'
+            ]);
+        } catch (AwsException $e) {
+            throw new \RuntimeException('Ocorreu um erro ao enviar a imagem para o S3: ' . $e->getMessage());
+        }
+
+        // Retorna o nome exclusivo do arquivo
+        return $fileName;
+    }*/
 
     public function getImageUrl($fileName, $expiration = 10)
     {
