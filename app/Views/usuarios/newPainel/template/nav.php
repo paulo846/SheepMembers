@@ -21,11 +21,11 @@
                                         <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
                                     </svg></a>
 
-                                <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu2">
+                                <!-- <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu2">
                                     <li><a href="/lang/pt-BR"><?= lang('Panel.idiomas.br') ?></a></li>
                                     <li><a href="/lang/en"><?= lang('Panel.idiomas.en') ?></a></li>
                                     <li><a href="/lang/es"><?= lang('Panel.idiomas.es') ?></a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                         </ul>
 
