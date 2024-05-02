@@ -9,9 +9,9 @@
 						<a href="#" class="aviso"><?= lang('Panel.termos.uso') ?></a>
 					</div>
 					<small class="footer__copyright">
-						<!-- © 2023 Created by <a href="#" target="_blank">SheepMembers</a>. <br>
+						© 2023 Created by <a href="#" target="_blank">SheepMembers</a>. <br>
 						Meu IP: <?php $request = service('request');
-								echo $request->getIPAddress(); ?><br> -->
+								echo $request->getIPAddress(); ?><br> 
 						<?php
 						#$publicIp = file_get_contents("http://169.254.169.254/latest/meta-data/public-ipv4");
 
